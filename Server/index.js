@@ -3,7 +3,7 @@ import {cors} from 'cors';
 import {passport} from 'passport';
 
 /**
- * Load in Middleware  
+ * Create Const Variables
  * @param app setting express app for routes
  * @param port setting port number for app.listen method
  * @param path setting variable for file path
@@ -21,7 +21,7 @@ app.use(cors());
 app.use(express.urlencoded({extended: true}));
 
 /**
- * Load in App Routes from Directory
+ * Load in App Routes from ./routes Directory
 */ 
 app.use(require('./routes'));
 

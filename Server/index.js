@@ -9,7 +9,7 @@ import {passport} from 'passport';
  * @param path setting variable for file path
 */ 
 const app = express();
-const port = 300;
+const port = 3000;
 const path = require('path');
 
 /**
@@ -22,6 +22,9 @@ app.use(express.urlencoded({extended: true}));
 
 /**
  * Load in App Routes from ./routes Directory
+ * @route /users
+ * @route /transactions
+ * @route /testinglogs
 */ 
 app.use(require('./routes'));
 
@@ -30,8 +33,7 @@ app.use(require('./routes'));
 */ 
 require('./config/passport')(passport);
 
-
-// list on port
+// app listen on set port
 app.listen(port, () => {
     console.log(`Server Listening at http://localhost:${port}`)
 });

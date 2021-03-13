@@ -1,4 +1,4 @@
-import {mongoose, Schema} from 'mongoose';
+const mongoose = require('mongoose');
 
 /**
  * Create User Schema for MongoDB Database
@@ -11,7 +11,7 @@ import {mongoose, Schema} from 'mongoose';
 */ 
 const UserSchema = new mongoose.Schema({
 
-    id: {type: Schema.Types.ObjectId},
+    id: {type: mongoose.Schema.Types.ObjectId},
     email:{type: String},
     hash: {type: String},
     salt: {type: String},

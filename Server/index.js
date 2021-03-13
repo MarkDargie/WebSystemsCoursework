@@ -1,6 +1,7 @@
-import {express} from 'express';
-import {cors} from 'cors';
-import {passport} from 'passport';
+const express = require('express');
+const cors = require('cors');
+const passport = require('passport');
+const {mongoose} = require('./db/mongoose');
 
 /**
  * Create Const Variables
@@ -26,7 +27,7 @@ app.use(express.urlencoded({extended: true}));
  * @route /transactions
  * @route /testinglogs
 */ 
-app.use(require('./routes'));
+app.use(require('./routes/routes'));
 
 /**
  * Load in global passport object into the configuration method

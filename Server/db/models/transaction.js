@@ -1,4 +1,4 @@
-import {mongoose, Schema} from 'mongoose';
+const mongoose = require('mongoose');
 
 /**
  * Create User Schema for MongoDB Database
@@ -10,7 +10,7 @@ import {mongoose, Schema} from 'mongoose';
 */ 
 const TransactionSchema = new mongoose.Schema({
 
-    id:{type: Schema.Types.ObjectId},
+    id:{type: mongoose.Schema.Types.ObjectId},
     to: {type: String},
     from: {type: String},
     amount: {type: Number},

@@ -1,5 +1,5 @@
-import {User} from './user';
-import {Transaction} from './transaction';
+const {User} = require('./user');
+const {Transaction} = require('./transaction');
 
 /**
  * This Model index imports and exports all mongoose models from this directory

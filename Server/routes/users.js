@@ -1,10 +1,9 @@
-import {mongoose} from '../db/mongoose';
-import {passport} from 'passport';
-import {utils} from '../lib/utils';
-import {User} from '../db/models';
+const {mongoose} = require('../db/mongoose');
+const router = require('express').Router(); 
+const passport = require('passport');
+const utils = require('../lib/utils');
 
-// Set router variable for express routes
-const router = require('express').Router();
+const {User} = require('../db/models');
 
 /**
  * GET: /users/protected
@@ -29,9 +28,64 @@ router.get('/protected', passport.authenticate('jwt', { session: false }), (req,
  * @param req Request will contain user email, password and secure code
  * @returns Route returns status 200 OK if sucess and issues JWT. Return status 401 otherwise.
  */
-router.post('/login', (req, res) => {
+router.post('/login', (req, res, next) => {
 
-    // user.findone
+    User.findOne({ email: req.body.email })
+    .then((user) => {
+
+        if (!user) {
+            res.status(401).json({ success: false, msg: "could not find user" });
+        }
+        
+        // Function defined at bottom of app.js
+        const isValid = utils.validPassword(req.body.password, user.hash, user.salt);
+        
+        if (isValid) {
+
+            const tokenObject = utils.issueJWT(user);
+
+            res.status(200).json({ success: true, token: tokenObject.token, expiresIn: tokenObject.expires });
+
+        } else {
+
+            res.status(401).json({ success: false, msg: "you entered the wrong password" });
+
+        }
+
+    })
+    .catch((err) => {
+        next(err);
+    });
+
+});
+
+//Register a new user
+router.post('/register', function(req, res, next){
+
+    console.log("REGISTER ROUTE CALLED");
+    const saltHash = utils.genPassword(req.body.password);
+    
+    const salt = saltHash.salt;
+    const hash = saltHash.hash;
+
+    const newUser = new User({
+        email: req.body.email,
+        hash: hash,
+        salt: salt
+    });
+
+    try {
+    
+        newUser.save()
+            .then((user) => {
+                res.json({ success: true, user: user });
+            });
+
+    } catch (err) {
+        
+        res.json({ success: false, msg: err });
+    
+    }
 
 });
 

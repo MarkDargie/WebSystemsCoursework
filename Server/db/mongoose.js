@@ -1,4 +1,4 @@
-import {mongoose} from 'mongoose';
+const mongoose = require('mongoose');
 
 // Set and Configure dotenv
 const dotenv = require('dotenv');

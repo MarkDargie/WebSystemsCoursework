@@ -154,8 +154,47 @@ main{
 
 .payments{
     margin-top:3rem;
+    margin-bottom:3rem;
 }
 
 .activity-grid{
-    
+    display: grid;
+    grid-template-columns:  75% 25%;
+    grid-column-gap: 1.5rem;
+}
+
+.payment-card{
+    background:rgb(216, 216, 216);
+    border-radius: 7px;
+    /* box-shadow: 2px 2px 2px rgba(0,0,0,0.3); */
+}
+
+.payment-card h3{
+    color:var(--dashboard-grey);
+    margin: 1rem;
+}
+
+.payment-card table{
+    width:100%;
+    border-collapse: collapse;
+}
+
+.payment-card thead {
+
+    background:#efefef;
+    text-align: left;
+
+}
+
+th, td {
+    font-size: 18px;
+    padding: 1rem 1rem;
+}
+
+td {
+    font-size: 16px;
+}
+
+tbody tr:nth-child(even){
+    background:#f9fafc;
 }

@@ -404,7 +404,8 @@ p {
 }
 
 .consult-image img {
-  width: 100%;
+  width: 60%;
+  margin-left:120px;
   text-align: center;
 }
 

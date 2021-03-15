@@ -2,6 +2,35 @@
     font-size:20px;
 }
 
+#sidebar-toggle{
+    display: none;
+}
+
+#sidebar-toggle:checked ~ .sidebar{
+    width: 60px;
+}
+
+#sidebar-toggle:checked ~ .dashboard-content{
+    margin-left: 60px;
+}
+
+#sidebar-toggle:checked ~ .sidebar .sidebar-header h3 span,
+#sidebar-toggle:checked ~ .sidebar li span:last-child{
+    display: none;
+
+}
+
+#sidebar-toggle:checked ~ .sidebar .sidebar-header,
+#sidebar-toggle:checked ~ .sidebar li{
+    display: flex;
+    justify-content: center;
+
+}
+
+#sidebar-toggle:checked ~ .dashboard-content header{
+    left: 60px;
+}
+
 .sidebar{
     height: 100%;
     width: 240px;
@@ -13,6 +42,7 @@
     color:#efefef;
     padding: 1rem;
     overflow-y: auto;
+    transition: width 500ms;
 }
 
 .sidebar-header{
@@ -48,6 +78,7 @@
     /* min-height: 100vh; */
     margin-left: 240px;
     position: relative;
+    transition: margin-left 500ms;
 }
 
 header{
@@ -63,6 +94,7 @@ header{
     z-index: var(--z-fixed);
     background:#fff;
     border-bottom: 1px solid var(--dashboard-grey);
+    transition: left 500ms;
 }
 
 .search-container{
@@ -163,7 +195,9 @@ main{
     grid-column-gap: 1.5rem;
 }
 
-.payment-card{
+.payment-card,
+.info-card,
+.info-card-two{
     background:rgb(216, 216, 216);
     border-radius: 7px;
     /* box-shadow: 2px 2px 2px rgba(0,0,0,0.3); */
@@ -197,4 +231,209 @@ td {
 
 tbody tr:nth-child(even){
     background:#f9fafc;
+}
+
+.payment {
+    padding: .2rem 1rem;
+    border-radius: 20px;
+    /* color: var(--dashboard-main); */
+    font-weight: 700;
+}
+
+.payment.success{
+    background: #def7ec;
+    color: var(--dashboard-main)
+}
+
+.payment.warning{
+    background: #f0f6b2;
+    color: orange;
+}
+
+.image-1,
+.image-2,
+.image-3{
+    height:38px;
+    width:38px;
+    border-radius: 50%;
+    margin-left: -15px;
+    border:3px solid #efefef;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(../../../assets/img/citybg.jpg);
+
+}
+
+.images{
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+}
+
+.info-card{
+    margin-bottom:1.5rem;
+    padding-top:.5rem;
+    padding-bottom:.5rem;
+
+}
+
+.info-single{
+    padding:.5rem 1rem;
+    display: flex;
+    align-items: center;
+}
+.info-single span{
+
+    font-size: 1.5rem;
+    color:#777;
+    padding-right:1rem;
+
+}
+
+.info-single h5{
+    color:var(--dashboard-main);
+    font-size: 1.1rem;
+    margin-bottom: .0rem !important;
+}
+
+.info-single small {
+    font-weight: 700;
+    color:rgb(58, 58, 58);
+}
+
+.info-flex{
+    display: flex;
+    align-items: center;
+    margin-bottom: .3rem;
+}
+
+.info-card-two{
+    padding:1rem;
+
+}
+
+.card-two-img{
+    height:60px;
+    width:60px;
+    margin-right: .7rem;
+    border-radius: 50%;
+    border:3px solid #efefef;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(../../../assets/img/citybg.jpg);
+}
+
+.text-center{
+    text-align: center;
+}
+
+.text-center button{
+    background:var(--dashboard-main);
+    color:#fff;
+    border: 1px solid var(--dashboard-main);
+    border-radius: 4px;
+    padding: .4rem 1rem;
+}
+
+.table-container{
+    overflow-x:auto;
+}
+
+@media only screen and (max-width:1200px){
+    .sidebar{
+        width: 60px;
+        z-index: 999;
+    }
+    
+    .dashboard-content{
+        margin-left: 60px;
+    }
+    
+    .sidebar .sidebar-header h3 span,
+    .sidebar li span:last-child{
+        display: none;
+    
+    }
+    
+    .sidebar .sidebar-header,
+    .sidebar li{
+        display: flex;
+        justify-content: center;
+    
+    }
+    
+    .dashboard-content header{
+        left: 60px;
+        width: calc(100% - 60px);
+    }
+
+    #sidebar-toggle:checked ~ .sidebar{
+        width: 60px;
+    }
+    
+    #sidebar-toggle:checked ~ .dashboard-content{
+        margin-left: 60px;
+    }
+    
+    #sidebar-toggle:checked ~ .sidebar .sidebar-header h3 span,
+    #sidebar-toggle:checked ~ .sidebar li span:last-child{
+        display: inline;
+    
+    }
+    
+    #sidebar-toggle:checked ~ .sidebar .sidebar-header{
+        display: flex;
+        justify-content: space-between;
+    
+    }
+
+    #sidebar-toggle:checked ~ .sidebar li{
+        display: block;
+        justify-content: space-between;
+    
+    }
+    
+    #sidebar-toggle:checked ~ .dashboard-content header{
+        left: 60px;
+    }
+
+}
+
+@media only screen and (max-width: 860px){
+
+    .cards-section{
+        grid-template-columns: repeat(2, 1fr) ;
+        
+    }
+
+    .card{
+        margin-bottom: 1rem;
+    }
+
+    .activity-grid{
+        display: block;
+    }
+
+    .information{
+        margin-top: 1.5rem;
+    }
+
+}
+
+@media only screen and (max-width: 600px){
+
+    .cards-section{
+        grid-template-columns: 100%;
+        
+    }
+
+}
+
+@media only screen and (max-width: 450px){
+
+    main{
+        padding-left:1rem;
+        padding-right:1rem;
+    }
+
 }

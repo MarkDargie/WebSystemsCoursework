@@ -30,7 +30,7 @@ router.get('/protected', passport.authenticate('jwt', { session: false }), (req,
  */
 router.post('/login', (req, res, next) => {
 
-    User.findOne({ email: req.body.email })
+    User.findOne({ username: req.body.username })
     .then((user) => {
 
         if (!user) {

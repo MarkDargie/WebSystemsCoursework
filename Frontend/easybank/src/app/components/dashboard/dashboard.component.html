@@ -1,12 +1,13 @@
 <div class="dashboard-container">
 
+<input type="checkbox" id="sidebar-toggle">
 <div class="sidebar">
   <div class="sidebar-header">
     <h3 class="brand">
       <span class="ti-unlink"></span>
       <span>EasyBank</span>
     </h3>
-    <span class="ti-menu-alt"></span>
+    <label for="sidebar-toggle" class="ti-menu-alt"></label>
   </div>
 
   <div class="sidebar-menu">
@@ -108,64 +109,68 @@
 
             <div class="payment-card">
                 <h3>Your Payments</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Payment</th>
-                            <th>Sent Date</th>
-                            <th>From</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
 
-                        <tr>
-                            <td>Received Payment</td>
-                            <td>25/02/2021</td>
-                            <td>
-                                <div class="image-1"></div>
-                                <div class="image-2"></div>
-                                <div class="image-3"></div>
-                            </td>
-                            <td>
-                                <span class="payment-success">
-                                    Confirmed
-                                </span>
-                            </td>
-                        </tr>
+                <div class="table-container">
+                    <table border="1">
+                        <thead>
+                            <tr>
+                                <th>Payment</th>
+                                <th>Sent Date</th>
+                                <th>From</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+    
+                            <tr>
+                                <td>Received Payment</td>
+                                <td>25/02/2021</td>
+                                <td class="images">
+                                    <div class="image-1"></div>
+                                    <div class="image-2"></div>
+                                    <div class="image-3"></div>
+                                </td>
+                                <td>
+                                    <span class="payment success">
+                                        Confirmed
+                                    </span>
+                                </td>
+                            </tr>
+    
+                            <tr>
+                                <td>Received Payment</td>
+                                <td>25/02/2021</td>
+                                <td class="images">
+                                    <div class="image-1"></div>
+                                    <div class="image-2"></div>
+                                    <div class="image-3"></div>
+                                </td>
+                                <td>
+                                    <span class="payment success">
+                                        Confirmed
+                                    </span>
+                                </td>
+                            </tr>
+    
+                            <tr>
+                                <td>Received Payment</td>
+                                <td>25/02/2021</td>
+                                <td class="images">
+                                    <div class="image-1"></div>
+                                    <div class="image-2"></div>
+                                    <div class="image-3"></div>
+                                </td>
+                                <td>
+                                    <span class="payment success">
+                                        Confirmed
+                                    </span>
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
 
-                        <tr>
-                            <td>Received Payment</td>
-                            <td>25/02/2021</td>
-                            <td>
-                                <div class="image-1"></div>
-                                <div class="image-2"></div>
-                                <div class="image-3"></div>
-                            </td>
-                            <td>
-                                <span class="payment-success">
-                                    Confirmed
-                                </span>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Received Payment</td>
-                            <td>25/02/2021</td>
-                            <td>
-                                <div class="image-1"></div>
-                                <div class="image-2"></div>
-                                <div class="image-3"></div>
-                            </td>
-                            <td>
-                                <span class="payment-success">
-                                    Confirmed
-                                </span>
-                            </td>
-                        </tr>
-                        
-                    </tbody>
-                </table>
             </div>
 
             <div class="information">
@@ -194,19 +199,21 @@
                 </div>
 
                 <div class="info-card-two">
-                    <div class="card-two-img"></div>
-                    <div class="info-card-two-content">
-                        <h5>Mark Dargie</h5>
-                        <small>Card Information</small>
-
-                        <div>
-                            <button>
-                                <span class="ti-gift"></span>
-                                Clear Payment
-                            </button>
+                    <div class="info-flex">
+                        <div class="card-two-img"></div>
+                        <div class="info-card-two-content">
+                            <h5>Mark Dargie</h5>
+                            <small>Card Information</small>
+    
                         </div>
-
                     </div>
+                    <div class="text-center">
+                        <button>
+                            <span class="ti-gift"></span>
+                            Clear Payment
+                        </button>
+                    </div>
+
                 </div>
             </div>
 

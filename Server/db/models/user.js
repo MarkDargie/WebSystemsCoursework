@@ -12,6 +12,7 @@ const mongoose = require('mongoose');
 const UserSchema = new mongoose.Schema({
 
     id: {type: mongoose.Schema.Types.ObjectId},
+    email: {type:String},
     username:{type: String},
     hash: {type: String},
     salt: {type: String},

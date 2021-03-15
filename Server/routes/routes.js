@@ -6,7 +6,7 @@ const router = require('express').Router();
  * NOTE: Import all required routes from this index
  */
 router.use('/users', require('./users'));
-// router.use('/transactions', require('./transactions'));
+router.use('/transactions', require('./transactions'));
 // router.use('/logs', require('./testinglogs'));
 
 // Export Express Router

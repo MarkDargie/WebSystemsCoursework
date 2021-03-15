@@ -70,6 +70,9 @@ router.post('/register', function(req, res, next){
 
     const newUser = new User({
         email: req.body.email,
+        username: req.body.username,
+        securecode: req.body.securecode,
+        balance: 1000,
         hash: hash,
         salt: salt
     });

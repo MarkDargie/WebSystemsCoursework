@@ -3,7 +3,7 @@ const router = require('express').Router();
 const passport = require('passport');
 const utils = require('../lib/utils');
 
-const {User} = require('../db/models');
+const {User, Method} = require('../db/models');
 
 /**
  * GET: /users/protected
@@ -73,6 +73,7 @@ router.post('/register', function(req, res, next){
         username: req.body.username,
         securecode: req.body.securecode,
         balance: 1000,
+        access: "general",
         hash: hash,
         salt: salt
     });
@@ -91,6 +92,60 @@ router.post('/register', function(req, res, next){
     }
 
 });
+
+router.post('/paymentmethod', (req, res, next) =>{
+
+    const name = req.body.name;
+    const cardnumber = utils.hashDetails(req.body.card);
+    const address = utils.hashDetails(req.body.address);
+    const holder = utils.hashDetails(req.body.holder);
+    const cvv = utils.hashDetails(req.body.cvv);
+    const expdate = utils.hashDetails(req.body.expdate);
+
+    const method = new Method({
+        name: name,
+        number: cardnumber,
+        address: address,
+        holder: holder,
+        cvv: cvv,
+        expdate: expdate
+    });
+
+    User.findOne({ username: req.body.username })
+    .then((user) => {
+
+        if (!user) {
+            res.status(401).json({ success: false, msg: "could not find user" });
+        }
+        
+        User.findOneAndUpdate({username: req.body.username}, {paymentmethods: method}, (error, response)=>{
+            if(error) res.sendStatus(404);
+            console.log(response);
+            res.send(response);
+        });
+
+
+    })
+    .catch((err) => {
+        next(err);
+    });
+
+
+});
+
+
+router.get('/user', (req, res)=>{
+    User.findOne({ username: req.body.username })
+    .then((user) => {
+
+        if (!user) {
+            res.status(401).json({ success: false, msg: "could not find user" });
+        }
+        
+        res.send(user);
+
+    })
+})
 
 
 // Export Express Router

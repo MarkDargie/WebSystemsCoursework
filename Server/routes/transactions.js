@@ -26,10 +26,10 @@ router.post('/transaction', (req, res, next)=>{
 
                 // maybe create payment service
                 const transaction = new Transaction({
-                    to: req.body.username,
+                    to: req.body.sendto,
                     from: req.body.username,
                     amount: req.body.payment,
-                    date: Date.now() //fix this
+                    method: req.body.method
                 });
 
                 transaction.save();
@@ -37,8 +37,6 @@ router.post('/transaction', (req, res, next)=>{
             } else {
                 res.sendStatus(422);
             }
-
-
 
         });
 

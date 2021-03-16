@@ -6,4 +6,23 @@ import { Injectable } from '@angular/core';
 export class TransactionService {
 
   constructor() { }
+
+  sendPayment(){
+
+  }
+
+  getAllPayments(){
+
+  }
+
+  getRecentPayments(){
+    
+  }
+
+  createPaymentMethod(){
+
+  }
+
+
+
 }

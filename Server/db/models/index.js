@@ -1,5 +1,6 @@
 const {User} = require('./user');
 const {Transaction} = require('./transaction');
+const {Method} = require('./method');
 
 /**
  * This Model index imports and exports all mongoose models from this directory
@@ -9,5 +10,6 @@ const {Transaction} = require('./transaction');
 // Export Mongoose Models
 module.exports = {
     User,
-    Transaction
+    Transaction,
+    Method
 }

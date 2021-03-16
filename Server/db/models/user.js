@@ -17,9 +17,9 @@ const UserSchema = new mongoose.Schema({
     hash: {type: String},
     salt: {type: String},
     securecode: {type: String},
-    currency: {type: String},
     balance: {type: Number},
-    preference: {type: String}
+    access: {type: String},
+    paymentmethods: [{type: mongoose.Schema.Types.Mixed, ref: 'Method'}]
 
 });
 

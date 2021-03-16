@@ -1,0 +1,184 @@
+h1{
+    font-size: 5.25rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+h2{
+    font-size: 3.5rem;
+    font-weight: 700;
+}
+
+.small {
+    font-size: 20px;
+    text-align: center;
+}
+
+.login-sections{
+    display: flex;
+    flex-direction: column;
+    height:100%;
+}
+
+.left{
+    height:200px;
+}
+
+.left, .right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left{
+    background: linear-gradient(
+        to bottom,
+        rgba(46, 91, 255, 0.6),
+        rgba(48, 228, 228, 0.8)
+      ),
+      url(../../../assets/img/citybg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: scroll;
+}
+
+.left .login-section{
+    color:white;
+    text-align: center;
+}
+
+.left p {
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.right .login-section{
+    color:black;
+    text-align: center;
+}
+
+.right .login-section p {
+    margin: 1.5em 0;
+    font-size: 1.5rem;
+}
+
+.right form{
+    width:328px;
+}
+
+form input[type="text"], 
+form input[type="email"],
+form input[type="password"] {
+    display: block;
+    width:100%;
+    box-sizing: border-box;
+    border-radius: 8px;
+    border: 1px solid #c4c4c4;
+    padding:1rem;
+    margin-bottom:1.4rem;
+    font-size: 12px;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.8rem;
+    font-size: 12px;
+}
+
+.input-container.password{
+    position: relative;
+
+}
+
+.input-container.password i {
+    position: absolute;
+    top:42px;
+    right:16px;
+}
+
+.checkbox-container input{
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height:0;
+    width:0;
+}
+
+.checkbox-container {
+    display: block;
+    position: relative;
+    padding-left:2rem;
+    cursor: pointer;
+    user-select: none;
+    margin: 0 0 1.25rem 0;
+}
+
+.checkbox-container input:checked~.checkmark {
+    background-color: var(--light-blue);
+    border: 1px solid var(--light-blue);
+}
+
+.checkmark {
+    position: absolute;
+    width:24px;
+    height:24px;
+    background:white;
+    border: 1px solid #c4c4c4;
+    border-radius: 2px;
+    top: -4px;
+    left:0;
+}
+
+.checkmark:after {
+    content:"";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-container input:checked~.checkmark:after{
+    display: block;
+}
+
+.checkbox-container .checkmark:after{
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    width:5px;
+    height:10px;
+    left:8px;
+    top:4px;
+    transform: rotate(45deg);
+}
+
+.login-button{
+    display: block;
+    width:100%;
+    background: var(--light-blue);
+    color: white;
+    /* font-weight: 700; */
+    border: none;
+    padding:1rem;
+    border-radius: 8px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.login-button:hover{
+
+}
+
+@media screen and (min-width: 900px){
+    .login-sections{
+        flex-direction: row;
+        height: 100vh;
+    }
+
+    .left,
+    .right{
+        display: flex;
+        width:50%;
+        height:auto;
+    }
+}

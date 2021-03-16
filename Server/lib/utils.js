@@ -34,6 +34,15 @@ function genPassword(password) {
     };
 }
 
+// hash details for payment method
+function hashDetails(value){
+
+  var hashValue = crypto.pbkdf2Sync(value, PRIV_KEY, 10000, 64, 'sha512').toString('hex');
+  return hashValue;
+
+}
+
+
 /**
  * This method will issue a JsonWebToken (JWT) to the user
  * This is required to set the JWT Sub payload property to the database User ID
@@ -57,7 +66,9 @@ function issueJWT(user) {
     }
 }
 
+
 // Export all password values for authentication
 module.exports.validPassword = validPassword;
 module.exports.genPassword = genPassword;
+module.exports.hashDetails = hashDetails;
 module.exports.issueJWT = issueJWT;

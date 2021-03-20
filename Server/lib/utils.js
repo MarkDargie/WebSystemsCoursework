@@ -42,7 +42,6 @@ function hashDetails(value){
 
 }
 
-
 /**
  * This method will issue a JsonWebToken (JWT) to the user
  * This is required to set the JWT Sub payload property to the database User ID

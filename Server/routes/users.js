@@ -133,7 +133,7 @@ router.post('/paymentmethod', (req, res, next) =>{
 
 });
 
-
+// get user
 router.get('/user', (req, res)=>{
     User.findOne({ username: req.body.username })
     .then((user) => {
@@ -145,7 +145,23 @@ router.get('/user', (req, res)=>{
         res.send(user);
 
     })
-})
+});
+
+
+//delete user
+router.post('/remove', (req, res) => {
+
+    User.findOneAndRemove({username: req.body.username})
+    .then((user)=>{
+        
+        if (!user) {
+            res.status(401).json({ success: false, msg: "could not find user" });
+        }
+
+        res.sendStatus(200);
+    });
+
+});
 
 
 // Export Express Router

@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
       tap(()=>{
         this.auth = this.authenticateService.loggedIn.value;
         if(this.auth == true){
-          this.router.navigate(['/dashboard']);
+          this.router.navigate([`dashboard/${localStorage.getItem('id')}`]);
         }
       })
     ).subscribe();
@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
       password: password
     }
 
-    this.authenticateService.login(reqObject);
+    this.authenticateService.login(reqObject, username);
 
   }
 

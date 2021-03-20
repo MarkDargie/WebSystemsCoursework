@@ -138,19 +138,24 @@ router.post('/paymentmethod', (req, res, next) =>{
 });
 
 // get user
-router.get('/user', (req, res)=>{
-    User.findOne({ username: req.body.username })
-    .then((user) => {
+// router.get('/:username', (req, res)=>{
+//     User.findOne({ username: req.params.username })
+//     .then((user) => {
 
-        if (!user) {
-            res.status(401).json({ success: false, msg: "could not find user" });
-        }
+//         if (!user) {
+//             res.status(401).json({ success: false, msg: "could not find user" });
+//         }
         
-        res.send(user);
+//         res.send(user);
 
-    })
+//     })
+// });
+
+
+router.get('/profile', passport.authenticate('jwt', { session: false }), (req, res, next) => {
+    console.log("profile route hit");
+    res.send(req.user.email);
 });
-
 
 //delete user
 router.post('/remove', (req, res) => {

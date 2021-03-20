@@ -13,6 +13,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { AuthenticateService} from './services/authenticate.service';
 import {AuthInterceptor} from './services/auth.interceptor';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     DashboardComponent,
     LoginComponent,
     FooterComponent,
-    RegisterComponent
+    RegisterComponent,
+    SidebarComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

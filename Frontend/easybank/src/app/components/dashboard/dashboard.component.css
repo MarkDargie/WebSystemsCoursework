@@ -1,3 +1,5 @@
+@import url('../sidebar/sidebar.component.css');
+
 .dashboard-container{
     font-size:20px;
 }
@@ -38,7 +40,7 @@
     top:0;
     z-index: var(--z-fixed);
     position: fixed;
-    background: var(--dashboard-main);
+    background: var(--light-blue);
     color:#efefef;
     padding: 1rem;
     overflow-y: auto;
@@ -51,6 +53,7 @@
     align-items: center;
     height:60px;
     padding: 0rem 1rem;
+    margin-bottom: 20px;
 }
 
 .sidebar-menu{
@@ -58,20 +61,25 @@
 }
 
 .sidebar li {
-    margin-bottom: 1rem;
+    margin-bottom: 3.5rem;
 }
 
 .sidebar a {
     color:#fff;
-    font-size: 1.2rem;
+    font-size: 1.8rem;
+    letter-spacing: .5px;
 }
 
 /* .sidebar li:first-child a {
     background: rgba(0,0,0,0.7);
 } */
 
+.sidebar a span:first{
+}
+
 .sidebar a span:last-child {
     padding-right: .6rem;
+    padding-left:12px;
 }
 
 .dashboard-content{
@@ -143,49 +151,51 @@ main{
 .cards-section{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-column-gap: 3rem;
+    grid-column-gap: 4rem;
 }
 
 .card{
     background:rgb(216, 216, 216);
-    border-radius: 7px;
+    border-radius: 2px;
     box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
 }
 
 .card-body{
-    padding:1.3rem 1.5rem;
+    padding:1.8rem 2rem;
     display: flex;
     align-items: center;
 
 }
 
 .card-body span{
-    font-size:1.5rem;
+    font-size:3rem;
     color:#777;
-    padding-right:1.4rem;
+    padding-right:2rem;
 }
 
 .card-body h5{
-    
+    color:#777;
+    letter-spacing: .5px;
+    font-size: 2.2rem;
 }
 
 .card-body h4{
 
-    margin-top:0.2rem;
+    margin-top:0.8rem;
     
 }
 
 .card-footer{
-    padding: .2rem 1rem;
+    padding: .4rem 1.5rem;
     
 }
 
 .card-footer a{
-    color:var(--dashboard-main);
+    color:var(--light-blue);
 }
 
 .payments{
-    margin-top:3rem;
+    margin-top:4rem;
     margin-bottom:3rem;
 }
 
@@ -198,8 +208,8 @@ main{
 .payment-card,
 .info-card,
 .info-card-two{
-    background:rgb(216, 216, 216);
-    border-radius: 7px;
+    /* background:rgb(216, 216, 216); */
+    border-radius: 2px;
     /* box-shadow: 2px 2px 2px rgba(0,0,0,0.3); */
 }
 
@@ -222,7 +232,7 @@ main{
 
 th, td {
     font-size: 18px;
-    padding: 1rem 1rem;
+    padding: 1.2rem 1.5rem;
 }
 
 td {
@@ -284,21 +294,21 @@ tbody tr:nth-child(even){
 }
 .info-single span{
 
-    font-size: 1.5rem;
+    font-size: 3rem;
     color:#777;
-    padding-right:1rem;
+    padding-right:2rem;
 
 }
 
 .info-single h5{
-    color:var(--dashboard-main);
-    font-size: 1.1rem;
+    color:var(--light-blue);
+    font-size: 2rem;
     margin-bottom: .0rem !important;
 }
 
 .info-single small {
-    font-weight: 700;
-    color:rgb(58, 58, 58);
+    font-weight: 600;
+    /* color:rgb(58, 58, 58); */
 }
 
 .info-flex{

@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
       tap(()=>{
         this.auth = this.authenticateService.loggedIn.value;
         if(this.auth == true){
-          this.router.navigate([`dashboard/${localStorage.getItem('id')}`]);
+          this.router.navigate([`dashboard`]);
         }
       })
     ).subscribe();

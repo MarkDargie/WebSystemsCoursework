@@ -158,7 +158,7 @@ router.get('/profile', passport.authenticate('jwt', { session: false }), (req, r
 });
 
 //delete user
-router.post('/remove', (req, res) => {
+router.post('/remove', passport.authenticate('jwt', {session: false}), (req, res) => {
 
     User.findOneAndRemove({username: req.body.username})
     .then((user)=>{

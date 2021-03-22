@@ -1,7 +1,7 @@
 <div class="dashboard-container">
 
 <input type="checkbox" id="sidebar-toggle">
-<div class="sidebar">
+<!-- <div class="sidebar">
   <div class="sidebar-header">
     <h3 class="brand">
       <span class="ti-unlink"></span>
@@ -44,7 +44,9 @@
       </li>
     </ul>
   </div>
-</div>
+</div> -->
+
+<app-sidebar></app-sidebar>
 
 <div class="dashboard-content">
   <header>
@@ -54,8 +56,7 @@
     </div>
 
     <div class="icons">
-      <span class="ti-bell"></span>
-      <span class="ti-comment"></span>
+      <span class="ti-palette"></span>
       <div></div>
     </div>
   </header>
@@ -108,13 +109,14 @@
         <div class="activity-grid">
 
             <div class="payment-card">
-                <h3>Your Payments</h3>
+                <h3>Recent Payments</h3>
 
                 <div class="table-container">
-                    <table border="1">
+                    <table border="0">
                         <thead>
                             <tr>
                                 <th>Payment</th>
+                                <th>Amount</th>
                                 <th>Sent Date</th>
                                 <th>From</th>
                                 <th>Status</th>
@@ -124,6 +126,52 @@
     
                             <tr>
                                 <td>Received Payment</td>
+                                <td>£100</td>
+                                <td>25/02/2021</td>
+                                <td class="images">
+                                    <div class="image-1"></div>
+                                    <div class="image-2"></div>
+                                    <div class="image-3"></div>
+                                </td>
+                                <td>
+                                    <span class="payment success">
+                                        Confirmed
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Received Payment</td>
+                                <td>£100</td>
+                                <td>25/02/2021</td>
+                                <td class="images">
+                                    <div class="image-1"></div>
+                                    <div class="image-2"></div>
+                                    <div class="image-3"></div>
+                                </td>
+                                <td>
+                                    <span class="payment success">
+                                        Confirmed
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Received Payment</td>
+                                <td>£100</td>
+                                <td>25/02/2021</td>
+                                <td class="images">
+                                    <div class="image-1"></div>
+                                    <div class="image-2"></div>
+                                    <div class="image-3"></div>
+                                </td>
+                                <td>
+                                    <span class="payment success">
+                                        Confirmed
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Received Payment</td>
+                                <td>£100</td>
                                 <td>25/02/2021</td>
                                 <td class="images">
                                     <div class="image-1"></div>
@@ -137,35 +185,6 @@
                                 </td>
                             </tr>
     
-                            <tr>
-                                <td>Received Payment</td>
-                                <td>25/02/2021</td>
-                                <td class="images">
-                                    <div class="image-1"></div>
-                                    <div class="image-2"></div>
-                                    <div class="image-3"></div>
-                                </td>
-                                <td>
-                                    <span class="payment success">
-                                        Confirmed
-                                    </span>
-                                </td>
-                            </tr>
-    
-                            <tr>
-                                <td>Received Payment</td>
-                                <td>25/02/2021</td>
-                                <td class="images">
-                                    <div class="image-1"></div>
-                                    <div class="image-2"></div>
-                                    <div class="image-3"></div>
-                                </td>
-                                <td>
-                                    <span class="payment success">
-                                        Confirmed
-                                    </span>
-                                </td>
-                            </tr>
                             
                         </tbody>
                     </table>
@@ -183,14 +202,14 @@
                         </div>
                     </div>
                     <div class="info-single">
-                        <span class="ti-id-badge"></span>
+                        <span class="ti-check-box"></span>
                         <div>
                             <h5>420</h5>
                             <small>Payments Sent</small>
                         </div>
                     </div>
                     <div class="info-single">
-                        <span class="ti-id-badge"></span>
+                        <span class="ti-check-box"></span>
                         <div>
                             <h5>420</h5>
                             <small>Payments Received</small>

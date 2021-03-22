@@ -15,6 +15,9 @@ import {AuthInterceptor} from './services/auth.interceptor';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { TransferComponent } from './components/transfer/transfer.component';
+import { SettingsComponent } from './components/settings/settings.component';
+import { PaymentsComponent } from './components/payments/payments.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { AdminComponent } from './components/admin/admin.component';
     FooterComponent,
     RegisterComponent,
     SidebarComponent,
-    AdminComponent
+    AdminComponent,
+    TransferComponent,
+    SettingsComponent,
+    PaymentsComponent
   ],
   imports: [
     BrowserModule,

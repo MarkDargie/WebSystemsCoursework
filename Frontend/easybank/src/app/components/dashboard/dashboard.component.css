@@ -61,7 +61,7 @@
 }
 
 .sidebar li {
-    margin-bottom: 3.5rem;
+    margin-bottom: 4rem;
 }
 
 .sidebar a {
@@ -141,11 +141,11 @@ header{
 main{
     min-height: 90vh;
     margin-top:60px;
-    padding:1rem 3rem;
+    padding:1rem 3.5rem;
 }
 
 .title{
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
 }
 
 .cards-section{
@@ -170,7 +170,7 @@ main{
 .card-body span{
     font-size:3rem;
     color:#777;
-    padding-right:2rem;
+    padding-right:3rem;
 }
 
 .card-body h5{

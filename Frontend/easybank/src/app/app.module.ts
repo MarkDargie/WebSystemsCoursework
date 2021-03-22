@@ -18,6 +18,13 @@ import { AdminComponent } from './components/admin/admin.component';
 import { TransferComponent } from './components/transfer/transfer.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { PaymentsComponent } from './components/payments/payments.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+// Material Imports
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatIconModule} from '@angular/material/icon';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -38,7 +45,13 @@ import { PaymentsComponent } from './components/payments/payments.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatTabsModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatGridListModule
+
   ],
   providers: [
     AuthenticateService, {

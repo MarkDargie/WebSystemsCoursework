@@ -122,7 +122,7 @@ router.post('/paymentmethod', (req, res, next) =>{
             res.status(401).json({ success: false, msg: "could not find user" });
         }
         
-        User.findOneAndUpdate({username: req.body.username}, {paymentmethods: method}, (error, response)=>{
+        User.findOneAndUpdate({username: req.body.username}, {$push: {paymentmethods: method}}, (error, response)=>{
             if(error) res.sendStatus(404);
             console.log(response);
             res.send(response);

@@ -11,7 +11,7 @@
     --color-dark-grey: #1d1d1d;
     --color-light-grey:#505050;
 
-    --dashboard-main: #027581;
+    --dashboard-main: #0088c7;;
     --dashboard-dark: #1d2231;
     --dashboard-grey: #8390a2;
 
@@ -95,3 +95,5 @@ a{
 
   }
   
+/* html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */

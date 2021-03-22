@@ -40,7 +40,7 @@
     top:0;
     z-index: var(--z-fixed);
     position: fixed;
-    background: var(--light-blue);
+    background: var(--dashboard-main);
     color:#efefef;
     padding: 1rem;
     overflow-y: auto;
@@ -191,7 +191,7 @@ main{
 }
 
 .card-footer a{
-    color:var(--light-blue);
+    color:var(--dashboard-main);
 }
 
 .payments{
@@ -301,7 +301,7 @@ tbody tr:nth-child(even){
 }
 
 .info-single h5{
-    color:var(--light-blue);
+    color:var(--dashboard-main);
     font-size: 2rem;
     margin-bottom: .0rem !important;
 }

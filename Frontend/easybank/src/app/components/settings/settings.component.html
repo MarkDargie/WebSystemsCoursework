@@ -83,16 +83,25 @@
 
         </div>
 
+        <mat-form-field appearance="outline">
+          <mat-label>Outline form field</mat-label>
+          <input matInput placeholder="Placeholder">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+
         <div class="settings-container">
 
             <form class="registerform" #registerform="ngForm">
                 <section class="login-section">
                     <h2>Account Settings</h2>
                 </section>
-                <div class="input-container name">
-                    <label for="fname">Username</label>
-                    <input id="fname" name="fname" type="text" ngModel>
-                </div>
+                <mat-form-field appearance="outline">
+                  <mat-label>Outline form field</mat-label>
+                  <input matInput placeholder="Placeholder">
+                  <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                  <mat-hint>Hint</mat-hint>
+                </mat-form-field>
                 <div class="input-container email">
                     <label for="email">Email</label>
                     <input id="email" name="email" type="text" ngModel>

@@ -19,7 +19,8 @@ export class AuthenticateService {
 
   loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-  login(reqObject: object, username:string) {
+  // Login User
+  login(reqObject: object) {
     const headers = new HttpHeaders({ 'Content-type': 'application/json' });
     return this.http
       .post(`${environment.API}/users/login`, reqObject, { headers: headers })
@@ -42,6 +43,7 @@ export class AuthenticateService {
       );
   }
 
+  // Set JWT Token in local storage
   setLocalStorage(responseObject) {
     const expiresAt = moment().add(responseObject.expiresIn);
 
@@ -49,12 +51,14 @@ export class AuthenticateService {
     localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
   }
 
+  // Remove JWT Token from local storage on logout
   logout() {
     this.loggedIn.next(false);
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
   }
 
+  // Check if user is logged in
   isLoggedIn() {
     return this.isAuthenticated().pipe(
       tap((res: auth) => {
@@ -68,11 +72,13 @@ export class AuthenticateService {
     );
   }
 
+  // 
   isAuthenticated(): Observable<auth> {
     return this.http.get<auth>(`${environment.API}/users/protected`);
   }
 
-  registerAccount(reqObject: Object, username:string) {
+  // Register User Account
+  registerAccount(reqObject: Object) {
 
     const headers = new HttpHeaders({ 'Content-type': 'application/json' });
 
@@ -81,7 +87,7 @@ export class AuthenticateService {
     .subscribe(
       // The response data
       (response) => {
-        this.login(reqObject, username);
+        this.login(reqObject);
         console.log(response);
       },
       (error) => {
@@ -96,6 +102,7 @@ export class AuthenticateService {
 
   }
 
+  // Get authenticatd users details
   GetUserDetails(){
 
     const headers = new HttpHeaders({ 'Content-type': 'application/json' });
@@ -104,5 +111,6 @@ export class AuthenticateService {
 
   }
 
+  // Delete accout from system and redirect to /home
   deleteAccount() {}
 }

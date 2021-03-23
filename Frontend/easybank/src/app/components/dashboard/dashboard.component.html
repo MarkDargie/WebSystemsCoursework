@@ -63,6 +63,7 @@
 
   <main>
     <h2 class="title">Hello, {{user.email}} Your Dashboard</h2>
+    <button (click)="generatePdf()">Generate PDF</button>
     <div class="cards-section">
 
         <div class="card">
@@ -112,7 +113,7 @@
                 <h3>Recent Payments</h3>
 
                 <div class="table-container">
-                    <table border="0">
+                    <table border="0" id="payments" #paymenttable>
                         <thead>
                             <tr>
                                 <th>Payment</th>

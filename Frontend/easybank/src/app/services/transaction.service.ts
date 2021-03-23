@@ -12,10 +12,7 @@ export class TransactionService {
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  sendPayment(){
-
-  }
-
+  // Get all user transactions
   getAllPayments(){
 
     const headers = new HttpHeaders({ 'Content-type': 'application/json' });
@@ -24,11 +21,41 @@ export class TransactionService {
 
   }
 
-  getRecentPayments(){
-    
+  // Get all user received transactions
+  getReceivedPayments(){
+
+    const headers = new HttpHeaders({ 'Content-type': 'application/json' });
+
+    return this.http.get(`${environment.API}/transactions/received`, {headers: headers});
+
   }
 
-  createPaymentMethod(){
+  // Get all user sent transactions
+  getSentPayments(){
+    
+    const headers = new HttpHeaders({ 'Content-type': 'application/json' });
+
+    return this.http.get(`${environment.API}/transactions/sent`, {headers: headers});
+
+  }
+
+  // send secure payment
+  securePayment(reqObject: object){
+
+  }
+
+  //send express payment
+  expressPayment(reqObject: object){
+
+  }
+
+  //confirm pending payment
+  confirmPending(){
+
+  }
+
+  // create payment method 
+  createPaymentMethod(reqObject: object){
 
   }
 

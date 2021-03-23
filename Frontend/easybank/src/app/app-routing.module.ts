@@ -8,18 +8,19 @@ import { PaymentsComponent } from './components/payments/payments.component';
 import { RegisterComponent } from './components/register/register.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { TransferComponent } from './components/transfer/transfer.component';
+import {AuthGuard} from './auth.guard';
 
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch:'full'},
   {path: 'home', component: HomeComponent},
-  {path: 'dashboard', component:DashboardComponent},
+  {path: 'dashboard', component:DashboardComponent, canActivate:[AuthGuard]},
   {path: 'login', component:LoginComponent},
   {path: 'register', component:RegisterComponent},
-  {path: 'dashboard/settings', component:SettingsComponent},
-  {path: 'dashboard/transfer', component:TransferComponent},
-  {path: 'dashboard/payments', component:PaymentsComponent},
-  {path: 'dashboard/admin', component:AdminComponent}
+  {path: 'dashboard/settings', component:SettingsComponent, canActivate:[AuthGuard]},
+  {path: 'dashboard/transfer', component:TransferComponent, canActivate:[AuthGuard]},
+  {path: 'dashboard/payments', component:PaymentsComponent, canActivate:[AuthGuard]},
+  {path: 'dashboard/admin', component:AdminComponent, canActivate:[AuthGuard]}
 ];
 
 @NgModule({

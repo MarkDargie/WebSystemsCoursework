@@ -15,6 +15,7 @@ const TransactionSchema = new mongoose.Schema({
     from: {type: String},
     amount: {type: Number},
     method: {type: String},
+    status: {type: String},
     date: { type: Date, default: Date.now }
 
 });

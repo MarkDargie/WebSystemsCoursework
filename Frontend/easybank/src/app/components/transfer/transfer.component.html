@@ -63,23 +63,100 @@
       </header>
     
       <main>
-        <h2 class="title">Your Dashboard</h2>
+        <h2 class="title">Payment Transfer</h2>
+        <P>Select Payment Method</P>
 
         <mat-tab-group>
             <mat-tab>
               <ng-template mat-tab-label>
-                <mat-icon class="example-tab-icon">thumb_up</mat-icon>
                 Secure Payment
               </ng-template>
-              Content 1
+              <div class="payment-form-container">
+                <form class="registerform" #secureform="ngForm">
+                  <section class="login-section">
+                      <h2>Secure Payment Process</h2>
+                  </section>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Recipient Username</mat-label>
+                    <input matInput>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Recipient Email</mat-label>
+                    <input matInput>
+                  </mat-form-field>
+                  <div class="code-container">
+                    <mat-form-field class="code" appearance="outline">
+                      <mat-label>Your Secure Code</mat-label>
+                      <input matInput [type]="hide ? 'password' : 'text'">
+                    </mat-form-field>
+                    <mat-form-field class="code" appearance="outline">
+                      <mat-label>Recipient Secure Code</mat-label>
+                      <input matInput [type]="hide ? 'password' : 'text'">
+                    </mat-form-field>
+                  </div>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Payment Method</mat-label>
+                    <mat-select>
+                      <mat-option value="one">First option</mat-option>
+                      <mat-option value="two">Second option</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Payment Amount</mat-label>
+                    <input matInput type="number" class="example-right-align">
+                    <span matPrefix>$&nbsp;</span>
+                    <span matSuffix>.00</span>
+                  </mat-form-field>
+                  <!-- <div class="input-container email">
+                      <label for="email">Email</label>
+                      <input id="email" name="email" type="text" ngModel>
+                  </div> -->
+  
+                  <p>Secure Payments will not be processed until the recipient has confirmed the payment</p>
+
+                  <button class="login-button" type="submit">Transfer</button>
+              </form>
+              </div>
             </mat-tab>
           
             <mat-tab>
               <ng-template mat-tab-label>
-                <mat-icon class="example-tab-icon">thumb_up</mat-icon>
                 Express Payment
               </ng-template>
-              Content 2
+
+              <div class="payment-form-container">
+                <form class="registerform" #expressform="ngForm">
+                  <section class="login-section">
+                      <h2>Express Payment Process</h2>
+                  </section>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Recipient Username</mat-label>
+                    <input matInput>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Payment Method</mat-label>
+                    <mat-select>
+                      <mat-option value="one">First option</mat-option>
+                      <mat-option value="two">Second option</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Payment Amount</mat-label>
+                    <input matInput type="number" class="example-right-align">
+                    <span matPrefix>$&nbsp;</span>
+                    <span matSuffix>.00</span>
+                  </mat-form-field>
+                  <!-- <div class="input-container email">
+                      <label for="email">Email</label>
+                      <input id="email" name="email" type="text" ngModel>
+                  </div> -->
+  
+                  <p>Express payments will be automatically proccessed following this process</p>
+
+                  <button class="login-button" type="submit">Transfer</button>
+              </form>
+              </div>
+
             </mat-tab>
           
           </mat-tab-group>

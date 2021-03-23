@@ -137,24 +137,10 @@ router.post('/paymentmethod', (req, res, next) =>{
 
 });
 
-// get user
-// router.get('/:username', (req, res)=>{
-//     User.findOne({ username: req.params.username })
-//     .then((user) => {
-
-//         if (!user) {
-//             res.status(401).json({ success: false, msg: "could not find user" });
-//         }
-        
-//         res.send(user);
-
-//     })
-// });
-
-
+// get passport authenticatd users profile
 router.get('/profile', passport.authenticate('jwt', { session: false }), (req, res, next) => {
     console.log("profile route hit");
-    res.send(req.user.email);
+    res.send(req.user);
 });
 
 //delete user

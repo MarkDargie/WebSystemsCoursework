@@ -9,6 +9,8 @@ export class TransferComponent implements OnInit {
 
   constructor() { }
 
+  hide = true;
+
   ngOnInit(): void {
   }
 

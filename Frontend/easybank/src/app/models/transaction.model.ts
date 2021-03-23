@@ -5,6 +5,7 @@ export class transaction {
     from: string;
     amount: number;
     method: string;
+    status: string;
     date: Date;
 
     

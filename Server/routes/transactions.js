@@ -5,15 +5,51 @@ const passport = require('passport');
 const {User, Transaction} = require('../db/models');
 const { response } = require('express');
 
+router.post('/secure', (req, res)=>{
+
+    const transaction = new Transaction({
+        to: req.body.sendto,
+        from: req.body.username,
+        tocode: req.body.tocode,
+        fromcode: req.body.fromcode,
+        amount: req.body.payment,
+        method: req.body.method,
+        status: "pending"
+    });
+
+    try {
+
+        User.findOne({username: req.body.username, securecode: req.body.fromcode}, function(err, user){
+            if(!user){
+                return res.status(422);
+            }
+            User.findOne({username: req.body.sendto, securecode: req.body.tocode}, (error, response)=>{
+                if(error) res.sendStatus(404);
+            });
+
+            transaction.save();
+            res.send(transaction);
+
+        });
+
+    }
+    catch(error){
+        console.log(erorr);
+    }
+
+
+})
+
 // post transaction
-router.post('/transaction', (req, res, next)=>{
+router.post('/express', (req, res, next)=>{
 
     // maybe create payment service
     const transaction = new Transaction({
         to: req.body.sendto,
         from: req.body.username,
         amount: req.body.payment,
-        method: req.body.method
+        method: req.body.method,
+        status: "confirmed"
     });
 
     try{
@@ -66,6 +102,44 @@ router.post('/transaction', (req, res, next)=>{
         console.log(erorr);
     }
 
+});
+
+// POST: Confirm Specified pending secure payments
+router.post('/confirm', (req,res,next)=>{
+
+    Transaction.findOne({_id: req.body.id}).then((transaction)=>{
+        res.send(transaction);
+    })
+
+});
+
+// GET: all transactions for authenticated user
+router.get('/history', passport.authenticate('jwt', { session: false }), (req, res, next)=>{
+
+    Transaction.find({$or: [{to: req.user.username}, {from: req.user.username}]}).then((transactions)=>{
+        res.send(transactions);
+    }).catch((err) => {
+        next(err);
+    });
+
+});
+
+// GET: all received payment for authenticated user
+router.get('/received', passport.authenticate('jwt', { session: false }), (req, res, next) =>{
+    Transaction.find({to: req.user.username}).then((transactions)=>{
+        res.send(transactions);
+    }).catch((err) => {
+        next(err);
+    });
+});
+
+// GET: all sent payment for authenticated user
+router.get('/sent', passport.authenticate('jwt', { session: false }), (req, res, next) =>{
+    Transaction.find({from: req.user.username}).then((transactions)=>{
+        res.send(transactions);
+    }).catch((err) => {
+        next(err);
+    });
 });
 
 // post user balance changes

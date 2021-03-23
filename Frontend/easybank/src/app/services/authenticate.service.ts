@@ -34,12 +34,9 @@ export class AuthenticateService {
           console.log(error);
         },
         () => {
-          this.http.get(`${environment.API}/users/${username}`, {headers: headers}).subscribe((user: user)=>{
-            this.user = user;
-            localStorage.setItem('id', user._id);
-            console.log("login complete", user._id);
-            this.router.navigate([`dashboard/${user._id}`]);
-          });
+
+          console.log('login done');
+          this.router.navigate(['dashboard']);
 
         }
       );
@@ -96,6 +93,14 @@ export class AuthenticateService {
       }
     );
 
+
+  }
+
+  GetUserDetails(){
+
+    const headers = new HttpHeaders({ 'Content-type': 'application/json' });
+
+    return this.http.get(`${environment.API}/users/profile`, {headers: headers});
 
   }
 

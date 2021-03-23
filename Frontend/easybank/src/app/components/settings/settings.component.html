@@ -83,13 +83,6 @@
 
         </div>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Outline form field</mat-label>
-          <input matInput placeholder="Placeholder">
-          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-          <mat-hint>Hint</mat-hint>
-        </mat-form-field>
-
         <div class="settings-container">
 
             <form class="registerform" #registerform="ngForm">
@@ -97,15 +90,17 @@
                     <h2>Account Settings</h2>
                 </section>
                 <mat-form-field appearance="outline">
-                  <mat-label>Outline form field</mat-label>
-                  <input matInput placeholder="Placeholder">
-                  <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-                  <mat-hint>Hint</mat-hint>
+                  <mat-label>Username</mat-label>
+                  <input matInput>
                 </mat-form-field>
-                <div class="input-container email">
+                <mat-form-field appearance="outline">
+                  <mat-label>Email</mat-label>
+                  <input matInput>
+                </mat-form-field>
+                <!-- <div class="input-container email">
                     <label for="email">Email</label>
                     <input id="email" name="email" type="text" ngModel>
-                </div>
+                </div> -->
 
                 <button class="login-button" type="submit">Update</button>
             </form>
@@ -116,12 +111,26 @@
                 <section class="login-section">
                     <h2>Security Settings</h2>
                 </section>
-                <div class="input-container password">
+                <mat-form-field appearance="outline">
+                  <mat-label>Enter your password</mat-label>
+                  <input matInput [type]="hide ? 'password' : 'text'">
+                  <!-- <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button> -->
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Confirm Password</mat-label>
+                  <input matInput [type]="hide ? 'password' : 'text'">
+                  <!-- <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button> -->
+                </mat-form-field>
+                <!-- <div class="input-container password">
                     <label for="password">Password</label>
                     <input id="password" name="password" type="password" ngModel>
                     <i class="far fa-eye-slash"></i>
-                </div>
-                <div class="input-container password">
+                </div> -->
+                <!-- <div class="input-container password">
                     <label for="password">Confirm Password</label>
                     <input id="password-confirm" name="password-confirm" type="password" ngModel>
                     <i class="far fa-eye-slash"></i>
@@ -129,7 +138,7 @@
                 <div class="input-container password">
                     <label for="password">4 Digit Secure Code</label>
                     <input id="securecode" name="securecode" type="password" ngModel>
-                </div>
+                </div> -->
                 <button class="login-button" type="submit">Update</button>
             </form>
 

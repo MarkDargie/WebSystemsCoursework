@@ -54,7 +54,7 @@ export class RegisterComponent implements OnInit {
     }
 
     // call register from auth service
-    this.authenticateService.registerAccount(reqObject, username);
+    this.authenticateService.registerAccount(reqObject);
 
   }
 

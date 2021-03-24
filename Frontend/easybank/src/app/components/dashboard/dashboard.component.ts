@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import {AuthenticateService} from '../../services/authenticate.service';
 import {TransactionService} from '../../services/transaction.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, JsonpClientBackend } from '@angular/common/http';
 import {user} from '../../models/user.model';
 import {transaction} from '../../models/transaction.model';
 import { ActivatedRoute, Router, Params } from '@angular/router';
@@ -46,26 +46,27 @@ export class DashboardComponent implements OnInit {
 
   }
 
-  generatePdf(){
-    var element = document.getElementById('payments');
+  // move this to a service 
+  // generatePdf(){
+  //   var element = document.getElementById('payments');
 
-    html2canvas(element).then((canvas) =>{
-      console.log(canvas);
+  //   html2canvas(element).then((canvas) =>{
+  //     console.log(canvas);
 
-      var imageData = canvas.toDataURL('image/png');
+  //     var imageData = canvas.toDataURL('image/png');
 
-      var imageHeight = canvas.height * 208 / canvas.width;
+  //     var imageHeight = canvas.height * 208 / canvas.width;
 
-      var doc = new jsPDF();
+  //     var doc = new jsPDF();
 
-      doc.addImage(imageData, 0, 0, 208, imageHeight);
-      doc.save("statement.pdf");
+  //     doc.addImage(imageData, 0, 0, 208, imageHeight);
+  //     doc.save("statement.pdf");
 
-    });
-  }
+  //   });
+  // }
 
 
-  header = [['ID', 'Name', 'Email', 'Profile']]
+  // header = [['ID', 'Name', 'Email', 'Profile', 'test', 'test']]
 
   // tableData = [
   //   [1, 'John', 'john@yahoo.com', 'HR'],
@@ -78,32 +79,63 @@ export class DashboardComponent implements OnInit {
   //   [8, 'Lil', 'lil@yahoo.com', 'Sales']
   // ]
 
-  
 
-//   generatePdf() {
-//     var pdf = new jsPDF();
+  generatePdf() {
+    var pdf = new jsPDF();
 
-//     pdf.setFontSize(15);
-//     pdf.text('Angular PDF Table', 11, 8);
-//     pdf.setFontSize(12);
-//     pdf.setTextColor(99);
+    pdf.setFontSize(15);
+    pdf.text(`EasyBank Transaction Statement \n 
+    ${this.user.username} ${this.user.email}`, 11, 8);
+    // pdf.text(`${this.user.username} ${this.user.email}`, 12, 8);
+    pdf.setFontSize(12);
+    pdf.setTextColor(99);
+
+    // const header = [
+    //   {title: 'Method', dataKey: 'method'},
+    //   {title: 'Amount', dataKey: 'amount'},
+    //   {title: 'From', dataKey: 'from'},
+    //   {title: 'From', dataKey: 'from'},
+    //   {title: 'From', dataKey: 'from'},
+    //   {title: 'From', dataKey: 'from'},
+    //   {title: 'From', dataKey: 'from'},
+    //   {title: 'From', dataKey: 'from'},
+    // ]
+
+    // const rows = [];
+    // for(let key in this.transactions){
+    //   rows.push({key: this.transactions[key]}).toString();
+    // }
 
 
-//     (pdf as any).autoTable({
-//     head: this.header,
-//     body: this.transactions,
-//     theme: 'plain',
-//     didDrawCell: data => {
-//         console.log(data.column.index)
-//     }
-//     })
+    var header = ["Method", 'Amount','To','From','Status'];
+    var rows= [];
 
-//     // Open PDF document in browser's new tab
-//     pdf.output('dataurlnewwindow')
+    for(var value in this.transactions){
+      var row = [
+        this.transactions[value].method,
+        this.transactions[value].amount,
+        this.transactions[value].to,
+        this.transactions[value].from,
+        this.transactions[value].status];
+      rows.push(row);
+    }
+    
 
-//     // Download PDF doc  
-//     pdf.save('table.pdf');
-// } 
+    (pdf as any).autoTable({
+    head: [header],
+    body: rows,
+    theme: 'striped',
+    didDrawCell: data => {
+        console.log(data.column.index)
+    }
+    })
+
+    // Open PDF document in browser's new tab
+    pdf.output('dataurlnewwindow')
+
+    // Download PDF doc  
+    pdf.save('table.pdf');
+} 
 
 
   // public downloadAsPDF(){

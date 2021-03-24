@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
       password: password
     }
 
-    this.authenticateService.login(reqObject, username);
+    this.authenticateService.login(reqObject);
 
   }
 

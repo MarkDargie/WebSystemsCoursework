@@ -5,11 +5,11 @@ const passport = require('passport');
 const {User, Transaction} = require('../db/models');
 const { response } = require('express');
 
-router.post('/secure', (req, res)=>{
+router.post('/secure', passport.authenticate('jwt', {session: false }), (req, res)=>{
 
     const transaction = new Transaction({
         to: req.body.sendto,
-        from: req.body.username,
+        from: req.user.username,
         tocode: req.body.tocode,
         fromcode: req.body.fromcode,
         amount: req.body.payment,
@@ -17,9 +17,11 @@ router.post('/secure', (req, res)=>{
         status: "pending"
     });
 
+    console.log(transaction);
+
     try {
 
-        User.findOne({username: req.body.username, securecode: req.body.fromcode}, function(err, user){
+        User.findOne({username: req.user.username, securecode: req.body.fromcode}, function(err, user){
             if(!user){
                 return res.status(422);
             }
@@ -28,7 +30,7 @@ router.post('/secure', (req, res)=>{
             });
 
             transaction.save();
-            res.send(transaction);
+            res.sendStatus(200, transaction);
 
         });
 
@@ -41,20 +43,22 @@ router.post('/secure', (req, res)=>{
 })
 
 // post transaction
-router.post('/express', (req, res, next)=>{
+router.post('/express', passport.authenticate('jwt', {session: false }), (req, res, next)=>{
 
     // maybe create payment service
     const transaction = new Transaction({
         to: req.body.sendto,
-        from: req.body.username,
+        from: req.user.username,
         amount: req.body.payment,
-        method: req.body.method,
+        method: "express",
         status: "confirmed"
     });
 
+    console.log(transaction);
+
     try{
 
-        User.findOne({username: req.body.username}, function(err, user){
+        User.findOne({username: req.user.username}, function(err, user){
             if(!user){
                 return res.status(422);
             }
@@ -63,7 +67,7 @@ router.post('/express', (req, res, next)=>{
 
             if(sentpayment){
                 // do this for both to and from users
-                User.findOneAndUpdate({username: req.body.username}, {balance: sentpayment}, (error, response)=>{
+                User.findOneAndUpdate({username: req.user.username}, {balance: sentpayment}, (error, response)=>{
                     if(error) res.sendStatus(404);
                     console.log("sender response", response);
                     // res.send(response);
@@ -95,7 +99,7 @@ router.post('/express', (req, res, next)=>{
             })
         );
 
-        res.sendStatus(200);
+        // res.sendStatus(200);
 
     }
     catch(error){
@@ -105,15 +109,15 @@ router.post('/express', (req, res, next)=>{
 });
 
 // POST: Confirm Specified pending secure payments
-router.post('/confirm', (req,res,next)=>{
+router.post('/confirm', passport.authenticate('jwt', {session: false }),(req,res,next)=>{
 
     try{
-        Transaction.findOne({_id: req.body.id, from: req.body.username}).then((transaction)=>{
+        Transaction.findOne({_id: req.body.id, from: req.user.username}).then((transaction)=>{
             
             if(!transaction){
                 res.sendStatus(422);
             }
-            User.findOne({username: req.body.username}, (error, user)=>{
+            User.findOne({username: req.user.username}, (error, user)=>{
                 if(!user) res.sendStatus(400);
                 const balanceUpdate = user.balance + transaction.amount;
                 user.balance = balanceUpdate;

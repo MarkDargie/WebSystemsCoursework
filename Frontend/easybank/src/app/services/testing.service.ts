@@ -17,4 +17,22 @@ export class TestingService {
     .pipe(map(data => {})).subscribe(result => result);
   }
 
+  GetTestingResults(){
+
+  }
+
+  SecurePaymentResult(){
+
+  }
+
+  ExpressPaymentResult(){
+
+  }
+
+  ClearTestingResults(){
+    
+  }
+
+
+
 }

@@ -39,6 +39,7 @@ export class TransactionService {
 
   }
 
+  // Get all user pending transactions
   GetPendingPayments(){
 
     const headers = new HttpHeaders({ 'Content-type': 'application/json' });

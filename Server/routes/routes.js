@@ -7,7 +7,8 @@ const router = require('express').Router();
  */
 router.use('/users', require('./users'));
 router.use('/transactions', require('./transactions'));
-// router.use('/logs', require('./testinglogs'));
+router.use('/logs', require('./testinglogs'));
+router.use('/mail', require('./email'));
 
 // Export Express Router
 module.exports = router;

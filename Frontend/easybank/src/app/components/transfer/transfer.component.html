@@ -66,44 +66,45 @@
         <h2 class="title">Payment Transfer</h2>
         <P>Select Payment Method</P>
 
+        <!--Secure Payment Process Form-->
         <mat-tab-group>
             <mat-tab>
               <ng-template mat-tab-label>
                 Secure Payment
               </ng-template>
               <div class="payment-form-container">
-                <form class="registerform" #secureform="ngForm">
+                <form class="registerform" (ngSubmit)="OnSecurePaymentSubmit()" #secureform="ngForm">
                   <section class="login-section">
                       <h2>Secure Payment Process</h2>
                   </section>
                   <mat-form-field appearance="outline">
                     <mat-label>Recipient Username</mat-label>
-                    <input matInput>
+                    <input matInput name="username" ngModel>
                   </mat-form-field>
                   <mat-form-field appearance="outline">
                     <mat-label>Recipient Email</mat-label>
-                    <input matInput>
+                    <input matInput name="email" ngModel>
                   </mat-form-field>
                   <div class="code-container">
                     <mat-form-field class="code" appearance="outline">
                       <mat-label>Your Secure Code</mat-label>
-                      <input matInput [type]="hide ? 'password' : 'text'">
+                      <input matInput [type]="hide ? 'password' : 'number'" name="fromcode" ngModel>
                     </mat-form-field>
                     <mat-form-field class="code" appearance="outline">
                       <mat-label>Recipient Secure Code</mat-label>
-                      <input matInput [type]="hide ? 'password' : 'text'">
+                      <input matInput [type]="hide ? 'password' : 'number'" name="tocode" ngModel>
                     </mat-form-field>
                   </div>
-                  <mat-form-field appearance="outline">
+                  <!-- <mat-form-field appearance="outline">
                     <mat-label>Payment Method</mat-label>
                     <mat-select>
                       <mat-option value="one">First option</mat-option>
                       <mat-option value="two">Second option</mat-option>
                     </mat-select>
-                  </mat-form-field>
+                  </mat-form-field> -->
                   <mat-form-field appearance="outline">
                     <mat-label>Payment Amount</mat-label>
-                    <input matInput type="number" class="example-right-align">
+                    <input matInput type="number" class="example-right-align" name="amount" ngModel>
                     <span matPrefix>$&nbsp;</span>
                     <span matSuffix>.00</span>
                   </mat-form-field>
@@ -125,24 +126,24 @@
               </ng-template>
 
               <div class="payment-form-container">
-                <form class="registerform" #expressform="ngForm">
+                <form class="registerform" (ngSubmit)="OnExpressPaymentSubmit()" #expressform="ngForm">
                   <section class="login-section">
                       <h2>Express Payment Process</h2>
                   </section>
                   <mat-form-field appearance="outline">
                     <mat-label>Recipient Username</mat-label>
-                    <input matInput>
+                    <input matInput name="username" ngModel>
                   </mat-form-field>
-                  <mat-form-field appearance="outline">
+                  <!-- <mat-form-field appearance="outline">
                     <mat-label>Payment Method</mat-label>
                     <mat-select>
                       <mat-option value="one">First option</mat-option>
                       <mat-option value="two">Second option</mat-option>
                     </mat-select>
-                  </mat-form-field>
+                  </mat-form-field> -->
                   <mat-form-field appearance="outline">
                     <mat-label>Payment Amount</mat-label>
-                    <input matInput type="number" class="example-right-align">
+                    <input matInput type="number" class="example-right-align" name="amount" ngModel>
                     <span matPrefix>$&nbsp;</span>
                     <span matSuffix>.00</span>
                   </mat-form-field>

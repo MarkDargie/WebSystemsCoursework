@@ -13,7 +13,7 @@ router.post('/secure', (req, res)=>{
         tocode: req.body.tocode,
         fromcode: req.body.fromcode,
         amount: req.body.payment,
-        method: req.body.method,
+        method: "secure",
         status: "pending"
     });
 

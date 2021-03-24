@@ -39,18 +39,38 @@ export class TransactionService {
 
   }
 
+  GetPendingPayments(){
+
+    const headers = new HttpHeaders({ 'Content-type': 'application/json' });
+
+    return this.http.get(`${environment.API}/transactions/pending`, {headers: headers});
+
+  }
+
   // send secure payment
   securePayment(reqObject: object){
+
+    const headers = new HttpHeaders({ 'Content-type': 'application/json' });
+
+    return this.http.post(`${environment.API}/transactions/secure`, reqObject, {headers:headers});
 
   }
 
   //send express payment
   expressPayment(reqObject: object){
 
+    const headers = new HttpHeaders({ 'Content-type': 'application/json' });
+
+    return this.http.post(`${environment.API}/transactions/express`, reqObject, {headers:headers});
+
   }
 
   //confirm pending payment
-  confirmPending(){
+  confirmPending(transactionID: any){
+
+    const headers = new HttpHeaders({ 'Content-type': 'application/json' });
+
+    return this.http.post(`${environment.API}/transactions/confirm`, transactionID, {headers:headers});
 
   }
 

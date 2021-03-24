@@ -7,3 +7,4 @@ const {Test} = require('../db/models');
 // Post Methods
 
 
+module.exports = router;

@@ -107,10 +107,32 @@ router.post('/express', (req, res, next)=>{
 // POST: Confirm Specified pending secure payments
 router.post('/confirm', (req,res,next)=>{
 
-    Transaction.findOne({_id: req.body.id}).then((transaction)=>{
-        res.send(transaction);
-    })
-
+    try{
+        Transaction.findOne({_id: req.body.id, from: req.body.username}).then((transaction)=>{
+            
+            if(!transaction){
+                res.sendStatus(422);
+            }
+            User.findOne({username: req.body.username}, (error, user)=>{
+                if(!user) res.sendStatus(400);
+                const balanceUpdate = user.balance + transaction.amount;
+                user.balance = balanceUpdate;
+                user.save();
+            }).then(
+                User.findOne({username: transaction.from}, (error, fromUser) =>{
+                    if(!fromUser) res.sendStatus(400);
+                    const fromBalanceUpdate = fromUser.balance - transaction.amount;
+                    fromUser.balance = fromBalanceUpdate;
+                    fromUser.save();
+                })
+            );
+            transaction.status = "Confirmed";
+            transaction.save();
+        });
+    }
+    catch(error){
+        console.log(erorr);
+    }
 });
 
 // GET: all transactions for authenticated user
@@ -141,8 +163,6 @@ router.get('/sent', passport.authenticate('jwt', { session: false }), (req, res,
         next(err);
     });
 });
-
-// post user balance changes
 
 // Export Express Router
 module.exports = router;

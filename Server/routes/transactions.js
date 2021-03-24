@@ -126,7 +126,7 @@ router.post('/confirm', (req,res,next)=>{
                     fromUser.save();
                 })
             );
-            transaction.status = "Confirmed";
+            transaction.status = "confirmed";
             transaction.save();
         });
     }
@@ -160,6 +160,15 @@ router.get('/sent', passport.authenticate('jwt', { session: false }), (req, res,
     Transaction.find({from: req.user.username}).then((transactions)=>{
         res.send(transactions);
     }).catch((err) => {
+        next(err);
+    });
+});
+
+// GET: all pending payments for authenticatd user
+router.get('/pending', passport.authenticate('jwt', {session: false }), (req, res, next)=>{
+    Transaction.find({to: req.user.username}).then((transactions)=>{
+        res.send(transactions);
+    }).catch((err)=>{
         next(err);
     });
 });

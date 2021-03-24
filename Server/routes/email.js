@@ -2,6 +2,7 @@ let nodemailer = require('nodemailer');
 const router = require('express').Router();
 const dotenv = require('dotenv');
 const pdf = require('pdfjs');
+const fs = require('fs');
 
 dotenv.config();
 
@@ -25,23 +26,42 @@ transporter.verify(function(error, success) {
 
 router.post('/send', (req,res)=>{
 
+    const username = req.body.username;
+    // get transactions
+    
+    const doc = new pdf.Document({
+        font: require('pdfjs/font/Helvetica'),
+        padding:10,
+        title: "Your EasyBank Statement"
+    });
+
+    doc.pipe(fs.createWriteStream('test.pdf'));
+
+    const header = doc.header();
+    header.text('EasyBank Statement');
+
+    doc.text("testin 123");
+    const text = doc.text({ fontSize: 12});
+    text.add("testing 123");
+
+    doc.end();
+
     try {
 
         let mailoptions = {
             from:'easybankmailer@gmail.com',
             to: 'easybankmailer@gmail.com',
             subject: 'EasyBank Transfer Statement',
-            text: `Hello ${username},Find your EasyBank Transfer statement in the attached document.`
+            text: `Hello ${username}. Find your EasyBank Transfer statement in the attached document.`
         }
 
         transporter.sendMail(mailoptions, function (error) {
             if(error){
                 res.status(500);
             } else {
-                res.status(200);
-                res.send("Email Sent", mailoptions);
+                res.status(200).send(mailoptions);
             }
-        })
+        });
 
     } catch (error) {
         res.send(error);

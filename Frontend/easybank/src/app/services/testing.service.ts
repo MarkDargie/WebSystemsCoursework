@@ -18,6 +18,8 @@ export class TestingService {
     .pipe(map(data => {})).subscribe(result => result);
   }
 
+  // Make these one route that accept a param for the string route 
+
   GetTestingResults(){
     return this.http.get(`${environment.API}/logs/results`);
   }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { environment } from '../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -18,21 +19,36 @@ export class TestingService {
   }
 
   GetTestingResults(){
-
+    return this.http.get(`${environment.API}/logs/results`);
   }
 
-  SecurePaymentResult(){
-
+  ResetMetrics(){
+    return this.http.post(`${environment.API}/logs/reset`, null);
   }
 
-  ExpressPaymentResult(){
-
+  PostSecurePayment(){
+    return this.http.post(`${environment.API}/logs/secure`, null);
   }
 
-  ClearTestingResults(){
-    
+  PostExpressPayment(){
+    return this.http.post(`${environment.API}/logs/express`, null);
   }
 
+  PostAppStatement(){
+    return this.http.post(`${environment.API}/logs/appstatement`, null);
+  }
+
+  PostExternalStatement(){
+    return this.http.post(`${environment.API}/logs/externalstatement`, null);
+  }
+
+  PostLightTheme(){
+    return this.http.post(`${environment.API}/logs/lighttheme`, null);
+  }
+
+  PostDarkTheme(){
+    return this.http.post(`${environment.API}/logs/darktheme`, null);
+  }
 
 
 }

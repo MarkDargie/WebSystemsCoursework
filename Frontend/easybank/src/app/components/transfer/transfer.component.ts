@@ -3,6 +3,7 @@ import {NgForm, FormControl, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { ViewChild } from '@angular/core';
 import {TransactionService} from '../../services/transaction.service';
+import {TestingService} from '../../services/testing.service';
 
 @Component({
   selector: 'app-transfer',
@@ -12,7 +13,8 @@ import {TransactionService} from '../../services/transaction.service';
 export class TransferComponent implements OnInit {
 
   constructor(
-    private transactionService: TransactionService
+    private transactionService: TransactionService,
+    private testingService: TestingService
   ) { }
 
   hide = true;
@@ -40,6 +42,7 @@ export class TransferComponent implements OnInit {
 
     this.transactionService.securePayment(paymentObject).subscribe();
 
+    this.testingService.PostSecurePayment().subscribe();
   }
 
   // Method for express payments

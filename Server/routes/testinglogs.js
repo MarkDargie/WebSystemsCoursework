@@ -26,6 +26,23 @@ const { text } = require('express');
 
 // });
 
+// Get All Results
+router.get('/results', (req, res, next) =>{
+
+    Test.findOne({}).then((results)=>{
+        res.send(results);
+    });
+
+})
+
+router.post('/reset', (req, res, next)=>{
+    Test.findOneAndRemove({}).then((response)=>{
+        res.status(200);
+        res.send(response);
+    })
+});
+
+
 router.post('/secure', (req, res)=>{
 
     Test.findOneAndUpdate({}, {$inc: {'securepayments': 1}}, {new: true}, function(err, response){

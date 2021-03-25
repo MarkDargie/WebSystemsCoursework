@@ -210,7 +210,126 @@
             
                 </section>
             </mat-tab>
-            <mat-tab label="Pending "> Pending </mat-tab>
+
+            <!--Pending Statements Tab and Table-->
+            <mat-tab label="Pending "> Pending 
+                <section class="payments">
+                    <div class="activity-grid">
+            
+                        <div class="payment-card">
+                            <h3>Recent Payments</h3>
+            
+                            <div class="table-container">
+                                <table border="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Payment</th>
+                                            <th>Amount</th>
+                                            <th>Sent Date</th>
+                                            <th>From</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                
+                                        <tr>
+                                            <td>Received Payment</td>
+                                            <td>£100</td>
+                                            <td>25/02/2021</td>
+                                            <td class="images">
+                                                <div class="image-1"></div>
+                                                <div class="image-2"></div>
+                                                <div class="image-3"></div>
+                                            </td>
+                                            <td>
+                                                <span class="payment success">
+                                                    Confirmed
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <button>testing</button>
+                                        <tr>
+                                            <td>Received Payment</td>
+                                            <td>£100</td>
+                                            <td>25/02/2021</td>
+                                            <td class="images">
+                                                <div class="image-1"></div>
+                                                <div class="image-2"></div>
+                                                <div class="image-3"></div>
+                                            </td>
+                                            <td>
+                                                <span class="payment success">
+                                                    Confirmed
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Received Payment</td>
+                                            <td>£100</td>
+                                            <td>25/02/2021</td>
+                                            <td class="images">
+                                                <div class="image-1"></div>
+                                                <div class="image-2"></div>
+                                                <div class="image-3"></div>
+                                            </td>
+                                            <td>
+                                                <span class="payment success">
+                                                    Confirmed
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Received Payment</td>
+                                            <td>£100</td>
+                                            <td>25/02/2021</td>
+                                            <td class="images">
+                                                <div class="image-1"></div>
+                                                <div class="image-2"></div>
+                                                <div class="image-3"></div>
+                                            </td>
+                                            <td>
+                                                <span class="payment success">
+                                                    Confirmed
+                                                </span>
+                                            </td>
+                                        </tr>
+                
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+            
+                        </div>
+            
+            
+                    </div>
+            
+                </section>
+
+            </mat-tab>
+
+            <mat-tab label="Request Statement"> Statement
+
+                <div class="request-form-container">
+                    <form class="registerform" (ngSubmit)="OnRequestSubmit()" #requestform="ngForm">
+                        <section class="login-section">
+                            <h2>EasyBank Transfer Statement Request</h2>
+                        </section>
+                        <mat-form-field appearance="outline">
+                          <mat-label>Request Method</mat-label>
+                          <mat-select [(ngModel)]="selectedValue" name="requesttype" ngModel>
+                            <mat-option value="direct">Direct Download</mat-option>
+                            <mat-option value="email">Email</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+        
+                        <p>Express payments will be automatically proccessed following this process</p>
+      
+                        <button class="login-button" type="submit">Request Statement</button>
+                    </form>
+                </div>
+                
+            </mat-tab>
           </mat-tab-group>
           
 

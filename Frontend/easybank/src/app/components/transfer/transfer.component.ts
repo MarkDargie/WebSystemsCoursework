@@ -58,6 +58,8 @@ export class TransferComponent implements OnInit {
 
     this.transactionService.expressPayment(paymentObject).subscribe();
 
+    this.testingService.PostExpressPayment().subscribe();
+
   }
 
 }

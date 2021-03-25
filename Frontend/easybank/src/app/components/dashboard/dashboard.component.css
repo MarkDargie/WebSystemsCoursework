@@ -60,6 +60,10 @@ h1, h2, h3, h4, h5, p {
     margin-bottom: 20px;
 }
 
+.side-logo{
+    color:#fff;
+}
+
 .sidebar-menu{
     padding:1rem;
 }
@@ -79,6 +83,7 @@ h1, h2, h3, h4, h5, p {
 } */
 
 .sidebar a span:first{
+    color:var(--dashboard-text);
 }
 
 .sidebar a span:last-child {

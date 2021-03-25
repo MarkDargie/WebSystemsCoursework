@@ -152,7 +152,7 @@ label {
 .login-button{
     display: block;
     width:100%;
-    background: var(--light-blue);
+    background: var(--dashboard-main);
     color: white;
     /* font-weight: 700; */
     border: none;
@@ -166,6 +166,44 @@ label {
 }
 
 .login-button:hover{
+
+}
+
+.mat-form-field input p{
+    color:var(--dashboard-text);
+}
+
+.mat-form-field mat-label {
+    color:var(--dashboard-text);
+    border-color: var(--dashboard-text);
+}
+
+.mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick {
+    color: #f44336;
+}
+
+.mat-form-field .mat-input-element{
+    color:var(--dashboard-text);
+}
+
+.mat-input-element::placeholder{
+    color:var(--dashboard-text);
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+    color:var(--dashboard-text);
+    border-color: var(--dashboard-text);
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline-thick {
+    color:var(--dashboard-text);
+    border-color: var(--dashboard-text);
+
+}
+
+.input.mat-input-element {
+    color:var(--dashboard-text);
+    border-color: var(--dashboard-text);
 
 }
 

@@ -22,8 +22,11 @@ export class PaymentsComponent implements OnInit {
 
   constructor(
     private transactionService: TransactionService,
-    private testingService: TestingService
+    private testingService: TestingService,
+    private authenticateService: AuthenticateService
   ) { }
+
+  user: user;
 
   allTransactions: transaction[];
   sentTransactions: transaction[];
@@ -33,6 +36,10 @@ export class PaymentsComponent implements OnInit {
   selectedValue: string;
 
   ngOnInit(): void {
+
+    this.authenticateService.GetUserDetails().subscribe((user: user)=> {
+      this.user = user;
+    });
 
     this.transactionService.getAllPayments().subscribe((payments: transaction[])=>{
       this.allTransactions = payments;
@@ -57,19 +64,30 @@ export class PaymentsComponent implements OnInit {
     const type = this.requestform.value.requesttype;
     console.log("REQUES TYPE: ", type);
 
-    if(type == "direct"){
 
-      this.generatePDF();
-
+    if(type){
+      this.generatePDF(type);
     }
 
-    if(type == "email"){
-
-    }
 
   }
 
-  generatePDF(){
+  OnPaymentConfirm(id: string, from: string){
+
+    const reqObject = {
+      id: id,
+      from: from
+    }
+
+    this.transactionService.confirmPending(reqObject).subscribe();
+
+  }
+
+  OnPaymentReject(){
+
+  }
+
+  generatePDF(method: string){
 
     var pdf = new jsPDF();
 
@@ -78,23 +96,6 @@ export class PaymentsComponent implements OnInit {
     // pdf.text(`${this.user.username} ${this.user.email}`, 12, 8);
     pdf.setFontSize(12);
     pdf.setTextColor(99);
-
-    // const header = [
-    //   {title: 'Method', dataKey: 'method'},
-    //   {title: 'Amount', dataKey: 'amount'},
-    //   {title: 'From', dataKey: 'from'},
-    //   {title: 'From', dataKey: 'from'},
-    //   {title: 'From', dataKey: 'from'},
-    //   {title: 'From', dataKey: 'from'},
-    //   {title: 'From', dataKey: 'from'},
-    //   {title: 'From', dataKey: 'from'},
-    // ]
-
-    // const rows = [];
-    // for(let key in this.transactions){
-    //   rows.push({key: this.transactions[key]}).toString();
-    // }
-
 
     var header = ["Method", 'Amount','To','From','Status'];
     var rows= [];
@@ -119,11 +120,66 @@ export class PaymentsComponent implements OnInit {
     }
     });
 
-    // Open PDF document in browser's new tab
-    pdf.output('dataurlnewwindow');
+    if(method == "direct"){
 
-    // Download PDF doc  
-    pdf.save('table.pdf');
+      // Open PDF document in browser's new tab
+      pdf.output('dataurlnewwindow');
+
+      // Download PDF doc  
+      pdf.save('table.pdf');
+
+    }
+
+    if(method == "email"){
+
+      var blob = pdf.output('blob');
+
+      let payload = new FormData();
+      payload.append('pdf', blob);
+      payload.append('id', this.user._id);
+
+      console.log("USER ID EMAIL: ", this.user._id);
+
+      this.transactionService.EmailRequest(payload).subscribe();
+
+    }
+
+
+
+  }
+
+  generateAndSendPDF(){
+
+    var pdf = new jsPDF();
+
+    pdf.setFontSize(15);
+    pdf.text(`EasyBank Transaction Statement`, 11, 8);
+    // pdf.text(`${this.user.username} ${this.user.email}`, 12, 8);
+    pdf.setFontSize(12);
+    pdf.setTextColor(99);
+
+    var header = ["Method", 'Amount','To','From','Status'];
+    var rows= [];
+
+    for(var value in this.allTransactions){
+      var row = [
+        this.allTransactions[value].method,
+        this.allTransactions[value].amount,
+        this.allTransactions[value].to,
+        this.allTransactions[value].from,
+        this.allTransactions[value].status];
+      rows.push(row);
+    }
+    
+
+    (pdf as any).autoTable({
+    head: [header],
+    body: rows,
+    theme: 'striped',
+    didDrawCell: data => {
+        console.log(data.column.index)
+    }
+    });
 
   }
 

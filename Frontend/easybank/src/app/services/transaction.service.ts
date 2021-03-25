@@ -67,16 +67,24 @@ export class TransactionService {
   }
 
   //confirm pending payment
-  confirmPending(transactionID: any){
+  confirmPending(reqObject: object){
 
     const headers = new HttpHeaders({ 'Content-type': 'application/json' });
 
-    return this.http.post(`${environment.API}/transactions/confirm`, transactionID, {headers:headers});
+    return this.http.post(`${environment.API}/transactions/confirm`, reqObject, {headers:headers});
 
   }
 
   // create payment method 
   createPaymentMethod(reqObject: object){
+
+  }
+
+  EmailRequest(payload: FormData){
+
+    const headers = new HttpHeaders({ 'Content-type': 'application/json' });
+
+    return this.http.post(`${environment.API}/email/send`, payload);
 
   }
 

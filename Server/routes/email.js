@@ -3,6 +3,9 @@ const router = require('express').Router();
 const dotenv = require('dotenv');
 const pdf = require('pdfjs');
 const fs = require('fs');
+const path = require('path');
+const multer = require('multer');
+const passport = require('passport');
 
 dotenv.config();
 
@@ -24,27 +27,24 @@ transporter.verify(function(error, success) {
     }
 });
 
-router.post('/send', (req,res)=>{
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, './uploads')
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.fieldname + Date.now() + '.pdf');
+    }
+});
+   
+var upload = multer({ storage: storage });
 
-    const username = req.body.username;
-    // get transactions
-    
-    const doc = new pdf.Document({
-        font: require('pdfjs/font/Helvetica'),
-        padding:10,
-        title: "Your EasyBank Statement"
-    });
+router.post('/send', passport.authenticate('jwt', { session: false }), upload.single('pdf'), (req,res)=>{
 
-    doc.pipe(fs.createWriteStream('test.pdf'));
+    const username = req.user.username;
 
-    const header = doc.header();
-    header.text('EasyBank Statement');
-
-    doc.text("testin 123");
-    const text = doc.text({ fontSize: 12});
-    text.add("testing 123");
-
-    doc.end();
+    const file = req.file;
+    console.log(file);
+    console.log("USERID", username);
 
     try {
 
@@ -52,7 +52,8 @@ router.post('/send', (req,res)=>{
             from:'easybankmailer@gmail.com',
             to: 'easybankmailer@gmail.com',
             subject: 'EasyBank Transfer Statement',
-            text: `Hello ${username}. Find your EasyBank Transfer statement in the attached document.`
+            text: `Hello ${username}. Find your EasyBank Transfer statement in the attached document.`,
+            attachments: file
         }
 
         transporter.sendMail(mailoptions, function (error) {

@@ -212,12 +212,12 @@
             </mat-tab>
 
             <!--Pending Statements Tab and Table-->
-            <mat-tab label="Pending "> Pending 
+            <mat-tab label="Pending">
                 <section class="payments">
                     <div class="activity-grid">
             
                         <div class="payment-card">
-                            <h3>Recent Payments</h3>
+                            <h3>Pending Payments</h3>
             
                             <div class="table-container">
                                 <table border="0">
@@ -247,52 +247,11 @@
                                                 </span>
                                             </td>
                                         </tr>
-                                        <button>testing</button>
-                                        <tr>
-                                            <td>Received Payment</td>
-                                            <td>£100</td>
-                                            <td>25/02/2021</td>
-                                            <td class="images">
-                                                <div class="image-1"></div>
-                                                <div class="image-2"></div>
-                                                <div class="image-3"></div>
-                                            </td>
-                                            <td>
-                                                <span class="payment success">
-                                                    Confirmed
-                                                </span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Received Payment</td>
-                                            <td>£100</td>
-                                            <td>25/02/2021</td>
-                                            <td class="images">
-                                                <div class="image-1"></div>
-                                                <div class="image-2"></div>
-                                                <div class="image-3"></div>
-                                            </td>
-                                            <td>
-                                                <span class="payment success">
-                                                    Confirmed
-                                                </span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Received Payment</td>
-                                            <td>£100</td>
-                                            <td>25/02/2021</td>
-                                            <td class="images">
-                                                <div class="image-1"></div>
-                                                <div class="image-2"></div>
-                                                <div class="image-3"></div>
-                                            </td>
-                                            <td>
-                                                <span class="payment success">
-                                                    Confirmed
-                                                </span>
-                                            </td>
-                                        </tr>
+                                        <div class="button-container">
+                                            <button class="pending-btn"> Confirm </button>
+                                            <button class="pending-btn reject"> Reject </button>
+                                        </div>
+
                 
                                         
                                     </tbody>
@@ -308,12 +267,21 @@
 
             </mat-tab>
 
-            <mat-tab label="Request Statement"> Statement
+            <mat-tab label="Request Statement">
 
                 <div class="request-form-container">
+
+
                     <form class="registerform" (ngSubmit)="OnRequestSubmit()" #requestform="ngForm">
                         <section class="login-section">
                             <h2>EasyBank Transfer Statement Request</h2>
+                            <div class="request-info">
+                                <p> If you would like to receive a statement of your current transaction history, please select one of the following options.</p>
+                                <h5>Direct Download</h5>
+                                <p>Direct downloads will automatically generate your statement PDF file through the dashboard for direct download.</p>
+                                <h5>Email</h5>
+                                <p>Statements Requested through our email service will forward your PDF Transfer history via your account email.</p>
+                            </div>
                         </section>
                         <mat-form-field appearance="outline">
                           <mat-label>Request Method</mat-label>
@@ -323,7 +291,7 @@
                           </mat-select>
                         </mat-form-field>
         
-                        <p>Express payments will be automatically proccessed following this process</p>
+                        <p>Request Transaction Statement: </p>
       
                         <button class="login-button" type="submit">Request Statement</button>
                     </form>

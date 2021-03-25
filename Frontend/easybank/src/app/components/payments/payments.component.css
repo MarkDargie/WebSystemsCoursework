@@ -12,13 +12,18 @@
 
 .request-form-container p{
     font-size: 1.2rem;
-    padding:1rem;
-    margin-bottom: 1rem;
+    /* padding:1rem; */
+    margin-bottom: 1.5rem;
+}
+
+main h5{
+    margin-bottom: 10px;
 }
 
 main h2{
 
     font-size: 2rem;
+    margin-bottom: 10px;
 
 }
 
@@ -51,3 +56,38 @@ form{
 .mat-form-field.code{
     width:45%;
 }
+
+.button-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.pending-btn {
+    display: block;
+    background: var(--dashboard-main);
+    color: white;
+    border: none;
+    padding:1.5rem;
+    border-radius: 2px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin:15px;
+}
+
+.reject{
+    background: #fd4b4b;
+}
+
+/* .mat-tab-group{
+
+    background: #fd4b4b;
+
+} */
+
+/* .mat-form-field,
+.mat-select,
+.mat-option{
+    background: #fd4b4b;
+} */

@@ -40,7 +40,7 @@
     top:0;
     z-index: var(--z-fixed);
     position: fixed;
-    background: var(--dashboard-main);
+    background: var(--dashboard-sidebar);
     color:#efefef;
     padding: 1rem;
     overflow-y: auto;
@@ -101,7 +101,7 @@ header{
     position: fixed;
     z-index: var(--z-fixed);
     background:#fff;
-    border-bottom: 1px solid var(--dashboard-grey);
+    border-bottom: 1px solid var(--dashboard-background);
     transition: left 500ms;
 }
 
@@ -142,6 +142,7 @@ main{
     min-height: 90vh;
     margin-top:60px;
     padding:1rem 3.5rem;
+    background: var(--dashboard-background);
 }
 
 .title{

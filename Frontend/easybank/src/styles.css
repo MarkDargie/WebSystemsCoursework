@@ -11,9 +11,12 @@
     --color-dark-grey: #1d1d1d;
     --color-light-grey:#505050;
 
-    --dashboard-main: #0088c7;;
+    --dashboard-main: #0088c7;
     --dashboard-dark: #1d2231;
     --dashboard-grey: #8390a2;
+    --dashboard-background:#f0f0f0;
+    --dashboard-text:#0e0e0e;
+    --dashboard-sidebar:#0088c7;
 
     --body-font: "Open Sans", sans-serif;
     --biggest-font-size: 2.25rem;

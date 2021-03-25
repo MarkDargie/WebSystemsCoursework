@@ -7,6 +7,7 @@ import {transaction} from '../../models/transaction.model';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { ViewChild } from '@angular/core';
 import { ElementRef } from '@angular/core';
+import { ThemeService} from '../../theme/theme.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -22,7 +23,8 @@ export class DashboardComponent implements OnInit {
     private transactionService: TransactionService,
     private http: HttpClient,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private themeService: ThemeService
   ) { }
 
   user: user;
@@ -40,6 +42,14 @@ export class DashboardComponent implements OnInit {
       console.log(transaction);
     })
 
+  }
+
+  toggletheme(){
+    if(this.themeService.isDarkTheme()){
+      this.themeService.setLightTheme();
+    } else {
+      this.themeService.setDarkTheme();
+    }
   }
 
 

@@ -18,6 +18,7 @@ export class AuthenticateService {
   user: user;
 
   loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  adminLog: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   // Login User
   login(reqObject: object) {
@@ -72,9 +73,29 @@ export class AuthenticateService {
     );
   }
 
+  isAdminLoggedIn() {
+    return this.isAdmin().pipe(
+      tap((res: auth) => {
+        // console.log('isLogged in RES: ', res);
+        this.adminLog.next(res.success);
+      }),
+      catchError((error) => {
+        this.adminLog.next(false);
+        return of(false);
+      })
+    );
+  }
+
   // 
   isAuthenticated(): Observable<auth> {
     return this.http.get<auth>(`${environment.API}/users/protected`);
+  }
+
+  //
+  isAdmin(): Observable<auth>{
+
+    return this.http.get<auth>(`${environment.API}/users/admin`);
+
   }
 
   // Register User Account

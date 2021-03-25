@@ -1,11 +1,15 @@
 const {mongoose} = require('../db/mongoose');
 const router = require('express').Router(); 
 const passport = require('passport');
+const moment = require('moment');
 
 const {User, Transaction} = require('../db/models');
 const { response } = require('express');
 
 router.post('/secure', passport.authenticate('jwt', {session: false }), (req, res)=>{
+
+    const timeElapsed = Date.now();
+    const today = new Date(timeElapsed);
 
     const transaction = new Transaction({
         to: req.body.sendto,
@@ -14,7 +18,8 @@ router.post('/secure', passport.authenticate('jwt', {session: false }), (req, re
         fromcode: req.body.fromcode,
         amount: req.body.payment,
         method: "secure",
-        status: "pending"
+        status: "pending",
+        date: today.toLocaleDateString()
     });
 
     console.log(transaction);
@@ -45,13 +50,19 @@ router.post('/secure', passport.authenticate('jwt', {session: false }), (req, re
 // post transaction
 router.post('/express', passport.authenticate('jwt', {session: false }), (req, res, next)=>{
 
+
+    const timeElapsed = Date.now();
+    const today = new Date(timeElapsed);
+
+
     // maybe create payment service
     const transaction = new Transaction({
         to: req.body.sendto,
         from: req.user.username,
         amount: req.body.payment,
         method: "express",
-        status: "confirmed"
+        status: "confirmed",
+        date: today.toLocaleDateString()
     });
 
     console.log(transaction);
@@ -145,6 +156,8 @@ router.post('/confirm', passport.authenticate('jwt', {session: false }),(req,res
 
 router.post('/reject', passport.authenticate('jwt', {session: false }), (req,res, next)=>{
 
+    console.log('reject route hit');
+
     try{
         Transaction.findOneAndRemove({_id: req.body.id}, (error, response)=>{
             if(error) res.status(500);
@@ -161,7 +174,7 @@ router.post('/reject', passport.authenticate('jwt', {session: false }), (req,res
 // GET: all transactions for authenticated user
 router.get('/history', passport.authenticate('jwt', { session: false }), (req, res, next)=>{
 
-    Transaction.find({$or: [{to: req.user.username}, {from: req.user.username}]}).then((transactions)=>{
+    Transaction.find({$or: [{to: req.user.username}, {from: req.user.username}]}).sort('date').then((transactions)=>{
         res.send(transactions);
     }).catch((err) => {
         next(err);

@@ -28,7 +28,7 @@
                     <div class="activity-grid">
             
                         <div class="payment-card">
-                            <h3>Recent Payments</h3>
+                            <h3>Sent Payments</h3>
             
                             <div class="table-container">
                                 <table border="0">
@@ -43,10 +43,10 @@
                                     </thead>
                                     <tbody>
                 
-                                        <tr>
-                                            <td>Received Payment</td>
-                                            <td>£100</td>
-                                            <td>25/02/2021</td>
+                                        <tr *ngFor="let sent of sentTransactions">
+                                            <td>{{sent.method}} Transfer</td>
+                                            <td>£{{sent.amount}}</td>
+                                            <td>{{sent.date}}</td>
                                             <td class="images">
                                                 <div class="image-1"></div>
                                                 <div class="image-2"></div>
@@ -54,55 +54,11 @@
                                             </td>
                                             <td>
                                                 <span class="payment success">
-                                                    Confirmed
+                                                    {{sent.status}}
                                                 </span>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>Received Payment</td>
-                                            <td>£100</td>
-                                            <td>25/02/2021</td>
-                                            <td class="images">
-                                                <div class="image-1"></div>
-                                                <div class="image-2"></div>
-                                                <div class="image-3"></div>
-                                            </td>
-                                            <td>
-                                                <span class="payment success">
-                                                    Confirmed
-                                                </span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Received Payment</td>
-                                            <td>£100</td>
-                                            <td>25/02/2021</td>
-                                            <td class="images">
-                                                <div class="image-1"></div>
-                                                <div class="image-2"></div>
-                                                <div class="image-3"></div>
-                                            </td>
-                                            <td>
-                                                <span class="payment success">
-                                                    Confirmed
-                                                </span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Received Payment</td>
-                                            <td>£100</td>
-                                            <td>25/02/2021</td>
-                                            <td class="images">
-                                                <div class="image-1"></div>
-                                                <div class="image-2"></div>
-                                                <div class="image-3"></div>
-                                            </td>
-                                            <td>
-                                                <span class="payment success">
-                                                    Confirmed
-                                                </span>
-                                            </td>
-                                        </tr>
+                                        
                 
                                         
                                     </tbody>
@@ -122,7 +78,7 @@
                     <div class="activity-grid">
             
                         <div class="payment-card">
-                            <h3>Recent Payments</h3>
+                            <h3>Received Payments</h3>
             
                             <div class="table-container">
                                 <table border="0">
@@ -137,10 +93,10 @@
                                     </thead>
                                     <tbody>
                 
-                                        <tr>
-                                            <td>Received Payment</td>
-                                            <td>£100</td>
-                                            <td>25/02/2021</td>
+                                        <tr *ngFor="let received of receivedTransactions">
+                                            <td>{{received.method}} Transfer</td>
+                                            <td>£{{received.amount}}</td>
+                                            <td>{{received.date}}</td>
                                             <td class="images">
                                                 <div class="image-1"></div>
                                                 <div class="image-2"></div>
@@ -148,56 +104,11 @@
                                             </td>
                                             <td>
                                                 <span class="payment success">
-                                                    Confirmed
+                                                    {{received.status}}
                                                 </span>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>Received Payment</td>
-                                            <td>£100</td>
-                                            <td>25/02/2021</td>
-                                            <td class="images">
-                                                <div class="image-1"></div>
-                                                <div class="image-2"></div>
-                                                <div class="image-3"></div>
-                                            </td>
-                                            <td>
-                                                <span class="payment success">
-                                                    Confirmed
-                                                </span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Received Payment</td>
-                                            <td>£100</td>
-                                            <td>25/02/2021</td>
-                                            <td class="images">
-                                                <div class="image-1"></div>
-                                                <div class="image-2"></div>
-                                                <div class="image-3"></div>
-                                            </td>
-                                            <td>
-                                                <span class="payment success">
-                                                    Confirmed
-                                                </span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Received Payment</td>
-                                            <td>£100</td>
-                                            <td>25/02/2021</td>
-                                            <td class="images">
-                                                <div class="image-1"></div>
-                                                <div class="image-2"></div>
-                                                <div class="image-3"></div>
-                                            </td>
-                                            <td>
-                                                <span class="payment success">
-                                                    Confirmed
-                                                </span>
-                                            </td>
-                                        </tr>
-                
+                                        
                                         
                                     </tbody>
                                 </table>
@@ -249,7 +160,7 @@
                                         </tr>
                                         <div class="button-container">
                                             <button class="pending-btn" (click)="OnPaymentConfirm(pending._id, pending.from)"> Confirm </button>
-                                            <button class="pending-btn reject"> Reject </button>
+                                            <button class="pending-btn reject" (click)="OnPaymentReject(pending._id)"> Reject </button>
                                         </div>
 
                 

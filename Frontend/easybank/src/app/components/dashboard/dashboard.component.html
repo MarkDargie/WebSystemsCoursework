@@ -48,7 +48,7 @@
 
 <app-sidebar></app-sidebar>
 
-<div class="dashboard-content">
+<div class="dashboard-content" *ngIf="user">
   <header>
     <div class="search-container">
       <!-- <span class="ti-search"></span>
@@ -62,7 +62,7 @@
   </header>
 
   <main>
-    <h2 class="title">Hello, {{user.username}} Your Dashboard</h2>
+    <h2 class="title">Hello, {{user.username}} Welcome to Your Dashboard</h2>
     <div class="cards-section">
 
         <div class="card">
@@ -70,7 +70,7 @@
                 <span><i class="fas fa-piggy-bank"></i></span>
                 <div>
                     <h5>Account Balance</h5>
-                    <h4>£1000,00</h4>
+                    <h4>£{{user.balance}}</h4>
                 </div>
             </div>
             <div class="card-footer">
@@ -124,10 +124,10 @@
                         </thead>
                         <tbody>
     
-                            <tr>
-                                <td>Received Payment</td>
-                                <td>£100</td>
-                                <td>25/02/2021</td>
+                            <tr *ngFor="let payment of transactions">
+                                <td>{{payment.method}} Payment</td>
+                                <td>£{{payment.amount}}</td>
+                                <td>{{payment.date}}</td>
                                 <td class="images">
                                     <div class="image-1"></div>
                                     <div class="image-2"></div>
@@ -135,52 +135,7 @@
                                 </td>
                                 <td>
                                     <span class="payment success">
-                                        Confirmed
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Received Payment</td>
-                                <td>£100</td>
-                                <td>25/02/2021</td>
-                                <td class="images">
-                                    <div class="image-1"></div>
-                                    <div class="image-2"></div>
-                                    <div class="image-3"></div>
-                                </td>
-                                <td>
-                                    <span class="payment success">
-                                        Confirmed
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Received Payment</td>
-                                <td>£100</td>
-                                <td>25/02/2021</td>
-                                <td class="images">
-                                    <div class="image-1"></div>
-                                    <div class="image-2"></div>
-                                    <div class="image-3"></div>
-                                </td>
-                                <td>
-                                    <span class="payment success">
-                                        Confirmed
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Received Payment</td>
-                                <td>£100</td>
-                                <td>25/02/2021</td>
-                                <td class="images">
-                                    <div class="image-1"></div>
-                                    <div class="image-2"></div>
-                                    <div class="image-3"></div>
-                                </td>
-                                <td>
-                                    <span class="payment success">
-                                        Confirmed
+                                        {{payment.status}}
                                     </span>
                                 </td>
                             </tr>

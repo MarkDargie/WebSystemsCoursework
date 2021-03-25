@@ -47,15 +47,17 @@ export class PaymentsComponent implements OnInit {
 
     this.transactionService.getSentPayments().subscribe((sentPayments: transaction[])=>{
       this.sentTransactions = sentPayments;
+      console.log("sent: ", sentPayments);
     });
 
     this.transactionService.getReceivedPayments().subscribe((receivedPayments: transaction[])=>{
       this.receivedTransactions = receivedPayments;
+      console.log("RECIVED: ", receivedPayments);
     });
 
     this.transactionService.GetPendingPayments().subscribe((pendingPayments: transaction[])=>{
       this.pendingTransactions = pendingPayments;
-      console.log(pendingPayments);
+      console.log("PENDING: ", pendingPayments);
     });
 
   }
@@ -84,7 +86,13 @@ export class PaymentsComponent implements OnInit {
 
   }
 
-  OnPaymentReject(){
+  OnPaymentReject(id: string){
+
+    const reqObject = {
+      id: id
+    }
+
+    this.transactionService.rejectPending(reqObject).subscribe();
 
   }
 

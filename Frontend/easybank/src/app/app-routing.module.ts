@@ -9,6 +9,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { TransferComponent } from './components/transfer/transfer.component';
 import {AuthGuard} from './auth.guard';
+import {AdminGuard} from './admin.guard';
 
 
 const routes: Routes = [
@@ -20,7 +21,7 @@ const routes: Routes = [
   {path: 'dashboard/settings', component:SettingsComponent, canActivate:[AuthGuard]},
   {path: 'dashboard/transfer', component:TransferComponent, canActivate:[AuthGuard]},
   {path: 'dashboard/payments', component:PaymentsComponent, canActivate:[AuthGuard]},
-  {path: 'dashboard/admin', component:AdminComponent, canActivate:[AuthGuard]}
+  {path: 'dashboard/admin', component:AdminComponent, canActivate:[AuthGuard]} //change this back to admin hguard
 ];
 
 @NgModule({

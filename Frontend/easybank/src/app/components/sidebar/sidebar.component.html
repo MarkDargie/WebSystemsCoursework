@@ -34,8 +34,8 @@
             <span>Settings</span>
           </a>
         </li>
-        <li>
-          <a href="">
+        <li *ngIf="this.auth">
+          <a href="" routerLink="/dashboard/admin">
             <span><i class="far fa-chart-bar"></i></span>
             <span>Stats</span>
           </a>

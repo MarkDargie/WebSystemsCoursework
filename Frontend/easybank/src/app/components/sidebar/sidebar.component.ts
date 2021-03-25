@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { tap } from 'rxjs/operators';
+import {AuthenticateService} from '../../services/authenticate.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
+  auth: boolean;
+
+  constructor(
+    private authenticateService: AuthenticateService
+  ) { }
 
   ngOnInit(): void {
+
+    this.authenticateService.isAdminLoggedIn().pipe(
+      tap(()=> {
+        this.auth = this.authenticateService.adminLog.value;
+      })
+    ).subscribe();
+
+
   }
 
 }

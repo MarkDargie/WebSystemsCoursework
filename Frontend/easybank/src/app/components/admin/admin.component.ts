@@ -16,7 +16,11 @@ export class AdminComponent implements OnInit {
 
   chart = [];
 
-  piechart = [];
+  paypiechart = [];
+
+  transferpiechart = [];
+
+  groupedchart = [];
 
   test: test;
 
@@ -26,7 +30,8 @@ export class AdminComponent implements OnInit {
       this.test = test;
       console.log(this.test);
 
-      this.piechart = new Chart('piechart', {
+      // Payment Method Pie Chart
+      this.paypiechart = new Chart('paypiechart', {
         type:'pie',
         data: {
           labels:["Secure Payment", "Express Payment"],
@@ -40,10 +45,59 @@ export class AdminComponent implements OnInit {
           title: {
             display: true,
             text: 'User Payment Method Preference'
-          }
+          },
+          maintainAspectRatio: false
         }
   
       });
+
+      //Statement Chart
+      this.transferpiechart = new Chart('transferpiechart', {
+        type:'pie',
+        data: {
+          labels:["Direct Download", "Sent Via Email"],
+          datasets: [{
+            label: "Transfer Statement Methods",
+            backgroundColor: ["#3cba9f", "#ffcc00"],
+            data: [4, 7]
+          }]
+        },
+        options: {
+          title: {
+            display: true,
+            text: 'User Statement Method Preference'
+          },
+          maintainAspectRatio: false
+        }
+  
+      });
+
+      //grouped bar chart
+      this.groupedchart = new Chart('groupedchart', {
+
+        type: 'bar',
+        data: {
+          labels: ["Light", "Dark"],
+          datasets: [
+            {
+              label: "Population (millions)",
+              backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+              data: [this.test.lighttheme, this.test.darktheme]
+            }
+          ]
+        },
+        options: {
+          legend: { display: false },
+          title: {
+            display: true,
+            text: 'Predicted world population (millions) in 2050'
+          },
+          maintainAspectRatio: false
+        }
+
+
+      });
+
 
     });
 

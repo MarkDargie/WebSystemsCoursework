@@ -1,16 +1,35 @@
 /* @import url('../login//login.component.css'); */
 @import url('../dashboard/dashboard.component.css');
 
-mat-grid-tile {
-    background: lightblue;
-  }
-
 .chart-container{
 
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+  flex-wrap: wrap;
+  width:90%;
+  /* background: chartreuse; */
+  padding:1rem;
+  height:auto;
+  margin-bottom: 3rem;
 
 }
 
-#piechart {
-  
+.pie-container {
+
+  width:100%;
+  height:400px;
+
+}
+
+#piechart{
+
+  /* width:100%; */
+
+}
+
+.bar-container{
+  width:100%;
+  height:350px;
 }

@@ -30,13 +30,36 @@
         <h2 class="title">Admin A/B Testing Dashboard</h2>
 
         <h4> Payment Method Results </h4>
-        <div>
-            <canvas id="canvas"> {{ chart }}</canvas>
+        <div class="chart-container">
+          <!-- <h4> Payment Method Results </h4> -->
+          <!-- <div>
+              <canvas id="canvas"> {{ chart }}</canvas>
+          </div> -->
+  
+          <div class="pie-container">
+            <canvas id="paypiechart"> {{ paypiechart }}</canvas>
+          </div>
         </div>
 
-        <div>
-          <canvas id="piechart"> {{ piechart }}</canvas>
-      </div>
+        <h4> Transfer Statement Method Results </h4>
+        <div class="chart-container">
+
+          <div class="pie-container">
+            <canvas id="transferpiechart"> {{ transferpiechart }}</canvas>
+          </div>
+          
+        </div>
+
+        <h4>Global Results View</h4>
+
+        <div class="chart-container">
+
+          <div class="bar-container">
+            <canvas id="groupedchart"> {{ groupedchart }}</canvas>
+          </div>
+
+        </div>
+
     
     </main>
     

@@ -29,6 +29,8 @@ const { text } = require('express');
 // Get All Results
 router.get('/results', (req, res, next) =>{
 
+    console.log("results route HIT: ");
+
     Test.findOne({}).then((results)=>{
         res.send(results);
     });

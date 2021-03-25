@@ -20,18 +20,23 @@
     
       <main>
 
-        <mat-grid-list cols="2" rowHeight="2:1">
+        <!-- <mat-grid-list cols="2" rowHeight="2:1">
           <mat-grid-tile>1</mat-grid-tile>
           <mat-grid-tile>2</mat-grid-tile>
           <mat-grid-tile>3</mat-grid-tile>
           <mat-grid-tile>4</mat-grid-tile>
-        </mat-grid-list>
+        </mat-grid-list> -->
 
-        <h2 class="title">Admin Dashboard</h2>
+        <h2 class="title">Admin A/B Testing Dashboard</h2>
 
+        <h4> Payment Method Results </h4>
         <div>
             <canvas id="canvas"> {{ chart }}</canvas>
         </div>
+
+        <div>
+          <canvas id="piechart"> {{ piechart }}</canvas>
+      </div>
     
     </main>
     

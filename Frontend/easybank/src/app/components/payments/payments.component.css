@@ -80,6 +80,25 @@ form{
     background: #fd4b4b;
 }
 
+/* default and hover color */
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    color:var(--dashboard-main);
+}
+
+/* focused color */
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color:var(--dashboard-text);
+}
+
+/* floating label color */
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-label { 
+    color:var(--dashboard-text); 
+}
+
+::ng-deep .mat-tab-label{
+    color:var(--dashboard-text); 
+}
+
 /* .mat-tab-group{
 
     background: #fd4b4b;

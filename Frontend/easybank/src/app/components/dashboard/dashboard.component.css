@@ -1,5 +1,9 @@
 @import url('../sidebar/sidebar.component.css');
 
+h1, h2, h3, h4, h5, p {
+    color: var(--dashboard-text);
+}
+
 .dashboard-container{
     font-size:20px;
 }
@@ -100,8 +104,8 @@ header{
     padding:0rem 1rem;
     position: fixed;
     z-index: var(--z-fixed);
-    background:#fff;
-    border-bottom: 1px solid var(--dashboard-background);
+    background:var(--dashboard-header);
+    border-bottom: 1px solid var(--dashboard-header-sep);
     transition: left 500ms;
 }
 
@@ -139,10 +143,14 @@ header{
 }
 
 main{
-    min-height: 90vh;
+    min-height: 100vh;
     margin-top:60px;
     padding:1rem 3.5rem;
     background: var(--dashboard-background);
+}
+
+main p {
+    color:var(--dashboard-text);
 }
 
 .title{
@@ -156,7 +164,7 @@ main{
 }
 
 .card{
-    background:rgb(216, 216, 216);
+    background: var(--dashboard-card);
     border-radius: 2px;
     box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
 }
@@ -170,12 +178,12 @@ main{
 
 .card-body span{
     font-size:3rem;
-    color:#777;
+    color:var(--dashboard-text);
     padding-right:3rem;
 }
 
 .card-body h5{
-    color:#777;
+    color:var(--dashboard-text);
     letter-spacing: .5px;
     font-size: 2.2rem;
 }
@@ -215,7 +223,7 @@ main{
 }
 
 .payment-card h3{
-    color:var(--dashboard-grey);
+    color:var(--dashboard-text);
     margin: 1rem;
 }
 
@@ -226,14 +234,15 @@ main{
 
 .payment-card thead {
 
-    background:#efefef;
+    background:var(--dashboard-tablehead);
     text-align: left;
 
 }
 
 th, td {
-    font-size: 18px;
+    font-size: 16px;
     padding: 1.2rem 1.5rem;
+    color: var(--dashboard-text);
 }
 
 td {
@@ -241,7 +250,7 @@ td {
 }
 
 tbody tr:nth-child(even){
-    background:#f9fafc;
+    
 }
 
 .payment {
@@ -296,7 +305,7 @@ tbody tr:nth-child(even){
 .info-single span{
 
     font-size: 3rem;
-    color:#777;
+    color:var(--dashboard-text);
     padding-right:2rem;
 
 }
@@ -309,6 +318,7 @@ tbody tr:nth-child(even){
 
 .info-single small {
     font-weight: 600;
+    color:var(--dashboard-text);
     /* color:rgb(58, 58, 58); */
 }
 

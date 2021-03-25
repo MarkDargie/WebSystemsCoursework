@@ -55,6 +55,7 @@ export class PaymentsComponent implements OnInit {
 
     this.transactionService.GetPendingPayments().subscribe((pendingPayments: transaction[])=>{
       this.pendingTransactions = pendingPayments;
+      console.log(pendingPayments);
     });
 
   }

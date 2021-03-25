@@ -220,7 +220,7 @@
                             <h3>Pending Payments</h3>
             
                             <div class="table-container">
-                                <table border="0">
+                                <table border="0" *ngFor="let pending of pendingTransactions">
                                     <thead>
                                         <tr>
                                             <th>Payment</th>
@@ -233,8 +233,8 @@
                                     <tbody>
                 
                                         <tr>
-                                            <td>Received Payment</td>
-                                            <td>£100</td>
+                                            <td>{{pending._id}}</td>
+                                            <td>£{{pending.amount}}</td>
                                             <td>25/02/2021</td>
                                             <td class="images">
                                                 <div class="image-1"></div>
@@ -248,7 +248,7 @@
                                             </td>
                                         </tr>
                                         <div class="button-container">
-                                            <button class="pending-btn"> Confirm </button>
+                                            <button class="pending-btn" (click)="OnPaymentConfirm(pending._id, pending.from)"> Confirm </button>
                                             <button class="pending-btn reject"> Reject </button>
                                         </div>
 

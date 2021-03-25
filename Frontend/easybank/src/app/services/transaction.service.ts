@@ -71,7 +71,17 @@ export class TransactionService {
 
     const headers = new HttpHeaders({ 'Content-type': 'application/json' });
 
+    console.log("REQ OBJECT: ", reqObject);
+
     return this.http.post(`${environment.API}/transactions/confirm`, reqObject, {headers:headers});
+
+  }
+
+  rejectPending(reqObject: object){
+
+    const headers = new HttpHeaders({ 'Content-type': 'application/json' });
+
+    return this.http.post(`${environment.API}/transactions/reject`, reqObject, {headers:headers});
 
   }
 

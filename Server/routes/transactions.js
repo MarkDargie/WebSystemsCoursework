@@ -111,8 +111,11 @@ router.post('/express', passport.authenticate('jwt', {session: false }), (req, r
 // POST: Confirm Specified pending secure payments
 router.post('/confirm', passport.authenticate('jwt', {session: false }),(req,res,next)=>{
 
+    console.log("confirm route hit: ", req.body.id, req.body.from);
+
+
     try{
-        Transaction.findOne({_id: req.body.id, from: req.user.username}).then((transaction)=>{
+        Transaction.findOne({_id: req.body.id, from: req.body.from}).then((transaction)=>{
             
             if(!transaction){
                 res.sendStatus(422);
@@ -132,12 +135,28 @@ router.post('/confirm', passport.authenticate('jwt', {session: false }),(req,res
             );
             transaction.status = "confirmed";
             transaction.save();
+            console.log(transaction);
         });
     }
     catch(error){
         console.log(erorr);
     }
 });
+
+router.post('/reject', passport.authenticate('jwt', {session: false }), (req,res, next)=>{
+
+    try{
+        Transaction.findOneAndRemove({_id: req.body.id}, (error, response)=>{
+            if(error) res.status(500);
+        });
+
+        res.status(200);
+    }
+    catch(error){
+        console.log(erorr);
+    }
+
+})
 
 // GET: all transactions for authenticated user
 router.get('/history', passport.authenticate('jwt', { session: false }), (req, res, next)=>{
@@ -170,7 +189,7 @@ router.get('/sent', passport.authenticate('jwt', { session: false }), (req, res,
 
 // GET: all pending payments for authenticatd user
 router.get('/pending', passport.authenticate('jwt', {session: false }), (req, res, next)=>{
-    Transaction.find({to: req.user.username}).then((transactions)=>{
+    Transaction.find({to: req.user.username, status: "pending"}).then((transactions)=>{
         res.send(transactions);
     }).catch((err)=>{
         next(err);

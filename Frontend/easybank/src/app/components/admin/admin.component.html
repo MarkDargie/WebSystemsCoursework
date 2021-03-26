@@ -41,6 +41,13 @@
           </div>
         </div>
 
+        <p class="chart-text">When using the EasyBank service dashboard, users are provided with the option
+          to tranfer payments with two methods, Secure Transfer and Express Transfer. Secure tranfers require 
+          various fields to be provided in order to make the request, such as usernames, emails and account secure codes. 
+          Secure transfers will also not be processed until the recipient has confirmed the transaction. Conversly, Express payments 
+          only require the recipients username and the amount, and will be automatically processed.
+        </p>
+
         <h4> Transfer Statement Method Results </h4>
         <div class="chart-container">
 
@@ -50,15 +57,29 @@
           
         </div>
 
-        <h4>Global Results View</h4>
+        <p class="chart-text">
+          Additioanlly, when users of the dashboard are viewing their transaction history thorugh the payments section. 
+          An option for receiving their transaction history statement PDF is presented to them and users can decide if they would like to 
+          receive this directly through the dashboard, or sent via email.
+        </p>
+
+        <h4>Dashboard Theme Preferences</h4>
 
         <div class="chart-container">
 
-          <div class="bar-container">
-            <canvas id="groupedchart"> {{ groupedchart }}</canvas>
+          <div class="pie-container">
+            <canvas id="themechart"> {{ themechart }}</canvas>
           </div>
 
         </div>
+
+        <p class="chart-text">
+          When using the Dashboard, users can direct to the settings page to configure and modify their profile account details, preferences and security information. 
+          Once of these options, provides users with the option to select either a light or dark dashboard theme, which can be changed at any time.
+        </p>
+
+        <p>Reset A/B Testing Results: </p>
+        <button class="admin-button">Reset Statistics</button>
 
     
     </main>

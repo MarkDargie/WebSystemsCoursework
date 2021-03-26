@@ -1,6 +1,12 @@
 /* @import url('../login//login.component.css'); */
 @import url('../dashboard/dashboard.component.css');
 
+
+main h4{
+  color:var(--dashboard-text);
+  font-weight: 500;
+}
+
 .chart-container{
 
   display: flex;
@@ -23,13 +29,32 @@
 
 }
 
-#piechart{
-
-  /* width:100%; */
-
+.chart-text{
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  padding:1rem;
+  color:var(--dashboard-text);
 }
 
 .bar-container{
   width:100%;
   height:350px;
+}
+
+.admin-button{
+  display: block;
+  width:30%;
+  min-width: 200px;
+  background: var(--dashboard-main);
+  color: white;
+  /* font-weight: 700; */
+  border: none;
+  padding:1rem;
+  border-radius: 8px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  margin-top:10px;
 }

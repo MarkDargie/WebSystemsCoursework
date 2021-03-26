@@ -1,6 +1,7 @@
 const {mongoose} = require('../db/mongoose');
 const router = require('express').Router(); 
 const {Test} = require('../db/models');
+const passport = require('passport');
 
 /**
  * GET: /logs/results
@@ -24,13 +25,15 @@ router.get('/results', (req, res, next) =>{
  * @name logs/reset
  * @memberof routes/logs
  * @param path Express Route Path
- * @returns Status 200 OK and removes all recorded test results
+ * @returns Return response and removes all recorded test results. Returns 401 is unathorised
  */
-router.post('/reset', (req, res, next)=>{
-    Test.findOneAndRemove({}).then((response)=>{
-        res.status(200);
+router.post('/reset', passport.authenticate('jwt', {session: false }), (req, res, next)=>{
+
+    Test.findOneAndUpdate({},{securepayments: 25, expresspayments: 14,
+    appstatements: 12, externalstatements: 29, lighttheme: 3, darktheme: 8}).then((response)=>{
         res.send(response);
-    })
+    });
+
 });
 
 /**

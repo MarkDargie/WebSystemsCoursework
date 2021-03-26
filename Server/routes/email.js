@@ -19,8 +19,8 @@ dotenv.config();
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'easybankmailer@gmail.com',
-        pass: 'Emmalexi1997'
+        user: process.env.EMAIL_ID,
+        pass: process.env.EMAIL_PASSWORD
     }
 });
 

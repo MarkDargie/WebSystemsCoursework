@@ -2,6 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const passport = require('passport');
 const {mongoose} = require('./db/mongoose');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 /**
  * Create Const Variables

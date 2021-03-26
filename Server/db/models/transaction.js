@@ -6,17 +6,19 @@ const mongoose = require('mongoose');
  * @param to recipient user ID
  * @param from sender user ID
  * @param amount transaction value
+ * @param method payment transaction method
+ * @param status transaction status
  * @param date date of transaction
 */ 
 const TransactionSchema = new mongoose.Schema({
 
     id:{type: mongoose.Schema.Types.ObjectId},
-    to: {type: String},
-    from: {type: String},
-    amount: {type: Number},
-    method: {type: String},
-    status: {type: String},
-    date: { type: String },
+    to: {type: String , required: true, trim: true},
+    from: {type: String, required: true, trim: true},
+    amount: {type: Number, required: true},
+    method: {type: String, required: true, trim: true},
+    status: {type: String, required: true, trim: true},
+    date: { type: String, required: true, trim: true },
     timestamp: { type: Date, default: Date.now}
 
 });

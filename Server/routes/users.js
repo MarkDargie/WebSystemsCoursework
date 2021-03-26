@@ -152,10 +152,60 @@ router.get('/profile', passport.authenticate('jwt', { session: false }), (req, r
     res.send(req.user);
 });
 
+// update user details
+router.post('/updatedetails', passport.authenticate('jwt', { session: false }), (req, res, next) => {
+    try {
+
+        User.findOneAndUpdate({username: req.user.username}, {username: req.body.username, email: req.body.email}).then((user)=>{
+            res.status(200);
+            res.send(user);
+            user.save();
+        });
+
+    }
+    catch(error){
+        console.log(erorr);
+    }
+});
+
+router.post('/updatesecurity', passport.authenticate('jwt', { session: false }), (req, res, next)=> {
+
+    console.log("security route hit");
+    try{
+        User.findOne({username: req.user.username}, function (err, user) {
+            if(!user){
+                return res.status(422);
+            }
+    
+            const oldpassword = utils.validPassword(req.body.oldpassword, user.hash, user.salt);
+    
+            if(oldpassword){
+    
+                const saltHash = utils.genPassword(req.body.newpassword);
+                const salt = saltHash.salt;
+                const hash = saltHash.hash;
+    
+                User.findOneAndUpdate({username: req.user.username}, {hash: hash, salt: salt}, (error, response)=>{
+                    if(error) res.status(404);
+                    res.send(response);
+                    res.status(200);
+                });
+    
+            } else {
+                res.status(422);
+            }
+        });
+    }
+    catch(error){
+        console.log(erorr);
+    }
+
+});
+
 //delete user
 router.post('/remove', passport.authenticate('jwt', {session: false}), (req, res) => {
 
-    User.findOneAndRemove({username: req.body.username})
+    User.findOneAndRemove({username: req.user.username})
     .then((user)=>{
         
         if (!user) {

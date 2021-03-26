@@ -134,7 +134,7 @@ export class AuthenticateService {
 
     const headers = new HttpHeaders({ 'Content-type': 'application/json' });
 
-    return this.http.get(`${environment.API}/users/updatedetails`, {headers: headers});
+    return this.http.post(`${environment.API}/users/updatedetails`, reqObject, {headers: headers});
 
   }
 
@@ -142,7 +142,7 @@ export class AuthenticateService {
 
     const headers = new HttpHeaders({ 'Content-type': 'application/json' });
 
-    return this.http.get(`${environment.API}/users/updatesecurity`, {headers: headers});
+    return this.http.post(`${environment.API}/users/updatesecurity`, reqObject, {headers: headers});
 
   }
 

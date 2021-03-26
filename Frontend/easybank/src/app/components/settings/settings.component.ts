@@ -67,6 +67,8 @@ export class SettingsComponent implements OnInit {
       email: email
     }
 
+    console.log(reqObject);
+
     this.authenticateService.UpdateUserDetails(reqObject).subscribe();
 
   }

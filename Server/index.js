@@ -13,7 +13,7 @@ dotenv.config();
  * @param path setting variable for file path
 */ 
 const app = express();
-const port = 3000;
+const port = procces.env.PORT;
 const path = require('path');
 
 /**

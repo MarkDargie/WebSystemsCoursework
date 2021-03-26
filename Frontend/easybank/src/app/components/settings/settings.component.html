@@ -76,14 +76,14 @@
         </mat-tab>
         <!--Account Payment Cards Tab-->
         <mat-tab label="Payment Cards">
-          <h3>Payment Methods</h3>
+          <h3 class="pay-head">Payment Methods</h3>
           <div class="cards-section">
             <div class="card" *ngFor="let card of user.paymentmethods">
               <div class="card-body">
-                <span class="ti-credit-card"></span>
+                <span><i class="fab fa-cc-visa"></i></span>
                 <div>
                   <h5>{{ card.name }}</h5>
-                  <h4>***********</h4>
+                  <h4>****** ******</h4>
                 </div>
               </div>
             </div>

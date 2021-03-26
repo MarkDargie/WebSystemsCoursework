@@ -1,5 +1,4 @@
 <div class="dashboard-container">
-  <input type="checkbox" id="sidebar-toggle" />
 
   <app-sidebar></app-sidebar>
 
@@ -19,40 +18,40 @@
       <div class="cards-section">
         <div class="card">
           <div class="card-body">
-            <span><i class="fas fa-piggy-bank"></i></span>
+            <span><i class="fas fa-piggy-bank pink"></i></span>
             <div>
               <h5>Account Balance</h5>
               <h4>£{{ user.balance }}.00</h4>
             </div>
           </div>
           <div class="card-footer">
-            <a href="" routerLink="/dashboard/payments">View All</a>
+            <a href="" routerLink="/dashboard/payments">View All Payments</a>
           </div>
         </div>
 
         <div class="card">
           <div class="card-body">
-            <span><i class="fas fa-sync-alt"></i></span>
+            <span><i class="fas fa-hand-holding-usd green"></i></span>
             <div>
               <h5>Payments Sent</h5>
               <h4>{{ sent.length }}</h4>
             </div>
           </div>
           <div class="card-footer">
-            <a href="" routerLink="/dashboard/payments">View All</a>
+            <a href="" routerLink="/dashboard/payments">View All Payments</a>
           </div>
         </div>
 
         <div class="card">
           <div class="card-body">
-            <span><i class="fas fa-sync-alt"></i></span>
+            <span><i class="fas fa-comment-dollar orange"></i></span>
             <div>
               <h5>Pending Payments</h5>
               <h4>{{ pending.length }}</h4>
             </div>
           </div>
           <div class="card-footer">
-            <a href="" routerLink="/dashboard/payments">View All</a>
+            <a href="" routerLink="/dashboard/payments">View All Payments</a>
           </div>
         </div>
       </div>
@@ -82,7 +81,10 @@
                     <td>{{ payment.from }}</td>
                     <td>{{ payment.to }}</td>
                     <td>
-                      <span class="payment success">
+                      <span class="payment success" *ngIf="payment.status == confirmed">
+                        {{ payment.status }}
+                      </span>
+                      <span class="payment warning" *ngIf="payment.status == pendingP">
                         {{ payment.status }}
                       </span>
                     </td>
@@ -95,21 +97,21 @@
           <div class="information">
             <div class="info-card">
               <div class="info-single">
-                <span><i class="fas fa-user-friends"></i></span>
+                <span><i class="fas fa-sync-alt"></i></span>
                 <div>
                   <h5>{{ pending.length }}</h5>
                   <small>Payments Pending</small>
                 </div>
               </div>
               <div class="info-single">
-                <span><i class="fas fa-sync-alt"></i></span>
+                <span><i class="fas fa-paper-plane"></i></span>
                 <div>
                   <h5>{{ sent.length }}</h5>
                   <small>Payments Sent</small>
                 </div>
               </div>
               <div class="info-single">
-                <span><i class="fas fa-sync-alt"></i></span>
+                <span><i class="fas fa-comments-dollar"></i></span>
                 <div>
                   <h5>{{ recieved.length }}</h5>
                   <small>Payments Received</small>

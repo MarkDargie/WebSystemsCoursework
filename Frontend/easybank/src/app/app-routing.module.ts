@@ -21,7 +21,7 @@ const routes: Routes = [
   {path: 'dashboard/settings', component:SettingsComponent, canActivate:[AuthGuard]},
   {path: 'dashboard/transfer', component:TransferComponent, canActivate:[AuthGuard]},
   {path: 'dashboard/payments', component:PaymentsComponent, canActivate:[AuthGuard]},
-  {path: 'dashboard/admin', component:AdminComponent, canActivate:[AuthGuard]} //change this back to admin hguard
+  {path: 'dashboard/admin', component:AdminComponent, canActivate:[AdminGuard]}
 ];
 
 @NgModule({

@@ -45,10 +45,13 @@
                                             <td>{{sent.date}}</td>
                                             <td>{{sent.to}}</td>
                                             <td>
-                                                <span class="payment success uppercase">
-                                                    {{sent.status}}
+                                                <span class="payment success" *ngIf="sent.status == confirmed">
+                                                  {{ sent.status }}
                                                 </span>
-                                            </td>
+                                                <span class="payment warning" *ngIf="sent.status == pendingP">
+                                                  {{ sent.status }}
+                                                </span>
+                                              </td>
                                         </tr>
                                         
                 
@@ -91,10 +94,13 @@
                                             <td>{{received.date}}</td>
                                             <td>{{received.from}}</td>
                                             <td>
-                                                <span class="payment success uppercase">
-                                                    {{received.status}}
+                                                <span class="payment success" *ngIf="received.status == confirmed">
+                                                  {{ received.status }}
                                                 </span>
-                                            </td>
+                                                <span class="payment warning" *ngIf="received.status == pendingP">
+                                                  {{ received.status }}
+                                                </span>
+                                              </td>
                                         </tr>
                                         
                                         

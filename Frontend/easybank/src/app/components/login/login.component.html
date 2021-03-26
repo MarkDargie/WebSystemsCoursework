@@ -27,8 +27,6 @@
                 <mat-label>Enter your password</mat-label>
                 <input matInput [type]="hide ? 'password' : 'text'" name="password" ngModel required>
                 
-                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                </button>
                 <mat-error *ngIf="formfield.invalid">{{getErrorMessage()}}</mat-error>
               </mat-form-field>
 

@@ -369,7 +369,6 @@ form input[type="submit"]:hover {
   color: var(--light-blue);
 }
 
-/* Tablet width < px */
 @media screen and (max-width: 900px) {
   #features {
     height: 100%;
@@ -385,12 +384,8 @@ form input[type="submit"]:hover {
   }
 }
 
-/* MOBILE PHONE WIDTH 600PX */
 @media screen and (max-width: 600px) {
-  /* Header section */
-  header {
-    /* height: 9rem; */
-  }
+
   .logo {
     margin: 0;
   }

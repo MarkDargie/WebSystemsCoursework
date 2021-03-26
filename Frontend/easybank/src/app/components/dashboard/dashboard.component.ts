@@ -34,6 +34,9 @@ export class DashboardComponent implements OnInit {
   sent: transaction[];
   recieved: transaction[];
 
+  confirmed = "confirmed";
+  pendingP = "pending";
+
   /**
    * Called when Component is Initialised
    */

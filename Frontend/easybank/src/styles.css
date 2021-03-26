@@ -14,7 +14,7 @@
     --dashboard-main: #0088c7;
     --dashboard-dark: #10131b;
     --dashboard-grey: #8390a2;
-    --dashboard-background:#f1f1f1;
+    --dashboard-background:#f7f7f7;
     --dashboard-text:#0e0e0e;
     --dashboard-sidebar:#0088c7;
     --dashboard-text:#070707;
@@ -22,6 +22,9 @@
     --dashboard-tablehead:#dddddd;
     --dashboard-header: #f1f1f1f1;
     --dashboard-header-sep: #d6d6d6f1;
+    --dashboard-pink: #e977d6;
+    --dashboard-green: #61d88f;
+    --dashboard-orange: #da854c;
 
     --body-font: "Open Sans", sans-serif;
     --biggest-font-size: 2.25rem;

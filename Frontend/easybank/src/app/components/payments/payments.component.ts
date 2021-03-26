@@ -42,6 +42,9 @@ export class PaymentsComponent implements OnInit {
 
   selectedValue: string;
 
+  confirmed = "confirmed";
+  pendingP = "pending";
+
   /**
    * Get Error Message for Validation
    * @returns Error Message

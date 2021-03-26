@@ -8,7 +8,7 @@ export const light: Theme = {
     properties: {
       "--dashboard-main": "#0088c7",
       "--dashboard-sidebar": "#0088c7",
-      "--dashboard-background":"#f1f1f1",
+      "--dashboard-background":"#f7f7f7",
       "--dashboard-text": "#070707",
       "--dashboard-card": "#ffffff",
       "--dashboard-tablehead":"#dddddd",

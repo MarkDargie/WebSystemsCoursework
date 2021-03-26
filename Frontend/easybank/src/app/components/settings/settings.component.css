@@ -12,14 +12,20 @@
   font-size: 1.5rem;
 }
 
-main h2 {
+main h2, h3 {
   font-size: 2rem;
   font-weight: 500;
 }
 
+.pay-head{
+  font-weight: 500;
+  margin-top:2rem;
+}
+
 .login-section h2,
 h5,
-h4 {
+h4,
+h3 {
   margin-bottom: 1rem;
   font-weight: 500;
 }
@@ -30,7 +36,13 @@ h4 {
 
 .card-body h5,
 h4 {
-  font-weight: 500;
+  font-weight: 400;
+  font-size: 2rem;
+}
+
+.card-body span{
+  font-size: 5.5rem;
+  color:var(--dashboard-main);
 }
 
 main h3 {

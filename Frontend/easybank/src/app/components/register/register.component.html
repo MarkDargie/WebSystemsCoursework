@@ -32,16 +32,12 @@
                 <mat-label>Enter Your Password</mat-label>
                 <input matInput [type]="hide ? 'password' : 'text'" name="password" ngModel required>
                 
-                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" minlength=6>
-                </button>
                 <mat-error *ngIf="password.invalid">{{getPassErrorMessage()}}</mat-error>
               </mat-form-field>
               <mat-form-field appearance="outline">
                 <mat-label>Confirm Password</mat-label>
                 <input matInput [type]="hide ? 'password' : 'text'" name="passwordconf" ngModel required>
                 
-                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" minlength=6>
-                </button>
                 <mat-error *ngIf="password.invalid">{{getPassErrorMessage()}}</mat-error>
               </mat-form-field>
               <mat-form-field appearance="outline">

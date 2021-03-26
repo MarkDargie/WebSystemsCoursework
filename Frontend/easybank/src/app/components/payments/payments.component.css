@@ -1,102 +1,103 @@
-@import url('../dashboard/dashboard.component.css');
-@import url('../login/login.component.css');
+@import url("../dashboard/dashboard.component.css");
+@import url("../login/login.component.css");
 
-.request-form-container{
-
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top:5rem;
-
+.request-form-container {
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5rem;
 }
 
-.request-form-container p{
-    font-size: 1.2rem;
-    /* padding:1rem; */
-    margin-bottom: 1.5rem;
+.request-form-container p {
+  font-size: 1.2rem;
+  /* padding:1rem; */
+  margin-bottom: 1.5rem;
 }
 
-main h5{
-    margin-bottom: 10px;
+main h5 {
+  margin-bottom: 10px;
+  font-weight: 500;
 }
 
-main h2{
-
-    font-size: 2rem;
-    margin-bottom: 10px;
-
+main h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  font-weight: 500;
 }
 
 main h3 {
-    margin-bottom:2rem;
+  margin-bottom: 2rem;
+  font-weight: 500;
 }
 
-form{
-    margin-bottom: 8rem;
+form {
+  margin-bottom: 8rem;
 }
 
-.input-container{
-    margin-bottom: 2rem;
+.input-container {
+  margin-bottom: 2rem;
 }
 
-.login-section{
-    margin-bottom: 20px;
+.login-section {
+  margin-bottom: 20px;
 }
 
-.mat-form-field{
-    width:100%;
-    font-size: 15px;
+.mat-form-field {
+  width: 100%;
+  font-size: 15px;
 }
 
-.code-container{
-    display: flex;
-    justify-content: space-between;
+.code-container {
+  display: flex;
+  justify-content: space-between;
 }
 
-.mat-form-field.code{
-    width:45%;
+.mat-form-field.code {
+  width: 45%;
 }
 
-.button-container{
-    display: flex;
-    flex-direction: row;
+.button-container {
+  display: flex;
+  flex-direction: row;
 }
 
 .pending-btn {
-    display: block;
-    background: var(--dashboard-main);
-    color: white;
-    border: none;
-    padding:1.5rem;
-    border-radius: 2px;
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    cursor: pointer;
-    margin:15px;
+  display: block;
+  background: var(--dashboard-main);
+  color: white;
+  border: none;
+  padding: 1.5rem;
+  border-radius: 2px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  margin: 15px;
 }
 
-.reject{
-    background: #fd4b4b;
+.reject {
+  background: #fd4b4b;
 }
 
 /* default and hover color */
 ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
-    color:var(--dashboard-main);
+  color: var(--dashboard-main);
 }
 
 /* focused color */
-::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
-    color:var(--dashboard-text);
+::ng-deep
+  .mat-form-field-appearance-outline.mat-focused
+  .mat-form-field-outline-thick {
+  color: var(--dashboard-text);
 }
 
 /* floating label color */
-::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-label { 
-    color:var(--dashboard-text); 
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-label {
+  color: var(--dashboard-text);
 }
 
-::ng-deep .mat-tab-label{
-    color:var(--dashboard-text); 
+::ng-deep .mat-tab-label {
+  color: var(--dashboard-text);
 }
 
 /* .mat-tab-group{

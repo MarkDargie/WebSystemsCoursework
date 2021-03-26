@@ -1,183 +1,211 @@
 <div class="dashboard-container">
+  <app-sidebar></app-sidebar>
 
-    <!-- <input type="checkbox" id="sidebar-toggle"> -->
-    <app-sidebar></app-sidebar>
-    
-    <div class="dashboard-content">
-      <header>
-        <div class="search-container">
-        </div>
-    
-        <div class="icons">
-          <div></div>
-        </div>
-      </header>
-    
-      <main>
-        <h2 class="title">Dashboard Settings</h2>
+  <div class="dashboard-content">
+    <header>
+      <div class="search-container"></div>
 
-        <mat-tab-group>
-          <!--Account Settings Tab-->
-          <mat-tab label="Account Settings">
+      <div class="icons">
+        <div></div>
+      </div>
+    </header>
 
-            <div class="settings-container">
-              <form class="registerform" (ngSubmit)="onSettingsFormSubmit()" #settingsform="ngForm">
-                <section class="login-section">
-                    <h2>Update Account Details</h2>
-                </section>
-                <p>Update Account Username</p>
-                <mat-form-field appearance="outline">
-                  <mat-label>Update Username</mat-label>
-                  <input matInput name="username" ngModel required>
-                  <mat-error *ngIf="formfield.invalid">{{getErrorMessage()}}</mat-error>
-                </mat-form-field>
-                <p>Update Account Email</p>
-                <mat-form-field appearance="outline">
-                  <mat-label>Update Email</mat-label>
-                  <input matInput name="email" ngModel required>
-                  <mat-error *ngIf="formfield.invalid">{{getErrorMessage()}}</mat-error>
-                </mat-form-field>
+    <main>
+      <h2 class="title">Dashboard Settings</h2>
 
-                <button class="login-button" type="submit">Update</button>
+      <mat-tab-group>
+        <!--Account Settings Tab-->
+        <mat-tab label="Account Settings">
+          <div class="settings-container">
+            <form
+              class="registerform"
+              (ngSubmit)="onSettingsFormSubmit()"
+              #settingsform="ngForm"
+            >
+              <section class="login-section">
+                <h2>Update Account Details</h2>
+              </section>
+              <p>Update Account Username</p>
+              <mat-form-field appearance="outline">
+                <mat-label>Update Username</mat-label>
+                <input matInput name="username" ngModel required />
+                <mat-error *ngIf="formfield.invalid">{{
+                  getErrorMessage()
+                }}</mat-error>
+              </mat-form-field>
+              <p>Update Account Email</p>
+              <mat-form-field appearance="outline">
+                <mat-label>Update Email</mat-label>
+                <input matInput name="email" ngModel required />
+                <mat-error *ngIf="formfield.invalid">{{
+                  getErrorMessage()
+                }}</mat-error>
+              </mat-form-field>
+
+              <button class="login-button" type="submit">Update</button>
             </form>
 
-            <form class="registerform" (ngSubmit)="onThemeFormSubmit()" #themeform="ngForm">
+            <form
+              class="registerform"
+              (ngSubmit)="onThemeFormSubmit()"
+              #themeform="ngForm"
+            >
               <section class="login-section">
-                  <h2>Update Preferences</h2>
+                <h2>Update Preferences</h2>
               </section>
               <p>Dashboard Theme Preference</p>
               <mat-form-field appearance="outline">
                 <mat-label>Theme Setting</mat-label>
-                <mat-select [(ngModel)]="selectedValue" name="theme" ngModel required>
+                <mat-select
+                  [(ngModel)]="selectedValue"
+                  name="theme"
+                  ngModel
+                  required
+                >
                   <mat-option value="light">light</mat-option>
                   <mat-option value="dark">dark</mat-option>
                 </mat-select>
-                <mat-error *ngIf="formfield.invalid">{{getErrorMessage()}}</mat-error>
+                <mat-error *ngIf="formfield.invalid">{{
+                  getErrorMessage()
+                }}</mat-error>
               </mat-form-field>
 
               <button class="login-button" type="submit">Update</button>
-          </form>
-            </div>
-          </mat-tab>
-          <!--Account Payment Cards Tab-->
-          <mat-tab label="Payment Cards">
-             
-
-
-              <h3>Payment Methods</h3>
-              <div class="cards-section">
-      
-      
-                  <div class="card" *ngFor="let card of user.paymentmethods">
-                      <div class="card-body">
-                          <span class = "ti-credit-card"></span>
-                          <div>
-                              <h5>{{card.name}}</h5>
-                              <h4>***********</h4>
-                          </div>
-                      </div>
-                  </div>
-      
-              </div>
-
-              <div class="settings-container">
-
-                <div class="payment-form-container">
-                  <form class="registerform" (ngSubmit)="OnCardSubmit()" #cardform="ngForm">
-                    <section class="login-section">
-                        <h2>Add Payment Method</h2>
-                    </section>
-                    <mat-form-field appearance="outline">
-                      <mat-label>Card Name</mat-label>
-                      <input matInput name="name" ngModel required>
-                      <mat-error *ngIf="formfield.invalid">{{getErrorMessage()}}</mat-error>
-                    </mat-form-field>
-                    <mat-form-field appearance="outline">
-                      <mat-label>Card Number</mat-label>
-                      <input matInput name="card" ngModel required>
-                      <mat-error *ngIf="formfield.invalid">{{getErrorMessage()}}</mat-error>
-                    </mat-form-field>
-                    <mat-form-field appearance="outline">
-                      <mat-label>Address</mat-label>
-                      <input matInput name="address" ngModel required>
-                      <mat-error *ngIf="formfield.invalid">{{getErrorMessage()}}</mat-error>
-                    </mat-form-field>
-                    <mat-form-field appearance="outline">
-                      <mat-label>Name on Card</mat-label>
-                      <input matInput name="holder" ngModel required>
-                      <mat-error *ngIf="formfield.invalid">{{getErrorMessage()}}</mat-error>
-                    </mat-form-field>
-                    <div class="code-container">
-                      <mat-form-field class="code" appearance="outline">
-                        <mat-label>CVV</mat-label>
-                        <input matInput [type]="hide ? 'password' : 'number'" name="cvv" type="number" ngModel required maxlength=3>
-                        <mat-error *ngIf="formfield.invalid">{{getErrorMessage()}}</mat-error>
-                      </mat-form-field>
-                    </div>
-                    <p>Add this card to you EasyBank Account</p>
-  
-                    <button class="login-button" type="submit">Confirm</button>
-                </form>
+            </form>
+          </div>
+        </mat-tab>
+        <!--Account Payment Cards Tab-->
+        <mat-tab label="Payment Cards">
+          <h3>Payment Methods</h3>
+          <div class="cards-section">
+            <div class="card" *ngFor="let card of user.paymentmethods">
+              <div class="card-body">
+                <span class="ti-credit-card"></span>
+                <div>
+                  <h5>{{ card.name }}</h5>
+                  <h4>***********</h4>
                 </div>
-
               </div>
-
-            
-            
-            </mat-tab>
-          
-          
-          <!--Account Security Settings Tab-->
-          <mat-tab label="Security Settings">
-             
-            <div class="settings-container">
-
-              <!--SECURITY SETTINGS-->
-              <form class="registerform" (ngSubmit)="onSecurityFormSubmit() "#securityform="ngForm">
-                  <section class="login-section">
-                      <h2>Security Settings</h2>
-                  </section>
-                  <p>Update Your Account Password</p>
-                  <mat-form-field appearance="outline">
-                    <mat-label>Enter Current Password</mat-label>
-                    <input matInput [type]="hide ? 'password' : 'text'" name="oldpassword" ngModel required>
-                    
-                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" minlength=6>
-                    </button>
-                    <mat-error *ngIf="password.invalid">{{getPassErrorMessage()}}</mat-error>
-                  </mat-form-field>
-                  <mat-form-field appearance="outline">
-                    <mat-label>Enter New Password</mat-label>
-                    <input matInput [type]="hide ? 'password' : 'text'" name="newpassword" ngModel required>
-                    
-                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" minlength=6>
-                    </button>
-                    <mat-error *ngIf="password.invalid">{{getPassErrorMessage()}}</mat-error>
-                  </mat-form-field>
-
-                  <!-- <mat-form-field appearance="outline">
-                    <mat-label>Secure Code</mat-label>
-                    <input matInput [type]="hide ? 'password' : 'number'" name="securecode" ngModel required maxlength=4>
-                    <mat-error *ngIf="formfield.invalid">{{getErrorMessage()}}</mat-error>
-                  </mat-form-field> -->
-  
-                  <button class="login-button" type="submit">Update</button>
-              </form>
-              <p>Delete your EasyBank Account:</p>
-              <button class="login-button" (click)="OnDeleteAccount()" type="submit">Delete Account</button>
-  
+            </div>
           </div>
 
+          <div class="settings-container">
+            <div class="payment-form-container">
+              <form
+                class="registerform"
+                (ngSubmit)="OnCardSubmit()"
+                #cardform="ngForm"
+              >
+                <section class="login-section">
+                  <h2>Add Payment Method</h2>
+                </section>
+                <mat-form-field appearance="outline">
+                  <mat-label>Card Name</mat-label>
+                  <input matInput name="name" ngModel required />
+                  <mat-error *ngIf="formfield.invalid">{{
+                    getErrorMessage()
+                  }}</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Card Number</mat-label>
+                  <input matInput name="card" ngModel required />
+                  <mat-error *ngIf="formfield.invalid">{{
+                    getErrorMessage()
+                  }}</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Address</mat-label>
+                  <input matInput name="address" ngModel required />
+                  <mat-error *ngIf="formfield.invalid">{{
+                    getErrorMessage()
+                  }}</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Name on Card</mat-label>
+                  <input matInput name="holder" ngModel required />
+                  <mat-error *ngIf="formfield.invalid">{{
+                    getErrorMessage()
+                  }}</mat-error>
+                </mat-form-field>
+                <div class="code-container">
+                  <mat-form-field class="code" appearance="outline">
+                    <mat-label>CVV</mat-label>
+                    <input
+                      matInput
+                      [type]="hide ? 'password' : 'number'"
+                      name="cvv"
+                      type="number"
+                      ngModel
+                      required
+                      maxlength="3"
+                    />
+                    <mat-error *ngIf="formfield.invalid">{{
+                      getErrorMessage()
+                    }}</mat-error>
+                  </mat-form-field>
+                </div>
+                <p>Add this card to you EasyBank Account</p>
 
-            </mat-tab>
-        </mat-tab-group>
+                <button class="login-button" type="submit">Confirm</button>
+              </form>
+            </div>
+          </div>
+        </mat-tab>
 
-    
-    
+        <!--Account Security Settings Tab-->
+        <mat-tab label="Security Settings">
+          <div class="settings-container">
+            <!--SECURITY SETTINGS-->
+            <form
+              class="registerform"
+              (ngSubmit)="onSecurityFormSubmit()"
+              #securityform="ngForm"
+            >
+              <section class="login-section">
+                <h2>Security Settings</h2>
+              </section>
+              <p>Update Your Account Password</p>
+              <mat-form-field appearance="outline">
+                <mat-label>Enter Current Password</mat-label>
+                <input
+                  matInput
+                  [type]="hide ? 'password' : 'text'"
+                  name="oldpassword"
+                  ngModel
+                  required
+                />
+
+                <mat-error *ngIf="password.invalid">{{
+                  getPassErrorMessage()
+                }}</mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Enter New Password</mat-label>
+                <input
+                  matInput
+                  [type]="hide ? 'password' : 'text'"
+                  name="newpassword"
+                  ngModel
+                  required
+                />
+                <mat-error *ngIf="password.invalid">{{
+                  getPassErrorMessage()
+                }}</mat-error>
+              </mat-form-field>
+
+              <button class="login-button" type="submit">Update</button>
+            </form>
+            <p>Delete your EasyBank Account:</p>
+            <button
+              class="login-button"
+              (click)="OnDeleteAccount()"
+              type="submit"
+            >
+              Delete Account
+            </button>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
     </main>
-    
-    </div>
-    
-    
-    
-    </div>
+  </div>
+</div>

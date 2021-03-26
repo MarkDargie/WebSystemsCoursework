@@ -9,7 +9,13 @@ const passport = require('passport');
 
 dotenv.config();
 
-// Create NodeMailer Transporter
+/**
+ * Configure NodeMailer Transporter Object Settings
+ * This is configured with GMAIL Account
+ * @param user email account adress
+ * @param pass email account password
+ * @param service Mail Sending Service
+ */
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -18,7 +24,9 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-// verify connection configuration
+/**
+ * Verify The Transporter Connection:
+ */
 transporter.verify(function(error, success) {
     if (error) {
       console.log(error);
@@ -27,6 +35,11 @@ transporter.verify(function(error, success) {
     }
 });
 
+/**
+ * Configure Storage Options for Multer FIle Storage
+ * @param destination File storage directory
+ * @param filename File naming system
+ */
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
       cb(null, './uploads')
@@ -35,19 +48,27 @@ var storage = multer.diskStorage({
       cb(null, file.fieldname + Date.now() + '.pdf');
     }
 });
-   
+
+/**
+ * Set Multer Upload with configured storage settings
+ */
 var upload = multer({ storage: storage });
 
+/**
+ * POST: /email/send
+ * This route will send email via NodeMailer Service
+ * @name email/send
+ * @memberof routes/email
+ * @param path Express Route Path
+ */
 router.post('/send', passport.authenticate('jwt', { session: false }), upload.single('pdf'), (req,res)=>{
 
+    // Set Usename and File from Req Body
     const username = req.user.username;
-
     const file = req.file;
-    console.log(file);
-    console.log("USERID", username);
 
     try {
-
+        // Mail Options to Send with Email Service
         let mailoptions = {
             from:'easybankmailer@gmail.com',
             to: 'easybankmailer@gmail.com',
@@ -55,7 +76,7 @@ router.post('/send', passport.authenticate('jwt', { session: false }), upload.si
             text: `Hello ${username}. Find your EasyBank Transfer statement in the attached document.`,
             attachments: file
         }
-
+        // Send mail with transporter settings
         transporter.sendMail(mailoptions, function (error) {
             if(error){
                 res.status(500);
@@ -63,11 +84,10 @@ router.post('/send', passport.authenticate('jwt', { session: false }), upload.si
                 res.status(200).send(mailoptions);
             }
         });
-
     } catch (error) {
         res.send(error);
     }
-
 });
 
+// Export Express Router
 module.exports = router;

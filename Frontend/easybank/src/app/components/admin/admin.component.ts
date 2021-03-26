@@ -59,7 +59,7 @@ export class AdminComponent implements OnInit {
           datasets: [{
             label: "Transfer Statement Methods",
             backgroundColor: ["#0088c7", "#fd4b4b"],
-            data: [this.test.externalstatements, this.test.appstatements]
+            data: [this.test.appstatements, this.test.externalstatements]
           }]
         },
         options: {

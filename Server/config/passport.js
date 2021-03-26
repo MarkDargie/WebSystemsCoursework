@@ -5,15 +5,25 @@ const path = require('path');
 
 const {User} = require('../db/models');
 
+/**
+ * Configure PassportJS Settings
+ */
 const pathToKey = path.join(__dirname, '..', 'id_rsa_pub.pem');
 const PUB_KEY = fs.readFileSync(pathToKey, 'utf8');
 
+/**
+ * Set Passport Strategy Options
+ * JSON Webtoken Strategy
+ */
 const options = {
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
     secretOrKey: PUB_KEY,
     algorithms: ['RS256']
 };
 
+/**
+ * Export Passport Configuration Settings
+ */
 module.exports = (passport) =>{
 
     passport.use(new JwtStrategy(options, function(jwt_payload, done){

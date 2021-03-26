@@ -1,69 +1,70 @@
-h1{
-    font-size: 5.25rem;
-    font-weight: 700;
-    margin-bottom: 15px;
+h1 {
+  font-size: 5.25rem;
+  font-weight: 700;
+  margin-bottom: 15px;
 }
 
-h2{
-    font-size: 3.5rem;
-    font-weight: 700;
+h2 {
+  font-size: 3.5rem;
+  font-weight: 700;
 }
 
 .small {
-    font-size: 20px;
-    text-align: center;
+  font-size: 20px;
+  text-align: center;
 }
 
-.login-sections{
-    display: flex;
-    flex-direction: column;
-    height:100%;
+.login-sections {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
-.left{
-    height:200px;
+.left {
+  height: 200px;
 }
 
-.left, .right{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.left,
+.right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.left{
-    background: linear-gradient(
-        to bottom,
-        rgba(46, 91, 255, 0.6),
-        rgba(48, 228, 228, 0.8)
-      ),
-      url(../../../assets/img/citybg.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: scroll;
+.left {
+  background: linear-gradient(
+      to bottom,
+      rgba(46, 91, 255, 0.6),
+      rgba(48, 228, 228, 0.8)
+    ),
+    url(../../../assets/img/citybg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: scroll;
 }
 
-.left .login-section{
-    color:white;
-    text-align: center;
+.left .login-section {
+  color: white;
+  text-align: center;
 }
 
 .left p {
-    font-weight: 400;
-    font-size: 15px;
+  font-weight: 400;
+  font-size: 15px;
 }
 
-.right .login-section{
-    color:black;
-    text-align: center;
+.right .login-section {
+  color: black;
+  text-align: center;
 }
 
 .right .login-section p {
-    margin: 1.5em 0;
-    font-size: 1.5rem;
+  margin: 1.5em 0;
+  font-size: 1.5rem;
 }
 
-.right form{
-    width:328px;
+.right form {
+  width: 328px;
 }
 
 /* form input[type="text"], 
@@ -80,9 +81,9 @@ form input[type="password"] {
 } */
 
 label {
-    display: block;
-    margin-bottom: 0.8rem;
-    font-size: 12px;
+  display: block;
+  margin-bottom: 0.8rem;
+  font-size: 12px;
 }
 
 /* .input-container.password{
@@ -105,169 +106,162 @@ label {
 } */
 
 .checkbox-container {
-    display: block;
-    position: relative;
-    padding-left:2rem;
-    cursor: pointer;
-    user-select: none;
-    margin: 0 0 1.25rem 0;
+  display: block;
+  position: relative;
+  padding-left: 2rem;
+  cursor: pointer;
+  user-select: none;
+  margin: 0 0 1.25rem 0;
 }
 
-.checkbox-container input:checked~.checkmark {
-    background-color: var(--light-blue);
-    border: 1px solid var(--light-blue);
+.checkbox-container input:checked ~ .checkmark {
+  background-color: var(--light-blue);
+  border: 1px solid var(--light-blue);
 }
 
 .checkmark {
-    position: absolute;
-    width:24px;
-    height:24px;
-    background:white;
-    border: 1px solid #c4c4c4;
-    border-radius: 2px;
-    top: -4px;
-    left:0;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background: white;
+  border: 1px solid #c4c4c4;
+  border-radius: 2px;
+  top: -4px;
+  left: 0;
 }
 
 .checkmark:after {
-    content:"";
-    position: absolute;
-    display: none;
+  content: "";
+  position: absolute;
+  display: none;
 }
 
-.checkbox-container input:checked~.checkmark:after{
-    display: block;
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
 }
 
-.checkbox-container .checkmark:after{
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    width:5px;
-    height:10px;
-    left:8px;
-    top:4px;
-    transform: rotate(45deg);
+.checkbox-container .checkmark:after {
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  width: 5px;
+  height: 10px;
+  left: 8px;
+  top: 4px;
+  transform: rotate(45deg);
 }
 
-.login-button{
-    display: block;
-    width:100%;
-    background: var(--dashboard-main);
-    color: white;
-    /* font-weight: 700; */
-    border: none;
-    padding:1rem;
-    border-radius: 8px;
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    cursor: pointer;
-    margin-bottom: 20px;
+.login-button {
+  display: block;
+  width: 100%;
+  background: var(--dashboard-main);
+  color: white;
+  /* font-weight: 700; */
+  border: none;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  margin-bottom: 20px;
 }
 
 .mat-form-field {
-
-    width: 100%;
-    margin-bottom:1rem;
-    font-size: 1.2rem;
-
+  width: 100%;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
 }
 
-.mat-form-field input p{
-    color:var(--dashboard-text);
+.mat-form-field input p {
+  color: var(--dashboard-text);
 }
 
 .mat-form-field mat-label {
-    color:var(--dashboard-text);
-    border-color: var(--dashboard-text);
+  color: var(--dashboard-text);
+  border-color: var(--dashboard-text);
 }
 
-.mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick {
-    color: #f44336;
+.mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid
+  .mat-form-field-outline-thick {
+  color: #f44336;
 }
 
-.mat-form-field .mat-input-element{
-    color:var(--dashboard-text);
+.mat-form-field .mat-input-element {
+  color: var(--dashboard-text);
 }
 
-.mat-input-element::placeholder{
-    color:var(--dashboard-text);
+.mat-input-element::placeholder {
+  color: var(--dashboard-text);
 }
 
 .mat-form-field-appearance-outline .mat-form-field-outline {
-    color:var(--dashboard-text);
-    border-color: var(--dashboard-text);
+  color: var(--dashboard-text);
+  border-color: var(--dashboard-text);
 }
 
 .mat-form-field-appearance-outline .mat-form-field-outline-thick {
-    color:var(--dashboard-text);
-    border-color: var(--dashboard-text);
-
+  color: var(--dashboard-text);
+  border-color: var(--dashboard-text);
 }
 
 .input.mat-input-element {
-    color:var(--dashboard-text);
-    border-color: var(--dashboard-text);
-
+  color: var(--dashboard-text);
+  border-color: var(--dashboard-text);
 }
 
 /* default and hover color */
 ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
-    color:var(--dashboard-main);
+  color: var(--dashboard-main);
 }
 
 /* focused color */
-::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
-    color:var(--dashboard-text);
+::ng-deep
+  .mat-form-field-appearance-outline.mat-focused
+  .mat-form-field-outline-thick {
+  color: var(--dashboard-text);
 }
 
 /* floating label color */
-::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-label { 
-    color:var(--dashboard-text); 
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-label {
+  color: var(--dashboard-text);
 }
 
-::ng-deep .mat-tab-label{
-    color:var(--dashboard-text); 
+::ng-deep .mat-tab-label {
+  color: var(--dashboard-text);
 }
 
-::ng-deep .mat-select{
-    color:var(--dashboard-text); 
+::ng-deep .mat-select {
+  color: var(--dashboard-text);
 }
 
-::ng-deep .mat-select input p ::placeholder{
-    color:var(--dashboard-text); 
+::ng-deep .mat-select input p ::placeholder {
+  color: var(--dashboard-text);
 }
 
 ::ng-deep.mat-select-value {
-    color:var(--dashboard-text); 
+  color: var(--dashboard-text);
 }
 
-.loginform{
-    width:100%;
+.loginform {
+  width: 100%;
 }
 
-@media screen and (max-width: 900px){
-
-    .form-top{
-        margin-top:1.5rem;
-    }
-
-
+@media screen and (max-width: 900px) {
+  .form-top {
+    margin-top: 1.5rem;
+  }
 }
 
+@media screen and (min-width: 900px) {
+  .login-sections {
+    flex-direction: row;
+    height: 100vh;
+  }
 
-@media screen and (min-width: 900px){
-    .login-sections{
-        flex-direction: row;
-        height: 100vh;
-    }
-
-    .left,
-    .right{
-        display: flex;
-        width:50%;
-        height:auto;
-    }
-
-
+  .left,
+  .right {
+    display: flex;
+    width: 50%;
+    height: auto;
+  }
 }

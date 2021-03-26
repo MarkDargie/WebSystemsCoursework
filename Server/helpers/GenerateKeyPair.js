@@ -1,23 +1,22 @@
 /**
- * This module will generate a public and private keypair and save to current directory
+ * This module will generate public and private keypair values for Passport Authentication with Crypto
  * 
- * Make sure to save the private key elsewhere after generated!
  */
  const crypto = require('crypto');
  const fs = require('fs');
  
  function genKeyPair() {
      
-     // Generates an object where the keys are stored in properties `privateKey` and `publicKey`
+     // Generates crypto object with properties `privateKey` and `publicKey`
      const keyPair = crypto.generateKeyPairSync('rsa', {
-         modulusLength: 4096, // bits - standard for RSA keys
+         modulusLength: 4096, // standard for RSA keys
          publicKeyEncoding: {
-             type: 'pkcs1', // "Public Key Cryptography Standards 1" 
-             format: 'pem' // Most common formatting choice
+             type: 'pkcs1', // Public Key Cryptography Standards 1 
+             format: 'pem' // PEM: Common Formatting 
          },
          privateKeyEncoding: {
-             type: 'pkcs1', // "Public Key Cryptography Standards 1"
-             format: 'pem' // Most common formatting choice
+             type: 'pkcs1', // Public Key Cryptography Standards 1
+             format: 'pem' // PEM: Common Formatting 
          }
      });
  

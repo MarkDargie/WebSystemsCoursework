@@ -20,19 +20,18 @@ section {
   padding: 10rem 0;
 }
 
-
 header {
   width: 100%;
   padding: 2.5rem 0;
   background: linear-gradient(
-    to bottom,
-    rgba(46, 91, 255, 0.6),
-    rgba(48, 228, 228, 0.8)
-  ),
-  url(../../../assets/img/citybg.jpg);
-background-repeat: no-repeat;
-background-size: cover;
-background-attachment: scroll;
+      to bottom,
+      rgba(46, 91, 255, 0.6),
+      rgba(48, 228, 228, 0.8)
+    ),
+    url(../../../assets/img/citybg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: scroll;
   position: relative;
 }
 
@@ -218,7 +217,7 @@ p {
   grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
   row-gap: 2rem;
   column-gap: 2rem;
-  margin-bottom:100px;
+  margin-bottom: 100px;
 }
 
 .consult-item {
@@ -234,7 +233,7 @@ p {
 
 .consult-item i {
   font-size: 2rem;
-  color:var(--light-blue);
+  color: var(--light-blue);
   margin-right: 1rem;
 }
 
@@ -244,7 +243,7 @@ p {
 
 .consult-image img {
   width: 60%;
-  margin-left:120px;
+  margin-left: 120px;
   text-align: center;
 }
 
@@ -254,11 +253,11 @@ p {
 }
 
 #features {
-    background: linear-gradient(
-        to bottom,
-        rgba(46, 91, 255, 0.6),
-        rgba(48, 228, 228, 0.8)
-      ),
+  background: linear-gradient(
+      to bottom,
+      rgba(46, 91, 255, 0.6),
+      rgba(48, 228, 228, 0.8)
+    ),
     url(../../../assets/img/people.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -372,48 +371,46 @@ form input[type="submit"]:hover {
 
 /* Tablet width < px */
 @media screen and (max-width: 900px) {
-    #features {
-      height: 100%;
-    }
-    .features {
-      display: flex;
-      flex-direction: column;
-    }
-    .feature-image img {
-      /* width: 100%;
+  #features {
+    height: 100%;
+  }
+  .features {
+    display: flex;
+    flex-direction: column;
+  }
+  .feature-image img {
+    /* width: 100%;
       height: 100%; */
-      transform: translateY(0);
-    }
+    transform: translateY(0);
   }
-  
-  /* MOBILE PHONE WIDTH 600PX */
-  @media screen and (max-width: 600px) {
-    /* Header section */
-    header {
-      /* height: 9rem; */
-    }
-    .logo {
-      margin: 0;
-    }
-    .login {
-      display: none;
-    }
-    nav {
-      display: block;
-      text-align: center;
-      width: 100%;
-    }
-  
-    .nav-ul {
-      justify-content: center;
-      width: 70%;
-      margin: 0 auto;
-      padding: 5px 0;
-    }
-  
-    .cta {
-      display: inline;
-    }
-  
+}
+
+/* MOBILE PHONE WIDTH 600PX */
+@media screen and (max-width: 600px) {
+  /* Header section */
+  header {
+    /* height: 9rem; */
   }
-  
+  .logo {
+    margin: 0;
+  }
+  .login {
+    display: none;
+  }
+  nav {
+    display: block;
+    text-align: center;
+    width: 100%;
+  }
+
+  .nav-ul {
+    justify-content: center;
+    width: 70%;
+    margin: 0 auto;
+    padding: 5px 0;
+  }
+
+  .cta {
+    display: inline;
+  }
+}

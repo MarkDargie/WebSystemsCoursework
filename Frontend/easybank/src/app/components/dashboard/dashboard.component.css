@@ -20,6 +20,11 @@ h1, h2, h3, h4, h5, p {
     margin-left: 60px;
 }
 
+#sidebar-toggle:checked ~ .dashboard-container{
+    margin-left: 60px;
+    left:60px;
+}
+
 #sidebar-toggle:checked ~ .sidebar .sidebar-header h3 span,
 #sidebar-toggle:checked ~ .sidebar li span:last-child{
     display: none;
@@ -36,6 +41,8 @@ h1, h2, h3, h4, h5, p {
 #sidebar-toggle:checked ~ .dashboard-content header{
     left: 60px;
 }
+
+
 
 .sidebar{
     height: 100%;

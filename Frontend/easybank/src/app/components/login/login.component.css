@@ -226,6 +226,18 @@ label {
     color:var(--dashboard-text); 
 }
 
+::ng-deep .mat-select{
+    color:var(--dashboard-text); 
+}
+
+::ng-deep .mat-select input p ::placeholder{
+    color:var(--dashboard-text); 
+}
+
+::ng-deep.mat-select-value {
+    color:var(--dashboard-text); 
+}
+
 @media screen and (min-width: 900px){
     .login-sections{
         flex-direction: row;

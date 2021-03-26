@@ -1,6 +1,6 @@
 @import url('../dashboard/dashboard.component.css');
 
-#sidebar-toggle{
+/* #sidebar-toggle{
     display: none;
 }
 
@@ -10,6 +10,11 @@
 
 #sidebar-toggle:checked ~ .dashboard-content{
     margin-left: 60px;
+}
+
+#sidebar-toggle:checked ~ .dashboard-container{
+    margin-left: 60px;
+    left:60px;
 }
 
 #sidebar-toggle:checked ~ .sidebar .sidebar-header h3 span,
@@ -27,4 +32,4 @@
 
 #sidebar-toggle:checked ~ .dashboard-content header{
     left: 60px;
-}
+} */

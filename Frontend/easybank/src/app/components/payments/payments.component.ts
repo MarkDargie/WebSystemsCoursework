@@ -18,6 +18,8 @@ import { ElementRef } from '@angular/core';
 })
 export class PaymentsComponent implements OnInit {
 
+  formfield = new FormControl('', [Validators.required, Validators.required]);
+
   @ViewChild('requestform', {static: false}) requestform: NgForm;
 
   constructor(
@@ -34,6 +36,13 @@ export class PaymentsComponent implements OnInit {
   pendingTransactions: transaction[];
 
   selectedValue: string;
+
+  getErrorMessage() {
+    if (this.formfield.hasError('required')) {
+      return 'You must Select a Method';
+    }
+
+  }
 
   ngOnInit(): void {
 
@@ -137,6 +146,8 @@ export class PaymentsComponent implements OnInit {
       // Download PDF doc  
       pdf.save('table.pdf');
 
+      this.testingService.PostAppStatement().subscribe();
+
     }
 
     if(method == "email"){
@@ -150,6 +161,7 @@ export class PaymentsComponent implements OnInit {
       console.log("USER ID EMAIL: ", this.user._id);
 
       this.transactionService.EmailRequest(payload).subscribe();
+      this.testingService.PostExternalStatement().subscribe();
 
     }
 
@@ -157,39 +169,5 @@ export class PaymentsComponent implements OnInit {
 
   }
 
-  generateAndSendPDF(){
-
-    var pdf = new jsPDF();
-
-    pdf.setFontSize(15);
-    pdf.text(`EasyBank Transaction Statement`, 11, 8);
-    // pdf.text(`${this.user.username} ${this.user.email}`, 12, 8);
-    pdf.setFontSize(12);
-    pdf.setTextColor(99);
-
-    var header = ["Method", 'Amount','To','From','Status'];
-    var rows= [];
-
-    for(var value in this.allTransactions){
-      var row = [
-        this.allTransactions[value].method,
-        this.allTransactions[value].amount,
-        this.allTransactions[value].to,
-        this.allTransactions[value].from,
-        this.allTransactions[value].status];
-      rows.push(row);
-    }
-    
-
-    (pdf as any).autoTable({
-    head: [header],
-    body: rows,
-    theme: 'striped',
-    didDrawCell: data => {
-        console.log(data.column.index)
-    }
-    });
-
-  }
 
 }

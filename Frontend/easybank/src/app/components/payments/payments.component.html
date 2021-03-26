@@ -196,10 +196,11 @@
                         </section>
                         <mat-form-field appearance="outline">
                           <mat-label>Request Method</mat-label>
-                          <mat-select [(ngModel)]="selectedValue" name="requesttype" ngModel>
+                          <mat-select [(ngModel)]="selectedValue" name="requesttype" ngModel required>
                             <mat-option value="direct">Direct Download</mat-option>
                             <mat-option value="email">Email</mat-option>
                           </mat-select>
+                          <mat-error *ngIf="formfield.invalid">{{getErrorMessage()}}</mat-error>
                         </mat-form-field>
         
                         <p>Request Transaction Statement: </p>

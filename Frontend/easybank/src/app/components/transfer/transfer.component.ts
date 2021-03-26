@@ -12,6 +12,8 @@ import {TestingService} from '../../services/testing.service';
 })
 export class TransferComponent implements OnInit {
 
+  formfield = new FormControl('', [Validators.required, Validators.required]);
+
   constructor(
     private transactionService: TransactionService,
     private testingService: TestingService
@@ -23,6 +25,13 @@ export class TransferComponent implements OnInit {
   @ViewChild('expressform', { static: false }) expressform: NgForm;
 
   ngOnInit(): void {
+  }
+
+  getErrorMessage() {
+    if (this.formfield.hasError('required')) {
+      return 'You must enter a value';
+    }
+
   }
 
   // Method for secure payments

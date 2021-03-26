@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { tap } from 'rxjs/operators';
 import {AuthenticateService} from '../../services/authenticate.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -12,7 +13,8 @@ export class SidebarComponent implements OnInit {
   auth: boolean;
 
   constructor(
-    private authenticateService: AuthenticateService
+    private authenticateService: AuthenticateService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -23,6 +25,13 @@ export class SidebarComponent implements OnInit {
       })
     ).subscribe();
 
+
+  }
+
+  SignOut(){
+
+    this.authenticateService.logout();
+    this.router.navigate(['home']);
 
   }
 

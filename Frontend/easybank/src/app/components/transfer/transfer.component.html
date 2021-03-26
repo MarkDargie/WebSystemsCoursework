@@ -79,39 +79,34 @@
                   </section>
                   <mat-form-field appearance="outline">
                     <mat-label>Recipient Username</mat-label>
-                    <input matInput name="username" ngModel>
+                    <input matInput name="username" ngModel required>
+                    <mat-error *ngIf="formfield.invalid">{{getErrorMessage()}}</mat-error>
                   </mat-form-field>
                   <mat-form-field appearance="outline">
                     <mat-label>Recipient Email</mat-label>
-                    <input matInput name="email" ngModel>
+                    <input matInput name="email" ngModel required>
+                    <mat-error *ngIf="formfield.invalid">{{getErrorMessage()}}</mat-error>
                   </mat-form-field>
                   <div class="code-container">
                     <mat-form-field class="code" appearance="outline">
                       <mat-label>Your Secure Code</mat-label>
-                      <input matInput [type]="hide ? 'password' : 'number'" name="fromcode" ngModel>
+                      <input matInput [type]="hide ? 'password' : 'number'" name="fromcode" ngModel required>
+                      <mat-error *ngIf="formfield.invalid">{{getErrorMessage()}}</mat-error>
                     </mat-form-field>
                     <mat-form-field class="code" appearance="outline">
                       <mat-label>Recipient Secure Code</mat-label>
-                      <input matInput [type]="hide ? 'password' : 'number'" name="tocode" ngModel>
+                      <input matInput [type]="hide ? 'password' : 'number'" name="tocode" ngModel required>
+                      <mat-error *ngIf="formfield.invalid">{{getErrorMessage()}}</mat-error>
                     </mat-form-field>
                   </div>
-                  <!-- <mat-form-field appearance="outline">
-                    <mat-label>Payment Method</mat-label>
-                    <mat-select>
-                      <mat-option value="one">First option</mat-option>
-                      <mat-option value="two">Second option</mat-option>
-                    </mat-select>
-                  </mat-form-field> -->
                   <mat-form-field appearance="outline">
                     <mat-label>Payment Amount</mat-label>
-                    <input matInput type="number" class="example-right-align" name="amount" ngModel>
+                    <input matInput type="number" class="example-right-align" name="amount" ngModel required>
+                    <mat-error *ngIf="formfield.invalid">{{getErrorMessage()}}</mat-error>
                     <span matPrefix>$&nbsp;</span>
                     <span matSuffix>.00</span>
                   </mat-form-field>
-                  <!-- <div class="input-container email">
-                      <label for="email">Email</label>
-                      <input id="email" name="email" type="text" ngModel>
-                  </div> -->
+
   
                   <p>Secure Payments will not be processed until the recipient has confirmed the payment</p>
 
@@ -132,25 +127,16 @@
                   </section>
                   <mat-form-field appearance="outline">
                     <mat-label>Recipient Username</mat-label>
-                    <input matInput name="username" ngModel>
+                    <input matInput name="username" ngModel required>
+                    <mat-error *ngIf="formfield.invalid">{{getErrorMessage()}}</mat-error>
                   </mat-form-field>
-                  <!-- <mat-form-field appearance="outline">
-                    <mat-label>Payment Method</mat-label>
-                    <mat-select>
-                      <mat-option value="one">First option</mat-option>
-                      <mat-option value="two">Second option</mat-option>
-                    </mat-select>
-                  </mat-form-field> -->
                   <mat-form-field appearance="outline">
                     <mat-label>Payment Amount</mat-label>
-                    <input matInput type="number" class="example-right-align" name="amount" ngModel>
+                    <input matInput type="number" class="example-right-align" name="amount" ngModel required>
+                    <mat-error *ngIf="formfield.invalid">{{getErrorMessage()}}</mat-error>
                     <span matPrefix>$&nbsp;</span>
                     <span matSuffix>.00</span>
                   </mat-form-field>
-                  <!-- <div class="input-container email">
-                      <label for="email">Email</label>
-                      <input id="email" name="email" type="text" ngModel>
-                  </div> -->
   
                   <p>Express payments will be automatically proccessed following this process</p>
 

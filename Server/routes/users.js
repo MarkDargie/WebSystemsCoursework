@@ -19,9 +19,9 @@ router.get('/protected', passport.authenticate('jwt', { session: false }), (req,
     res.status(200).json({ success: true, msg: "You are successfully authenticated to this route!"});
 });
 
-router.get('/admin', (req, res, next) => {
+router.get('/admin', passport.authenticate('jwt', { session: false }), (req, res, next) => {
     
-    User.findOne({username: req.body.username, access: "admin"}).then((user)=>{
+    User.findOne({username: req.user.username, access: "admin"}).then((user)=>{
         if(user){ res.status(200).json({ success: true, msg: "You are successfully authenticated to this route!"});}
         else { res.status(402).json({ success: false, msg: "You are  not authenticated to this route!"});;}
     });

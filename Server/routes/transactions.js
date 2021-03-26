@@ -28,14 +28,15 @@ router.post('/secure', passport.authenticate('jwt', {session: false }), (req, re
 
         User.findOne({username: req.user.username, securecode: req.body.fromcode}, function(err, user){
             if(!user){
-                return res.status(422);
+               return res.status(422).json({ success: false, msg: "could not find user" });
             }
-            User.findOne({username: req.body.sendto, securecode: req.body.tocode}, (error, response)=>{
-                if(error) res.sendStatus(404);
+            User.findOne({username: req.body.sendto, securecode: req.body.tocode}, (error, user)=>{
+                // if(!user) return res.sendStatus(404).json({ success: false, msg: "could not find user" });
+                res.status(200).json({ success: true, msg: "Payment Sent" });
             });
 
             transaction.save();
-            res.sendStatus(200, transaction);
+            // res.sendStatus(200).json({ success: true, msg: "Payment Sent" });
 
         });
 
@@ -71,7 +72,7 @@ router.post('/express', passport.authenticate('jwt', {session: false }), (req, r
 
         User.findOne({username: req.user.username}, function(err, user){
             if(!user){
-                return res.status(422);
+                res.status(422).json({ success: false, msg: "Errro" });
             }
 
             const sentpayment =  user.balance - req.body.payment;
@@ -80,8 +81,6 @@ router.post('/express', passport.authenticate('jwt', {session: false }), (req, r
                 // do this for both to and from users
                 User.findOneAndUpdate({username: req.user.username}, {balance: sentpayment}, (error, response)=>{
                     if(error) res.sendStatus(404);
-                    console.log("sender response", response);
-                    // res.send(response);
                 });
                 
             } else {
@@ -98,13 +97,13 @@ router.post('/express', passport.authenticate('jwt', {session: false }), (req, r
 
                 if(receivedpayment){
                     User.findOneAndUpdate({username: req.body.sendto}, {balance: receivedpayment}, (error, response)=>{
-                        if(error) res.sendStatus(404);
+                        if(error) res.sendStatus(404).json({ success: false, msg: "Error" });
                         console.log("sent to response", response);
-                        // res.send(response);
                     });
                     transaction.save();
+                    res.status(200).json({ success: true, msg: "Payment Sent" });
                 } else {
-                    res.sendStatus(422);
+                    res.status(422).json({ success: false, msg: "Error" });
                 }
 
             })

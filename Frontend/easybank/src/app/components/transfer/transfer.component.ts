@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { ViewChild } from '@angular/core';
 import {TransactionService} from '../../services/transaction.service';
 import {TestingService} from '../../services/testing.service';
+import { SnackbarService } from 'src/app/services/snackbar.service';
+import { catchError, tap } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-transfer',
@@ -16,7 +19,8 @@ export class TransferComponent implements OnInit {
 
   constructor(
     private transactionService: TransactionService,
-    private testingService: TestingService
+    private testingService: TestingService,
+    private snackbar: SnackbarService
   ) { }
 
   hide = true;
@@ -53,7 +57,22 @@ export class TransferComponent implements OnInit {
         payment: payment
       }
   
-      this.transactionService.securePayment(paymentObject).subscribe();
+      this.transactionService.securePayment(paymentObject).pipe(
+        tap((res)=>{
+          this.snackbar.open({
+            message:"Secure Payment Successfull",
+            error:false
+          });
+          // this.settingsform.reset();
+        }),
+        catchError((error)=>{
+          this.snackbar.open({
+            message: error.message,
+            error:true
+          });
+          return of(false);
+        })
+      ).subscribe();
   
       this.testingService.PostSecurePayment().subscribe();
 

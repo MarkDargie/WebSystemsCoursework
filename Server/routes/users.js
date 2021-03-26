@@ -174,7 +174,7 @@ router.post('/updatesecurity', passport.authenticate('jwt', { session: false }),
     try{
         User.findOne({username: req.user.username}, function (err, user) {
             if(!user){
-                return res.status(422);
+                res.status(422).json({ success: false, msg: "could not find user" });
             }
     
             const oldpassword = utils.validPassword(req.body.oldpassword, user.hash, user.salt);

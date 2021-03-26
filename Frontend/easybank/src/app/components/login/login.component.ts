@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { switchMap, tap } from 'rxjs/operators';
+import { switchMap, tap, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {AuthenticateService} from '../../services/authenticate.service';
 import { EmailValidator } from '@angular/forms';
 import {NgForm, FormControl, Validators} from '@angular/forms';
 import { ViewChild } from '@angular/core';
+import { SnackbarService } from 'src/app/services/snackbar.service';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -21,6 +23,7 @@ export class LoginComponent implements OnInit {
     private authenticateService: AuthenticateService,
     private http: HttpClient,
     private router: Router,
+    private snackbar: SnackbarService
   ) { }
 
   auth: boolean;

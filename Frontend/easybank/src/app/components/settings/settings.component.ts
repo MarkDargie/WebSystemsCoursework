@@ -4,6 +4,10 @@ import {AuthenticateService} from '../../services/authenticate.service';
 import {TestingService} from '../../services/testing.service';
 import {user} from '../../models/user.model';
 import {ThemeService} from '../../theme/theme.service';
+import { SnackbarService } from 'src/app/services/snackbar.service';
+import { catchError, tap } from 'rxjs/operators';
+import { of } from 'rxjs';
+
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
@@ -22,7 +26,8 @@ export class SettingsComponent implements OnInit {
   constructor(
     private authenticateService: AuthenticateService,
     private testingService: TestingService,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private snackbar: SnackbarService
   ) { }
 
   hide = true;
@@ -73,9 +78,24 @@ export class SettingsComponent implements OnInit {
   
       console.log(reqObject);
   
-      this.authenticateService.UpdateUserDetails(reqObject).subscribe();
+      this.authenticateService.UpdateUserDetails(reqObject).pipe(
+        tap((res)=>{
+          this.snackbar.open({
+            message:"Details Updated Successfully",
+            error:false
+          });
+          // this.settingsform.reset();
+        }),
+        catchError((error)=>{
+          this.snackbar.open({
+            message: error.message,
+            error:true
+          });
+          return of(false);
+        })
+      ).subscribe();
 
-      this.settingsform.reset();
+      
 
     }
 
@@ -111,9 +131,23 @@ export class SettingsComponent implements OnInit {
         newpassword: newpassword
       }
   
-      this.authenticateService.UpdateSecurityDetails(reqObject).subscribe();
+      this.authenticateService.UpdateSecurityDetails(reqObject).pipe(
+        tap((res)=>{
+          this.snackbar.open({
+            message:"Details Updated Successfully",
+            error:false
+          });
+          // this.securityform.reset();
+        }),
+        catchError((error)=>{
+          this.snackbar.open({
+            message: error.message,
+            error:true
+          });
+          return of(false);
+        })
+      ).subscribe();
 
-      this.securityform.reset();
 
     }
 

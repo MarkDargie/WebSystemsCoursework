@@ -57,6 +57,7 @@ export class AuthenticateService {
     this.loggedIn.next(false);
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
+    localStorage.removeItem('theme');
   }
 
   // Check if user is logged in

@@ -7,12 +7,9 @@
 <div class="dashboard-content">
   <header>
     <div class="search-container">
-      <!-- <span class="ti-search"></span>
-      <input type="search" placeholder="search" /> -->
     </div>
 
     <div class="icons">
-      <!-- <span class="ti-palette"></span> -->
       <div></div>
     </div>
   </header>
@@ -38,8 +35,8 @@
             <div class="card-body">
                 <span><i class="fas fa-sync-alt"></i></span>
                 <div>
-                    <h5>Payment Sent</h5>
-                    <h4>£1000,00</h4>
+                    <h5>Payments Sent</h5>
+                    <h4>{{sent.length}}</h4>
                 </div>
             </div>
             <div class="card-footer">
@@ -51,8 +48,8 @@
             <div class="card-body">
                 <span><i class="fas fa-sync-alt"></i></span>
                 <div>
-                    <h5>Payment Received</h5>
-                    <h4>£1000,00</h4>
+                    <h5>Pending Payments</h5>
+                    <h4>{{pending.length}}</h4>
                 </div>
             </div>
             <div class="card-footer">
@@ -74,6 +71,7 @@
                                 <th>Payment</th>
                                 <th>Amount</th>
                                 <th>Sent Date</th>
+                                <th>To</th>
                                 <th>From</th>
                                 <th>Status</th>
                             </tr>
@@ -84,11 +82,8 @@
                                 <td>{{payment.method}} Payment</td>
                                 <td>£{{payment.amount}}</td>
                                 <td>{{payment.date}}</td>
-                                <td class="images">
-                                    <div class="image-1"></div>
-                                    <div class="image-2"></div>
-                                    <div class="image-3"></div>
-                                </td>
+                                <td>{{payment.from}}</td>
+                                <td>{{payment.to}}</td>
                                 <td>
                                     <span class="payment success">
                                         {{payment.status}}
@@ -108,21 +103,21 @@
                     <div class="info-single">
                         <span><i class="fas fa-user-friends"></i></span>
                         <div>
-                            <h5>420</h5>
-                            <small>Your Contacts</small>
+                            <h5>{{pending.length}}</h5>
+                            <small>Payments Pending</small>
                         </div>
                     </div>
                     <div class="info-single">
                         <span><i class="fas fa-sync-alt"></i></span>
                         <div>
-                            <h5>420</h5>
+                            <h5>{{sent.length}}</h5>
                             <small>Payments Sent</small>
                         </div>
                     </div>
                     <div class="info-single">
                         <span><i class="fas fa-sync-alt"></i></span>
                         <div>
-                            <h5>420</h5>
+                            <h5>{{recieved.length}}</h5>
                             <small>Payments Received</small>
                         </div>
                     </div>

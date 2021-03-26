@@ -10,6 +10,9 @@ import {jsPDF} from 'jspdf';
 import 'jspdf-autotable';
 import { ViewChild } from '@angular/core';
 import { ElementRef } from '@angular/core';
+import { SnackbarService } from 'src/app/services/snackbar.service';
+import { catchError, tap } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-payments',
@@ -25,7 +28,8 @@ export class PaymentsComponent implements OnInit {
   constructor(
     private transactionService: TransactionService,
     private testingService: TestingService,
-    private authenticateService: AuthenticateService
+    private authenticateService: AuthenticateService,
+    private snackbar: SnackbarService
   ) { }
 
   user: user;
@@ -91,7 +95,22 @@ export class PaymentsComponent implements OnInit {
       from: from
     }
 
-    this.transactionService.confirmPending(reqObject).subscribe();
+    this.transactionService.confirmPending(reqObject).pipe(
+      tap((res)=>{
+        this.snackbar.open({
+          message:"Payment Confirm Successfull",
+          error:false
+        });
+        // this.settingsform.reset();
+      }),
+      catchError((error)=>{
+        this.snackbar.open({
+          message: error.message,
+          error:true
+        });
+        return of(false);
+      })
+    ).subscribe();
 
   }
 
@@ -101,7 +120,22 @@ export class PaymentsComponent implements OnInit {
       id: id
     }
 
-    this.transactionService.rejectPending(reqObject).subscribe();
+    this.transactionService.rejectPending(reqObject).pipe(
+      tap((res)=>{
+        this.snackbar.open({
+          message:"Payment Reject Successfull",
+          error:false
+        });
+        // this.settingsform.reset();
+      }),
+      catchError((error)=>{
+        this.snackbar.open({
+          message: error.message,
+          error:true
+        });
+        return of(false);
+      })
+    ).subscribe();
 
   }
 
@@ -144,7 +178,7 @@ export class PaymentsComponent implements OnInit {
       pdf.output('dataurlnewwindow');
 
       // Download PDF doc  
-      pdf.save('table.pdf');
+      // pdf.save('table.pdf');
 
       this.testingService.PostAppStatement().subscribe();
 

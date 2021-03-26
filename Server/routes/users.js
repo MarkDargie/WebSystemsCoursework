@@ -132,7 +132,7 @@ router.post('/paymentmethod', (req, res, next) =>{
         }
         
         User.findOneAndUpdate({username: req.body.username}, {$push: {paymentmethods: method}}, (error, response)=>{
-            if(error) res.sendStatus(404);
+            if(error) res.status(404);
             console.log(response);
             res.send(response);
         });
@@ -205,15 +205,15 @@ router.post('/updatesecurity', passport.authenticate('jwt', { session: false }),
 //delete user
 router.post('/remove', passport.authenticate('jwt', {session: false}), (req, res) => {
 
-    User.findOneAndRemove({username: req.user.username})
-    .then((user)=>{
-        
-        if (!user) {
-            res.status(401).json({ success: false, msg: "could not find user" });
-        }
+    console.log("remove route hit");
 
-        res.sendStatus(200);
-    });
+    try{
+        User.findOneAndRemove({username: req.user.username});
+    }
+    catch(error){
+        console.log(erorr);
+    }
+    
 
 });
 

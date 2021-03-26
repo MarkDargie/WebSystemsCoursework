@@ -1,4 +1,3 @@
-<!-- <p>payments works!</p> -->
 <div class="dashboard-container">
 
     <input type="checkbox" id="sidebar-toggle">
@@ -8,12 +7,9 @@
     <div class="dashboard-content">
       <header>
         <div class="search-container">
-          <!-- <span class="ti-search"></span>
-          <input type="search" placeholder="search" /> -->
         </div>
     
         <div class="icons">
-          <span class="ti-palette"></span>
           <div></div>
         </div>
       </header>
@@ -37,7 +33,7 @@
                                             <th>Payment</th>
                                             <th>Amount</th>
                                             <th>Sent Date</th>
-                                            <th>From</th>
+                                            <th>Sent To</th>
                                             <th>Status</th>
                                         </tr>
                                     </thead>
@@ -47,11 +43,7 @@
                                             <td>{{sent.method}} Transfer</td>
                                             <td>£{{sent.amount}}</td>
                                             <td>{{sent.date}}</td>
-                                            <td class="images">
-                                                <div class="image-1"></div>
-                                                <div class="image-2"></div>
-                                                <div class="image-3"></div>
-                                            </td>
+                                            <td>{{sent.to}}</td>
                                             <td>
                                                 <span class="payment success">
                                                     {{sent.status}}
@@ -97,11 +89,7 @@
                                             <td>{{received.method}} Transfer</td>
                                             <td>£{{received.amount}}</td>
                                             <td>{{received.date}}</td>
-                                            <td class="images">
-                                                <div class="image-1"></div>
-                                                <div class="image-2"></div>
-                                                <div class="image-3"></div>
-                                            </td>
+                                            <td>{{received.from}}</td>
                                             <td>
                                                 <span class="payment success">
                                                     {{received.status}}
@@ -144,14 +132,10 @@
                                     <tbody>
                 
                                         <tr>
-                                            <td>{{pending._id}}</td>
+                                            <td>{{pending.method}} Payment</td>
                                             <td>£{{pending.amount}}</td>
-                                            <td>25/02/2021</td>
-                                            <td class="images">
-                                                <div class="image-1"></div>
-                                                <div class="image-2"></div>
-                                                <div class="image-3"></div>
-                                            </td>
+                                            <td>{{pending.date}}</td>
+                                            <td>{{pending.from}}</td>
                                             <td>
                                                 <span class="payment success">
                                                     Confirmed

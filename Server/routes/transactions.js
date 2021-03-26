@@ -80,7 +80,7 @@ router.post('/express', passport.authenticate('jwt', {session: false }), (req, r
             if(sentpayment){
                 // do this for both to and from users
                 User.findOneAndUpdate({username: req.user.username}, {balance: sentpayment}, (error, response)=>{
-                    if(error) res.sendStatus(404);
+                    if(error) res.status(404);
                 });
                 
             } else {
@@ -97,7 +97,7 @@ router.post('/express', passport.authenticate('jwt', {session: false }), (req, r
 
                 if(receivedpayment){
                     User.findOneAndUpdate({username: req.body.sendto}, {balance: receivedpayment}, (error, response)=>{
-                        if(error) res.sendStatus(404).json({ success: false, msg: "Error" });
+                        if(error) res.status(404).json({ success: false, msg: "Error" });
                         console.log("sent to response", response);
                     });
                     transaction.save();
@@ -128,16 +128,16 @@ router.post('/confirm', passport.authenticate('jwt', {session: false }),(req,res
         Transaction.findOne({_id: req.body.id, from: req.body.from}).then((transaction)=>{
             
             if(!transaction){
-                res.sendStatus(422);
+                res.status(422);
             }
             User.findOne({username: req.user.username}, (error, user)=>{
-                if(!user) res.sendStatus(400);
+                if(!user) res.status(400).json({ success: false, msg: "Error: Payment Not Confirmed" });
                 const balanceUpdate = user.balance + transaction.amount;
                 user.balance = balanceUpdate;
                 user.save();
             }).then(
                 User.findOne({username: transaction.from}, (error, fromUser) =>{
-                    if(!fromUser) res.sendStatus(400);
+                    if(!fromUser) res.status(400).json({ success: false, msg: "Error: Payment Not Confirmed" });
                     const fromBalanceUpdate = fromUser.balance - transaction.amount;
                     fromUser.balance = fromBalanceUpdate;
                     fromUser.save();
@@ -145,7 +145,7 @@ router.post('/confirm', passport.authenticate('jwt', {session: false }),(req,res
             );
             transaction.status = "confirmed";
             transaction.save();
-            console.log(transaction);
+            res.status(200).json({ success: true, msg: "Payment Confirmed" });
         });
     }
     catch(error){
@@ -159,10 +159,10 @@ router.post('/reject', passport.authenticate('jwt', {session: false }), (req,res
 
     try{
         Transaction.findOneAndRemove({_id: req.body.id}, (error, response)=>{
-            if(error) res.status(500);
+            if(error) res.status(500).json({ success: false, msg: "Server Error: Reject Payment" });
         });
 
-        res.status(200);
+        res.status(200).json({ success: true, msg: "Payment Rejected" });
     }
     catch(error){
         console.log(erorr);

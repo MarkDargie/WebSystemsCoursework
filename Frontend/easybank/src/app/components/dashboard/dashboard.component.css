@@ -167,6 +167,7 @@ main p {
 
 .title{
     margin-bottom: 1.2rem;
+    font-weight: 500;
 }
 
 .cards-section{
@@ -189,7 +190,7 @@ main p {
 }
 
 .card-body span{
-    font-size:3rem;
+    font-size:4rem;
     color:var(--dashboard-text);
     padding-right:3rem;
 }
@@ -197,13 +198,14 @@ main p {
 .card-body h5{
     color:var(--dashboard-text);
     letter-spacing: .5px;
-    font-size: 2.2rem;
+    font-size: 2.4rem;
+    font-weight: 500;
 }
 
 .card-body h4{
 
     margin-top:0.8rem;
-    
+    font-weight: 500;    
 }
 
 .card-footer{
@@ -237,6 +239,7 @@ main p {
 .payment-card h3{
     color:var(--dashboard-text);
     margin: 1rem;
+    font-weight: 500;
 }
 
 .payment-card table{

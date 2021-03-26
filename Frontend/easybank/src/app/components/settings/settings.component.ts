@@ -7,6 +7,7 @@ import {ThemeService} from '../../theme/theme.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { catchError, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-settings',
@@ -27,7 +28,8 @@ export class SettingsComponent implements OnInit {
     private authenticateService: AuthenticateService,
     private testingService: TestingService,
     private themeService: ThemeService,
-    private snackbar: SnackbarService
+    private snackbar: SnackbarService,
+    private router: Router
   ) { }
 
   hide = true;
@@ -109,10 +111,12 @@ export class SettingsComponent implements OnInit {
 
     if(theme == "light"){
       this.themeService.setLightTheme();
+      this.testingService.PostLightTheme().subscribe();
     }
     
     if(theme == "dark"){
       this.themeService.setDarkTheme();
+      this.testingService.PostDarkTheme().subscribe();
     }
 
   }
@@ -151,6 +155,14 @@ export class SettingsComponent implements OnInit {
 
     }
 
+
+  }
+
+  OnDeleteAccount(){
+
+    this.authenticateService.deleteAccount().subscribe();
+    this.authenticateService.logout();
+    this.router.navigate(['home']);
 
   }
 

@@ -98,6 +98,7 @@
                   <section class="login-section">
                       <h2>Security Settings</h2>
                   </section>
+                  <p>Update Your Account Password</p>
                   <mat-form-field appearance="outline">
                     <mat-label>Enter Current Password</mat-label>
                     <input matInput [type]="hide ? 'password' : 'text'" name="oldpassword" ngModel required>
@@ -123,6 +124,8 @@
   
                   <button class="login-button" type="submit">Update</button>
               </form>
+              <p>Delete your EasyBank Account:</p>
+              <button class="login-button" (click)="OnDeleteAccount()" type="submit">Delete Account</button>
   
           </div>
 

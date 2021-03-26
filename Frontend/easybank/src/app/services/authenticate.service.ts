@@ -148,5 +148,13 @@ export class AuthenticateService {
   }
 
   // Delete accout from system and redirect to /home
-  deleteAccount() {}
+  deleteAccount() {
+
+    console.log("DELETE ACCOUNT");
+
+    const headers = new HttpHeaders({ 'Content-type': 'application/json' });
+
+    return this.http.post(`${environment.API}/users/remove`, {headers: headers});
+
+  }
 }

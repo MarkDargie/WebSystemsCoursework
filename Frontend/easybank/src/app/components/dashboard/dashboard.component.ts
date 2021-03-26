@@ -29,17 +29,32 @@ export class DashboardComponent implements OnInit {
 
   user: user;
   transactions: transaction[];
+  pending: transaction[];
+  sent: transaction[];
+  recieved: transaction[];
 
   ngOnInit(): void {
 
     this.authenticateService.GetUserDetails().subscribe((user: user)=>{
       this.user = user;
-      console.log(user);
     });
 
     this.transactionService.getAllPayments().subscribe((transaction: transaction[])=>{
-      this.transactions = transaction;
-      console.log(transaction);
+      this.transactions = transaction.splice(0,10);
+    });
+
+    this.transactionService.GetPendingPayments().subscribe((transaction: transaction[])=>{
+      this.pending = transaction;
+    });
+
+    this.transactionService.getSentPayments().subscribe((transaction: transaction[])=>{
+      this.sent = transaction;
+    });
+
+    this.transactionService.getReceivedPayments().subscribe((transaction: transaction[])=>{
+
+      this.recieved = transaction;
+
     });
 
   }

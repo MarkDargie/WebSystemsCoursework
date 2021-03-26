@@ -1,54 +1,10 @@
 <div class="dashboard-container">
 
 <input type="checkbox" id="sidebar-toggle">
-<!-- <div class="sidebar">
-  <div class="sidebar-header">
-    <h3 class="brand">
-      <span class="ti-unlink"></span>
-      <span>EasyBank</span>
-    </h3>
-    <label for="sidebar-toggle" class="ti-menu-alt"></label>
-  </div>
-
-  <div class="sidebar-menu">
-    <ul>
-      <li>
-        <a href="">
-          <span class="ti-home"></span>
-          <span>Home</span>
-        </a>
-      </li>
-      <li>
-        <a href="">
-          <span class="ti-credit-card"></span>
-          <span>Payments</span>
-        </a>
-      </li>
-      <li>
-        <a href="">
-          <span class="ti-settings"></span>
-          <span>Settings</span>
-        </a>
-      </li>
-      <li>
-        <a href="">
-          <span class="ti-bar-chart"></span>
-          <span>Stats</span>
-        </a>
-      </li>
-      <li>
-        <a href="">
-          <span></span>
-          <span></span>
-        </a>
-      </li>
-    </ul>
-  </div>
-</div> -->
 
 <app-sidebar></app-sidebar>
 
-<div class="dashboard-content" *ngIf="user">
+<div class="dashboard-content">
   <header>
     <div class="search-container">
       <!-- <span class="ti-search"></span>
@@ -63,7 +19,6 @@
 
   <main>
     <h2 class="title">Hello, {{user.username}} Welcome to Your Dashboard</h2>
-    <button (click)="toggletheme()">theme</button>
     <div class="cards-section">
 
         <div class="card">
@@ -71,7 +26,7 @@
                 <span><i class="fas fa-piggy-bank"></i></span>
                 <div>
                     <h5>Account Balance</h5>
-                    <h4>£{{user.balance}}</h4>
+                    <h4>£{{user.balance}}.00</h4>
                 </div>
             </div>
             <div class="card-footer">

@@ -66,12 +66,21 @@ export class LoginComponent implements OnInit {
     const username = this.loginform.value.username;
     const password = this.loginform.value.password;
 
-    const reqObject = {
-      username: username,
-      password: password
+    if(!username || !password){
+      alert("no usename or password");
+    } else {
+
+      const reqObject = {
+        username: username,
+        password: password
+      }
+  
+      this.authenticateService.login(reqObject);
+
+
     }
 
-    this.authenticateService.login(reqObject);
+
 
   }
 

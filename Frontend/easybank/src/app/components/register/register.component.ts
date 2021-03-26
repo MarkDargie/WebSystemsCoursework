@@ -66,10 +66,21 @@ export class RegisterComponent implements OnInit {
   OnRegisterFormSubmit()
   {
     // define consts
-    const username = this.registerform.value.fname;
+    const username = this.registerform.value.username;
     const email = this.registerform.value.email;
     const password = this.registerform.value.password;
+    const passwordconf = this.registerform.value.passwordconf;
     const securecode = this.registerform.value.securecode;
+    
+    if(!username || !email || !password || !passwordconf || !securecode){
+
+      alert("Please Fill in all required fields");
+
+    } else if (password != passwordconf){
+      alert("Password do not match");
+    }
+    
+    else {
 
     // create req object
     const reqObject = {
@@ -81,6 +92,10 @@ export class RegisterComponent implements OnInit {
 
     // call register from auth service
     this.authenticateService.registerAccount(reqObject);
+
+
+    }
+
 
   }
 

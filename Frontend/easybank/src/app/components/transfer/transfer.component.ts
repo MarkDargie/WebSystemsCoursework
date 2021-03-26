@@ -42,16 +42,26 @@ export class TransferComponent implements OnInit {
     const tocode = this.secureform.value.tocode;
     const payment = this.secureform.value.amount;
 
-    const paymentObject = {
-      sendto: sendto,
-      fromcode: fromcode,
-      tocode: tocode,
-      payment: payment
+    if(!sendto || !fromcode || !tocode || !payment){
+      alert("Please Fill in al Required Fields");
+    } else {
+
+      const paymentObject = {
+        sendto: sendto,
+        fromcode: fromcode,
+        tocode: tocode,
+        payment: payment
+      }
+  
+      this.transactionService.securePayment(paymentObject).subscribe();
+  
+      this.testingService.PostSecurePayment().subscribe();
+
+      this.secureform.reset();
+
     }
 
-    this.transactionService.securePayment(paymentObject).subscribe();
 
-    this.testingService.PostSecurePayment().subscribe();
   }
 
   // Method for express payments
@@ -60,14 +70,24 @@ export class TransferComponent implements OnInit {
     const sendto = this.expressform.value.username;
     const payment = this.expressform.value.amount;
 
-    const paymentObject = {
-      sendto: sendto,
-      payment: payment
+    if(!sendto || !payment){
+      alert("Please Fill in al Required Fields");
+    } else {
+
+      const paymentObject = {
+        sendto: sendto,
+        payment: payment
+      }
+  
+      this.transactionService.expressPayment(paymentObject).subscribe();
+  
+      this.testingService.PostExpressPayment().subscribe();
+
+      this.expressform.reset();
+
     }
 
-    this.transactionService.expressPayment(paymentObject).subscribe();
 
-    this.testingService.PostExpressPayment().subscribe();
 
   }
 

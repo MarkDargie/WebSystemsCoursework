@@ -40,17 +40,10 @@ export class DashboardComponent implements OnInit {
     this.transactionService.getAllPayments().subscribe((transaction: transaction[])=>{
       this.transactions = transaction;
       console.log(transaction);
-    })
+    });
 
   }
 
-  toggletheme(){
-    if(this.themeService.isDarkTheme()){
-      this.themeService.setLightTheme();
-    } else {
-      this.themeService.setDarkTheme();
-    }
-  }
 
 
 

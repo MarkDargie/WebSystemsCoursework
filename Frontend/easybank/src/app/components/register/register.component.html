@@ -1,7 +1,3 @@
-<!-- <p>register works!</p> -->
-
-<!-- <p>login works!</p> -->
-
 <div class="login-sections">
     <div class="left">
         <section class="login-section">
@@ -41,7 +37,7 @@
               </mat-form-field>
               <mat-form-field appearance="outline">
                 <mat-label>Confirm Password</mat-label>
-                <input matInput [type]="hide ? 'password' : 'text'" name="password-confirm" ngModel required>
+                <input matInput [type]="hide ? 'password' : 'text'" name="passwordconf" ngModel required>
                 
                 <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" minlength=6>
                 </button>

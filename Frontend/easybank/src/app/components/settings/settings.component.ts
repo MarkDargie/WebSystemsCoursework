@@ -62,14 +62,24 @@ export class SettingsComponent implements OnInit {
     const username = this.settingsform.value.username;
     const email = this.settingsform.value.email;
 
-    const reqObject = {
-      username: username,
-      email: email
+    if(!username || !email){
+      alert("Please Fill in all required fields");
+    } else {
+
+      const reqObject = {
+        username: username,
+        email: email
+      }
+  
+      console.log(reqObject);
+  
+      this.authenticateService.UpdateUserDetails(reqObject).subscribe();
+
+      this.settingsform.reset();
+
     }
 
-    console.log(reqObject);
 
-    this.authenticateService.UpdateUserDetails(reqObject).subscribe();
 
   }
 
@@ -92,12 +102,21 @@ export class SettingsComponent implements OnInit {
     const oldpassword = this.securityform.value.oldpassword;
     const newpassword = this.securityform.value.newpassword;
 
-    const reqObject = {
-      oldpassword: oldpassword,
-      newpassword: newpassword
+    if(!oldpassword || !newpassword){
+      alert("Please Fill in all required fields");
+    } else {
+
+      const reqObject = {
+        oldpassword: oldpassword,
+        newpassword: newpassword
+      }
+  
+      this.authenticateService.UpdateSecurityDetails(reqObject).subscribe();
+
+      this.securityform.reset();
+
     }
 
-    this.authenticateService.UpdateSecurityDetails(reqObject).subscribe();
 
   }
 

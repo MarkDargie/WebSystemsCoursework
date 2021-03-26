@@ -6,8 +6,7 @@ const MethodSchema = new mongoose.Schema({
     number: {type: String},
     address: {type: String},
     holder: {type: String},
-    cvv: {type: String},
-    expdate: {type: String}
+    cvv: {type: String}
 
 });
 

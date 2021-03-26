@@ -72,15 +72,54 @@
                       <div class="card-body">
                           <span class = "ti-credit-card"></span>
                           <div>
-                              <h5>Account Balance</h5>
-                              <h4>£1000,00</h4>
+                              <h5>Payment Method</h5>
+                              <h4>***********</h4>
                           </div>
-                      </div>
-                      <div class="card-footer">
-                          <a href="">View All</a>
                       </div>
                   </div>
       
+              </div>
+
+              <div class="settings-container">
+
+                <div class="payment-form-container">
+                  <form class="registerform" (ngSubmit)="OnCardSubmit()" #cardform="ngForm">
+                    <section class="login-section">
+                        <h2>Add Payment Method</h2>
+                    </section>
+                    <mat-form-field appearance="outline">
+                      <mat-label>Card Name</mat-label>
+                      <input matInput name="name" ngModel required>
+                      <mat-error *ngIf="formfield.invalid">{{getErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                      <mat-label>Card Number</mat-label>
+                      <input matInput name="card" ngModel required>
+                      <mat-error *ngIf="formfield.invalid">{{getErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                      <mat-label>Address</mat-label>
+                      <input matInput name="address" ngModel required>
+                      <mat-error *ngIf="formfield.invalid">{{getErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                      <mat-label>Name on Card</mat-label>
+                      <input matInput name="holder" ngModel required>
+                      <mat-error *ngIf="formfield.invalid">{{getErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                    <div class="code-container">
+                      <mat-form-field class="code" appearance="outline">
+                        <mat-label>CVV</mat-label>
+                        <input matInput [type]="hide ? 'password' : 'number'" name="cvv" type="number" ngModel required maxlength=3>
+                        <mat-error *ngIf="formfield.invalid">{{getErrorMessage()}}</mat-error>
+                      </mat-form-field>
+                    </div>
+                    <p>Add this card to you EasyBank Account</p>
+  
+                    <button class="login-button" type="submit">Confirm</button>
+                </form>
+                </div>
+
               </div>
 
             

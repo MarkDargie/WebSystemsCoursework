@@ -106,35 +106,33 @@ router.post('/register', function(req, res, next){
 
 });
 
-router.post('/paymentmethod', (req, res, next) =>{
+router.post('/paymentmethod', passport.authenticate('jwt', { session: false }), (req, res, next) =>{
 
     const name = req.body.name;
     const cardnumber = utils.hashDetails(req.body.card);
     const address = utils.hashDetails(req.body.address);
     const holder = utils.hashDetails(req.body.holder);
     const cvv = utils.hashDetails(req.body.cvv);
-    const expdate = utils.hashDetails(req.body.expdate);
 
     const method = new Method({
         name: name,
         number: cardnumber,
         address: address,
         holder: holder,
-        cvv: cvv,
-        expdate: expdate
+        cvv: cvv
     });
 
-    User.findOne({ username: req.body.username })
+    User.findOne({ username: req.user.username })
     .then((user) => {
 
         if (!user) {
             res.status(401).json({ success: false, msg: "could not find user" });
         }
         
-        User.findOneAndUpdate({username: req.body.username}, {$push: {paymentmethods: method}}, (error, response)=>{
+        User.findOneAndUpdate({username: req.user.username}, {$push: {paymentmethods: method}}, (error, response)=>{
             if(error) res.status(404);
             console.log(response);
-            res.send(response);
+            res.status(200).json({ success: true, msg: "Card Added" });
         });
 
 

@@ -8,6 +8,7 @@ import { SnackbarService } from 'src/app/services/snackbar.service';
 import { catchError, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { Router } from '@angular/router';
+import{TransactionService} from '../../services/transaction.service';
 
 @Component({
   selector: 'app-settings',
@@ -23,17 +24,20 @@ export class SettingsComponent implements OnInit {
   @ViewChild('settingsform', { static: false }) settingsform: NgForm;
   @ViewChild('themeform', { static: false }) themeform: NgForm;
   @ViewChild('securityform', { static: false }) securityform: NgForm;
+  @ViewChild('cardform', { static: false }) cardform: NgForm;
 
   constructor(
     private authenticateService: AuthenticateService,
     private testingService: TestingService,
     private themeService: ThemeService,
     private snackbar: SnackbarService,
-    private router: Router
+    private router: Router,
+    private transactionService: TransactionService
   ) { }
 
   hide = true;
   selectedValue: string;
+  user: user;
 
   getEmailErrorMessage() {
     if (this.email.hasError('required')) {
@@ -61,6 +65,12 @@ export class SettingsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.authenticateService.GetUserDetails().subscribe((user: user)=>{
+      this.user = user;
+      console.log(user);
+    });
+
   }
 
   // settings form submit
@@ -97,11 +107,7 @@ export class SettingsComponent implements OnInit {
         })
       ).subscribe();
 
-      
-
     }
-
-
 
   }
 
@@ -151,6 +157,34 @@ export class SettingsComponent implements OnInit {
           return of(false);
         })
       ).subscribe();
+
+
+    }
+
+
+  }
+
+  OnCardSubmit(){
+
+    const name = this.cardform.value.name;
+    const card = this.cardform.value.card;
+    const address = this.cardform.value.address;
+    const holder = this.cardform.value.holder;
+    const cvv = this.cardform.value.cvv;
+
+    if(!name || !card || !address || !holder || !cvv ){
+      alert("Please fill in all required fields");
+    } else {
+
+      const reqObject = {
+        name: name,
+        card: card,
+        address: address,
+        holder: holder,
+        cvv: cvv
+      }
+  
+      this.transactionService.createPaymentMethod(reqObject).subscribe();
 
 
     }

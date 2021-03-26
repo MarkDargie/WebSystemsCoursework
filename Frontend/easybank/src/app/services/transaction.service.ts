@@ -88,6 +88,10 @@ export class TransactionService {
   // create payment method 
   createPaymentMethod(reqObject: object){
 
+    const headers = new HttpHeaders({ 'Content-type': 'application/json' });
+
+    return this.http.post(`${environment.API}/users/paymentmethod`, reqObject, {headers: headers});
+
   }
 
   EmailRequest(payload: FormData){

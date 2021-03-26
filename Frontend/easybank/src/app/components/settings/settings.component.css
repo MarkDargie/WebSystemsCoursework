@@ -4,14 +4,19 @@
 
 .settings-container{
     max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
+    /* margin-left: auto;
+    margin-right: auto; */
+    margin-top:2rem;
 }
 
 main h2{
 
     font-size: 2rem;
 
+}
+
+.login-section h2{
+    margin-bottom: 1rem;
 }
 
 .cards-section{
@@ -32,7 +37,7 @@ form{
 
 .mat-form-field{
     width:100%;
-    font-size: 15px;
+    font-size: 14px;
 }
 
 .mat-form-field-appearance-outline .mat-form-field-infix {

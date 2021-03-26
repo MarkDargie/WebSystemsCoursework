@@ -119,8 +119,6 @@ export class AuthenticateService {
         this.router.navigate(['dashboard']);
       }
     );
-
-
   }
 
   // Get authenticatd users details
@@ -129,6 +127,22 @@ export class AuthenticateService {
     const headers = new HttpHeaders({ 'Content-type': 'application/json' });
 
     return this.http.get(`${environment.API}/users/profile`, {headers: headers});
+
+  }
+
+  UpdateUserDetails(reqObject: object){
+
+    const headers = new HttpHeaders({ 'Content-type': 'application/json' });
+
+    return this.http.get(`${environment.API}/users/updatedetails`, {headers: headers});
+
+  }
+
+  UpdateSecurityDetails(reqObject: object){
+
+    const headers = new HttpHeaders({ 'Content-type': 'application/json' });
+
+    return this.http.get(`${environment.API}/users/updatesecurity`, {headers: headers});
 
   }
 

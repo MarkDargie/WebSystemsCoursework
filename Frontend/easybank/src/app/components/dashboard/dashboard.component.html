@@ -78,8 +78,8 @@
                     <td>{{ payment.method }} Payment</td>
                     <td>£{{ payment.amount }}</td>
                     <td>{{ payment.date }}</td>
-                    <td>{{ payment.from }}</td>
                     <td>{{ payment.to }}</td>
+                    <td>{{ payment.from }}</td>
                     <td>
                       <span class="payment success" *ngIf="payment.status == confirmed">
                         {{ payment.status }}

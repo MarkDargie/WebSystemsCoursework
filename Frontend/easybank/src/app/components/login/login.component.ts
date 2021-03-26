@@ -14,6 +14,9 @@ import { ViewChild } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
+  email = new FormControl('', [Validators.required, Validators.email]);
+  formfield = new FormControl('', [Validators.required, Validators.required]);
+
   constructor(
     private authenticateService: AuthenticateService,
     private http: HttpClient,
@@ -21,8 +24,28 @@ export class LoginComponent implements OnInit {
   ) { }
 
   auth: boolean;
+  hide = true;
 
   @ViewChild('loginform', { static: false }) loginform: NgForm;
+
+  getEmailErrorMessage() {
+    if (this.email.hasError('required')) {
+      return 'You must enter a value';
+    }
+
+    if(this.formfield.hasError('required')){
+      return 'You must enter a value';
+    }
+
+    return this.email.hasError('email') ? 'Not a valid email' : '';
+  }
+
+  getErrorMessage() {
+    if(this.formfield.hasError('required')){
+      return 'You must enter a value';
+    }
+
+  }
 
   ngOnInit(): void {
 
@@ -40,10 +63,8 @@ export class LoginComponent implements OnInit {
   onLoginButtonClick()
   {
 
-    const username = this.loginform.value.fname;
+    const username = this.loginform.value.username;
     const password = this.loginform.value.password;
-
-    console.log("Login button clicked");
 
     const reqObject = {
       username: username,

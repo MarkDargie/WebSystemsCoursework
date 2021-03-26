@@ -85,7 +85,7 @@ label {
     font-size: 12px;
 }
 
-.input-container.password{
+/* .input-container.password{
     position: relative;
 
 }
@@ -102,7 +102,7 @@ label {
     cursor: pointer;
     height:0;
     width:0;
-}
+} */
 
 .checkbox-container {
     display: block;
@@ -165,7 +165,11 @@ label {
     margin-bottom: 20px;
 }
 
-.login-button:hover{
+.mat-form-field {
+
+    width: 100%;
+    margin-bottom:1rem;
+    font-size: 1.2rem;
 
 }
 
@@ -238,6 +242,20 @@ label {
     color:var(--dashboard-text); 
 }
 
+.loginform{
+    width:100%;
+}
+
+@media screen and (max-width: 900px){
+
+    .form-top{
+        margin-top:1.5rem;
+    }
+
+
+}
+
+
 @media screen and (min-width: 900px){
     .login-sections{
         flex-direction: row;
@@ -250,4 +268,6 @@ label {
         width:50%;
         height:auto;
     }
+
+
 }

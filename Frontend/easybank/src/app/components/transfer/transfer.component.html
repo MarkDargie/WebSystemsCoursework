@@ -90,7 +90,7 @@
                   <div class="code-container">
                     <mat-form-field class="code" appearance="outline">
                       <mat-label>Your Secure Code</mat-label>
-                      <input matInput [type]="hide ? 'password' : 'number'" name="fromcode" ngModel required>
+                      <input matInput [type]="hide ? 'password' : 'number'" name="fromcode" type="number" ngModel required>
                       <mat-error *ngIf="formfield.invalid">{{getErrorMessage()}}</mat-error>
                     </mat-form-field>
                     <mat-form-field class="code" appearance="outline">

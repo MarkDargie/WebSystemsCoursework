@@ -14,6 +14,10 @@ import { ViewChild } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
+  email = new FormControl('', [Validators.required, Validators.email]);
+  password = new FormControl('', [Validators.required, Validators.min(6)]);
+  formfield = new FormControl('', [Validators.required, Validators.required]);
+
   constructor(
     private authenticateService: AuthenticateService,
     private http: HttpClient,
@@ -21,8 +25,30 @@ export class RegisterComponent implements OnInit {
   ) { }
 
   auth: boolean;
+  hide = true;
 
   @ViewChild('registerform', { static: false }) registerform: NgForm;
+
+  getEmailErrorMessage() {
+    if (this.email.hasError('required')) {
+      return 'You must enter a value';
+    }
+
+    return this.email.hasError('email') ? 'Not a valid email' : '';
+  }
+
+  getErrorMessage() {
+    if(this.formfield.hasError('required')){
+      return 'You must enter a value';
+    }
+
+  }
+
+  getPassErrorMessage(){
+    if(this.password.hasError('required')){
+      return 'You must enter a valid password. Password must be at least 6 Characters';
+    }
+  }
 
   ngOnInit(): void {
 

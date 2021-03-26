@@ -12,37 +12,46 @@
     </div>
 
     <div class="right">
-        <form class="registerform" (ngSubmit)="OnRegisterFormSubmit()" #registerform="ngForm">
+        <form class="registerform form-top" (ngSubmit)="OnRegisterFormSubmit()" #registerform="ngForm">
             <section class="login-section">
-                <h2>Sign Up</h2>
+                <h2 class="signup-head">Sign Up</h2>
                 <div class="login-container">
                     <p>Already have an account ? <a href="#">
                         <strong>Sign In</strong>
                     </a></p>
                 </div>
             </section>
-            <div class="input-container name">
-                <label for="fname">Username</label>
-                <input id="fname" name="fname" type="text" ngModel>
-            </div>
-            <div class="input-container email">
-                <label for="email">Email</label>
-                <input id="email" name="email" type="text" ngModel>
-            </div>
-            <div class="input-container password">
-                <label for="password">Password</label>
-                <input id="password" name="password" type="password" ngModel>
-                <i class="far fa-eye-slash"></i>
-            </div>
-            <div class="input-container password">
-                <label for="password">Confirm Password</label>
-                <input id="password-confirm" name="password-confirm" type="password" ngModel>
-                <i class="far fa-eye-slash"></i>
-            </div>
-            <div class="input-container password">
-                <label for="password">4 Digit Secure Code</label>
-                <input id="securecode" name="securecode" type="password" ngModel>
-            </div>
+            <mat-form-field appearance="outline">
+                <mat-label>Username</mat-label>
+                <input matInput name="username" ngModel required>
+                <mat-error *ngIf="formfield.invalid">{{getErrorMessage()}}</mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput name="email" ngModel required>
+                <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Enter Your Password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" name="password" ngModel required>
+                
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" minlength=6>
+                </button>
+                <mat-error *ngIf="password.invalid">{{getPassErrorMessage()}}</mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Confirm Password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" name="password-confirm" ngModel required>
+                
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" minlength=6>
+                </button>
+                <mat-error *ngIf="password.invalid">{{getPassErrorMessage()}}</mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Secure Code</mat-label>
+                <input matInput [type]="hide ? 'password' : 'number'" name="securecode" ngModel required maxlength=4>
+                <mat-error *ngIf="formfield.invalid">{{getErrorMessage()}}</mat-error>
+              </mat-form-field>
             <button class="login-button" type="submit">Sign Up</button>
         </form>
     </div>

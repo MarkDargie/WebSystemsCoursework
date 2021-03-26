@@ -15,12 +15,9 @@ export class AuthInterceptor implements HttpInterceptor {
                 headers: req.headers.set("Authorization", idToken)
             });
 
-            // console.log("Token found: interceptor", idToken);
-
             return next.handle(cloned);
         }
         else {
-            // console.log("No token found: interceptor")
             return next.handle(req);
         }
     }

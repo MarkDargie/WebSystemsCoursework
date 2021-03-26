@@ -4,53 +4,72 @@ import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment.prod';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TestingService {
+  constructor(private http: HttpClient) {}
 
-  constructor(
-    private http: HttpClient
-  ) { }
-
-  
-  dailyForecast() {
-    return this.http.get('http://samples.openweathermap.org/data/2.5/history/city?q=Warren,OH&appid=b6907d289e10d714a6e88b30761fae22')
-    .pipe(map(data => {})).subscribe(result => result);
-  }
-
-  // Make these one route that accept a param for the string route 
-
-  GetTestingResults(){
+  /**
+   * Get all A/B Testing Results from API
+   * @returns http GET: Test Object
+   */
+  GetTestingResults() {
     return this.http.get(`${environment.API}/logs/results`);
   }
 
-  ResetMetrics(){
+  /**
+   * Reset All Test Results
+   * @returns http POST: Removes Object
+   */
+  ResetMetrics() {
     return this.http.post(`${environment.API}/logs/reset`, null);
   }
 
-  PostSecurePayment(){
+  /**
+   * Increment number of secure payments
+   * @returns http POST: Secure Payment
+   */
+  PostSecurePayment() {
     return this.http.post(`${environment.API}/logs/secure`, null);
   }
 
-  PostExpressPayment(){
+  /**
+   * Increment number of express payments
+   * @returns http POST: Express Payment
+   */
+  PostExpressPayment() {
     return this.http.post(`${environment.API}/logs/express`, null);
   }
 
-  PostAppStatement(){
+  /**
+   * Increment number of direct statements
+   * @returns http POST: Direct Statement request
+   */
+  PostAppStatement() {
     return this.http.post(`${environment.API}/logs/appstatement`, null);
   }
 
-  PostExternalStatement(){
+  /**
+   * Increment number of external statements
+   * @returns http POST: External Statement Request
+   */
+  PostExternalStatement() {
     return this.http.post(`${environment.API}/logs/externalstatement`, null);
   }
 
-  PostLightTheme(){
+  /**
+   * Increment nubmer of users with light theme preference
+   * @returns http POST: User Preference
+   */
+  PostLightTheme() {
     return this.http.post(`${environment.API}/logs/lighttheme`, null);
   }
 
-  PostDarkTheme(){
+  /**
+   * Increment nubmer of users with dark theme preference
+   * @returns http POST: User Preference
+   */
+  PostDarkTheme() {
     return this.http.post(`${environment.API}/logs/darktheme`, null);
   }
-
-
 }

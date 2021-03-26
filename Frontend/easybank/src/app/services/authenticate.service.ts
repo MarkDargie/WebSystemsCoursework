@@ -20,7 +20,11 @@ export class AuthenticateService {
   loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   adminLog: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-  // Login User
+  /**
+   * Login User Request
+   * @param reqObject User Credential from form data
+   * @returns http POST: Authentication Response
+   */
   login(reqObject: object) {
     const headers = new HttpHeaders({ 'Content-type': 'application/json' });
     return this.http
@@ -36,15 +40,14 @@ export class AuthenticateService {
           console.log(error);
         },
         () => {
-
-          console.log('login done');
           this.router.navigate(['dashboard']);
-
         }
       );
   }
 
-  // Set JWT Token in local storage
+  /**
+   * Set JWT Token in local storage
+   */
   setLocalStorage(responseObject) {
     const expiresAt = moment().add(responseObject.expiresIn);
 
@@ -52,7 +55,9 @@ export class AuthenticateService {
     localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
   }
 
-  // Remove JWT Token from local storage on logout
+  /**
+   * Logout: Remove Local Storage Variables
+   */
   logout() {
     this.loggedIn.next(false);
     localStorage.removeItem('id_token');
@@ -60,7 +65,10 @@ export class AuthenticateService {
     localStorage.removeItem('theme');
   }
 
-  // Check if user is logged in
+  /**
+   * Verify if user is logged in Via IsAuthenticated()
+   * @returns Boolean of type Auth
+   */
   isLoggedIn() {
     return this.isAuthenticated().pipe(
       tap((res: auth) => {
@@ -74,6 +82,10 @@ export class AuthenticateService {
     );
   }
 
+  /**
+   * Verify if Admin access user is authenticated
+   * @returns Boolean of type Auth
+   */
   isAdminLoggedIn() {
     return this.isAdmin().pipe(
       tap((res: auth) => {
@@ -87,19 +99,27 @@ export class AuthenticateService {
     );
   }
 
-  // 
+  /**
+   * Authenticated Request
+   * @returns http POST: Authentication Response of type Auth
+   */
   isAuthenticated(): Observable<auth> {
     return this.http.get<auth>(`${environment.API}/users/protected`);
   }
 
-  //
+  /**
+   * Admin Authenticated Request
+   * @returns http POST: Authenticated Response of type Auth
+   */
   isAdmin(): Observable<auth>{
-
     return this.http.get<auth>(`${environment.API}/users/admin`);
-
   }
 
-  // Register User Account
+  /**
+   * Register user Account
+   * @param reqObject form data fields from register component
+   * @returns http POST: Register Response
+   */
   registerAccount(reqObject: Object) {
 
     const headers = new HttpHeaders({ 'Content-type': 'application/json' });
@@ -110,19 +130,20 @@ export class AuthenticateService {
       // The response data
       (response) => {
         this.login(reqObject);
-        console.log(response);
       },
       (error) => {
         console.log(error);
       },
       () => {
-        console.log("Register complete");
-        this.router.navigate(['dashboard']);
+        this.router.navigate(['login']);
       }
     );
   }
 
-  // Get authenticatd users details
+  /**
+   *  Get user Details
+   * @returns http GET: User Details response
+   */
   GetUserDetails(){
 
     const headers = new HttpHeaders({ 'Content-type': 'application/json' });
@@ -131,6 +152,9 @@ export class AuthenticateService {
 
   }
 
+  /**
+   * Update User Account Details Request
+   */
   UpdateUserDetails(reqObject: object){
 
     const headers = new HttpHeaders({ 'Content-type': 'application/json' });
@@ -139,6 +163,9 @@ export class AuthenticateService {
 
   }
 
+  /**
+   * Update User Security Details Request
+   */
   UpdateSecurityDetails(reqObject: object){
 
     const headers = new HttpHeaders({ 'Content-type': 'application/json' });
@@ -147,10 +174,10 @@ export class AuthenticateService {
 
   }
 
-  // Delete accout from system and redirect to /home
+  /**
+   * Remove User Account Request
+   */
   deleteAccount() {
-
-    console.log("DELETE ACCOUNT");
 
     const headers = new HttpHeaders({ 'Content-type': 'application/json' });
 

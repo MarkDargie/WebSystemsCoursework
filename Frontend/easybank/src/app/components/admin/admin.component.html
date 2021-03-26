@@ -1,74 +1,71 @@
 <div class="dashboard-container">
-    <app-sidebar></app-sidebar>
-    <div class="dashboard-content">
-      <header>
-        <div class="search-container">
+  <app-sidebar></app-sidebar>
+  <div class="dashboard-content">
+    <header>
+      <div class="search-container"></div>
 
+      <div class="icons">
+        <span class="ti-palette"></span>
+        <div></div>
+      </div>
+    </header>
+
+    <main>
+      <h2 class="title">Admin A/B Testing Dashboard</h2>
+
+      <h4>Payment Method Results</h4>
+      <div class="chart-container">
+        <div class="pie-container">
+          <canvas id="paypiechart"> {{ paypiechart }}</canvas>
         </div>
-    
-        <div class="icons">
-          <span class="ti-palette"></span>
-          <div></div>
+      </div>
+      <!-- Payment Method Chart -->
+      <p class="chart-text">
+        When using the EasyBank service dashboard, users are provided with the
+        option to transfer payments with two methods, Secure Transfer and
+        Express Transfer. Secure transfers require various fields to be provided
+        in order to make the request, such as usernames, emails and account
+        secure codes. Secure transfers will also not be processed until the
+        recipient has confirmed the transaction. conversely, Express payments
+        only require the recipients username and the amount, and will be
+        automatically processed.
+      </p>
+      <!-- Statement Method Chart -->
+      <h4>Transfer Statement Method Results</h4>
+      <div class="chart-container">
+        <div class="pie-container">
+          <canvas id="transferpiechart"> {{ transferpiechart }}</canvas>
         </div>
-      </header>
-    
-      <main>
+      </div>
+      <p class="chart-text">
+        Additionally, when users of the dashboard are viewing their transaction
+        history through the payments section. An option for receiving their
+        transaction history statement PDF is presented to them and users can
+        decide if they would like to receive this directly through the
+        dashboard, or sent via email.
+      </p>
 
-        <h2 class="title">Admin A/B Testing Dashboard</h2>
+      <!-- Theme Preference Chart -->
+      <h4>Dashboard Theme Preferences</h4>
 
-        <h4> Payment Method Results </h4>
-        <div class="chart-container">
-  
-          <div class="pie-container">
-            <canvas id="paypiechart"> {{ paypiechart }}</canvas>
-          </div>
+      <div class="chart-container">
+        <div class="pie-container">
+          <canvas id="themechart"> {{ themechart }}</canvas>
         </div>
+      </div>
 
-        <p class="chart-text">When using the EasyBank service dashboard, users are provided with the option
-          to tranfer payments with two methods, Secure Transfer and Express Transfer. Secure tranfers require 
-          various fields to be provided in order to make the request, such as usernames, emails and account secure codes. 
-          Secure transfers will also not be processed until the recipient has confirmed the transaction. Conversly, Express payments 
-          only require the recipients username and the amount, and will be automatically processed.
-        </p>
-
-        <h4> Transfer Statement Method Results </h4>
-        <div class="chart-container">
-
-          <div class="pie-container">
-            <canvas id="transferpiechart"> {{ transferpiechart }}</canvas>
-          </div>
-          
-        </div>
-
-        <p class="chart-text">
-          Additioanlly, when users of the dashboard are viewing their transaction history thorugh the payments section. 
-          An option for receiving their transaction history statement PDF is presented to them and users can decide if they would like to 
-          receive this directly through the dashboard, or sent via email.
-        </p>
-
-        <h4>Dashboard Theme Preferences</h4>
-
-        <div class="chart-container">
-
-          <div class="pie-container">
-            <canvas id="themechart"> {{ themechart }}</canvas>
-          </div>
-
-        </div>
-
-        <p class="chart-text">
-          When using the Dashboard, users can direct to the settings page to configure and modify their profile account details, preferences and security information. 
-          Once of these options, provides users with the option to select either a light or dark dashboard theme, which can be changed at any time.
-        </p>
-
-        <p>Reset A/B Testing Results: </p>
-        <button class="admin-button" (click)="ResetResults()">Reset Statistics</button>
-
-    
+      <p class="chart-text">
+        When using the Dashboard, users can direct to the settings page to
+        configure and modify their profile account details, preferences and
+        security information. Once of these options, provides users with the
+        option to select either a light or dark dashboard theme, which can be
+        changed at any time.
+      </p>
+      <!-- Reset Stats Button -->
+      <p>Reset A/B Testing Results:</p>
+      <button class="admin-button" (click)="ResetResults()">
+        Reset Statistics
+      </button>
     </main>
-    
-    </div>
-    
-    
-    
-    </div>
+  </div>
+</div>

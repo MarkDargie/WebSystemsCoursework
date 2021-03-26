@@ -6,8 +6,9 @@
 
         </section>
     </div>
-
+    <!-- Right Section of register page -->
     <div class="right">
+      <!-- Registe Form-->
         <form class="registerform form-top" (ngSubmit)="OnRegisterFormSubmit()" #registerform="ngForm">
             <section class="login-section">
                 <h2 class="signup-head">Sign Up</h2>
@@ -44,7 +45,7 @@
                 <mat-error *ngIf="password.invalid">{{getPassErrorMessage()}}</mat-error>
               </mat-form-field>
               <mat-form-field appearance="outline">
-                <mat-label>Secure Code</mat-label>
+                <mat-label>4 Digit Secure Code</mat-label>
                 <input matInput [type]="hide ? 'password' : 'number'" name="securecode" ngModel required maxlength=4>
                 <mat-error *ngIf="formfield.invalid">{{getErrorMessage()}}</mat-error>
               </mat-form-field>

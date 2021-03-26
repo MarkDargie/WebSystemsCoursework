@@ -1,60 +1,55 @@
 /* @import url('../login//login.component.css'); */
-@import url('../dashboard/dashboard.component.css');
+@import url("../dashboard/dashboard.component.css");
 
-
-main h4{
-  color:var(--dashboard-text);
+main h4 {
+  color: var(--dashboard-text);
   font-weight: 500;
 }
 
-.chart-container{
-
+.chart-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   /* align-items: center; */
   flex-wrap: wrap;
-  width:90%;
+  width: 90%;
   /* background: chartreuse; */
-  padding:1rem;
-  height:auto;
+  padding: 1rem;
+  height: auto;
   margin-bottom: 3rem;
-
 }
 
 .pie-container {
-
-  width:100%;
-  height:400px;
-
+  width: 100%;
+  height: 400px;
 }
 
-.chart-text{
+.chart-text {
   font-size: 1.2rem;
   margin-bottom: 1rem;
-  padding:1rem;
-  color:var(--dashboard-text);
+  padding: 1rem;
+  color: var(--dashboard-text);
 }
 
-.bar-container{
-  width:100%;
-  height:350px;
+.bar-container {
+  width: 100%;
+  height: 350px;
 }
 
-.admin-button{
+.admin-button {
   display: block;
-  width:30%;
+  width: 30%;
   min-width: 200px;
   background: var(--dashboard-main);
   color: white;
   /* font-weight: 700; */
   border: none;
-  padding:1rem;
+  padding: 1rem;
   border-radius: 8px;
   font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 1px;
   cursor: pointer;
   margin-bottom: 20px;
-  margin-top:10px;
+  margin-top: 10px;
 }

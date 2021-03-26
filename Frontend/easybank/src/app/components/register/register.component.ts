@@ -14,6 +14,9 @@ import { ViewChild } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
+  /**
+   * Set Form Control Validators
+   */
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required, Validators.min(6)]);
   formfield = new FormControl('', [Validators.required, Validators.required]);
@@ -29,6 +32,10 @@ export class RegisterComponent implements OnInit {
 
   @ViewChild('registerform', { static: false }) registerform: NgForm;
 
+  /**
+   * Get Email Error Message for Validation
+   * @returns Error Message
+   */
   getEmailErrorMessage() {
     if (this.email.hasError('required')) {
       return 'You must enter a value';
@@ -37,6 +44,10 @@ export class RegisterComponent implements OnInit {
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
 
+  /**
+   * Get Error Message for Validation
+   * @returns Error Message
+   */
   getErrorMessage() {
     if(this.formfield.hasError('required')){
       return 'You must enter a value';
@@ -44,6 +55,10 @@ export class RegisterComponent implements OnInit {
 
   }
 
+  /**
+   * Get Error Message for Validation
+   * @returns Error Message
+   */
   getPassErrorMessage(){
     if(this.password.hasError('required')){
       return 'You must enter a valid password. Password must be at least 6 Characters';
@@ -63,9 +78,12 @@ export class RegisterComponent implements OnInit {
 
   }
 
+  /**
+   * Handle Register Reqeust Form Data Submission
+   */
   OnRegisterFormSubmit()
   {
-    // define consts
+    // define consts from form data
     const username = this.registerform.value.username;
     const email = this.registerform.value.email;
     const password = this.registerform.value.password;

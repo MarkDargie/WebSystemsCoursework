@@ -16,6 +16,9 @@ import { of } from 'rxjs';
 })
 export class LoginComponent implements OnInit {
 
+  /**
+   * Set Form Control Validators
+   */
   email = new FormControl('', [Validators.required, Validators.email]);
   formfield = new FormControl('', [Validators.required, Validators.required]);
 
@@ -29,8 +32,13 @@ export class LoginComponent implements OnInit {
   auth: boolean;
   hide = true;
 
+  // View Login Form
   @ViewChild('loginform', { static: false }) loginform: NgForm;
 
+  /**
+   * Get Email Error Message for Validation
+   * @returns Error Message
+   */
   getEmailErrorMessage() {
     if (this.email.hasError('required')) {
       return 'You must enter a value';
@@ -43,6 +51,10 @@ export class LoginComponent implements OnInit {
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
 
+  /**
+   * Get Error Message for Validation
+   * @returns Error Message
+   */
   getErrorMessage() {
     if(this.formfield.hasError('required')){
       return 'You must enter a value';
@@ -50,8 +62,12 @@ export class LoginComponent implements OnInit {
 
   }
 
+  // Called when component is initialsed
   ngOnInit(): void {
 
+    /**
+     * Verify if user is authenticated
+     */
     this.authenticateService.isLoggedIn().pipe(
       tap(()=>{
         this.auth = this.authenticateService.loggedIn.value;
@@ -63,9 +79,13 @@ export class LoginComponent implements OnInit {
 
   }
 
+  /**
+   * Method for login form submission
+   */
   onLoginButtonClick()
   {
 
+    // Set form field values
     const username = this.loginform.value.username;
     const password = this.loginform.value.password;
 
@@ -73,18 +93,15 @@ export class LoginComponent implements OnInit {
       alert("no usename or password");
     } else {
 
+      // create request object
       const reqObject = {
         username: username,
         password: password
       }
   
+      // Request login via: Authenticate Service
       this.authenticateService.login(reqObject);
-
-
     }
-
-
-
   }
 
 }

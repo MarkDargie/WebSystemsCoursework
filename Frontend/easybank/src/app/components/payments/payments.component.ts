@@ -34,6 +34,7 @@ export class PaymentsComponent implements OnInit {
 
   user: user;
 
+  // Set Data Storage Object
   allTransactions: transaction[];
   sentTransactions: transaction[];
   receivedTransactions: transaction[];
@@ -41,6 +42,10 @@ export class PaymentsComponent implements OnInit {
 
   selectedValue: string;
 
+  /**
+   * Get Error Message for Validation
+   * @returns Error Message
+   */
   getErrorMessage() {
     if (this.formfield.hasError('required')) {
       return 'You must Select a Method';
@@ -50,46 +55,62 @@ export class PaymentsComponent implements OnInit {
 
   ngOnInit(): void {
 
+    /**
+     * Get Authenticated User: Authenticate Service
+     */
     this.authenticateService.GetUserDetails().subscribe((user: user)=> {
       this.user = user;
     });
 
+    /**
+     *  Get User Payments: Transaction Service
+     */
     this.transactionService.getAllPayments().subscribe((payments: transaction[])=>{
       this.allTransactions = payments;
     })
 
+    /**
+     *  Get Sent User Payments: Transaction Service
+     */
     this.transactionService.getSentPayments().subscribe((sentPayments: transaction[])=>{
       this.sentTransactions = sentPayments;
-      console.log("sent: ", sentPayments);
     });
 
+     /**
+     *  Get Received User Payments: Transaction Service
+     */
     this.transactionService.getReceivedPayments().subscribe((receivedPayments: transaction[])=>{
       this.receivedTransactions = receivedPayments;
-      console.log("RECIVED: ", receivedPayments);
     });
 
+    /**
+     *  Get Pending User Payments: Transaction Service
+     */
     this.transactionService.GetPendingPayments().subscribe((pendingPayments: transaction[])=>{
       this.pendingTransactions = pendingPayments;
-      console.log("PENDING: ", pendingPayments);
     });
 
   }
 
+  /**
+   * Transaction Statement Request Method
+   */
   OnRequestSubmit(){
-
     const type = this.requestform.value.requesttype;
-    console.log("REQUES TYPE: ", type);
-
-
     if(type){
       this.generatePDF(type);
     }
 
-
   }
 
+  /**
+   * Confirm Pending Payment Method
+   * @param id payment id
+   * @param from from user id
+   */
   OnPaymentConfirm(id: string, from: string){
 
+    // Create Req object
     const reqObject = {
       id: id,
       from: from
@@ -114,6 +135,10 @@ export class PaymentsComponent implements OnInit {
 
   }
 
+  /**
+   * Reject Pending Payment Method
+   * @param id from user id
+   */
   OnPaymentReject(id: string){
 
     const reqObject = {
@@ -139,19 +164,24 @@ export class PaymentsComponent implements OnInit {
 
   }
 
+  /**
+   * Generate Transaction Statement PDF File from User Transactions
+   * @param method Request Method
+   */
   generatePDF(method: string){
 
-    var pdf = new jsPDF();
+    var pdf = new jsPDF(); // Create jsPDF Variable
 
+    // Set Options
     pdf.setFontSize(15);
     pdf.text(`EasyBank Transaction Statement`, 11, 8);
-    // pdf.text(`${this.user.username} ${this.user.email}`, 12, 8);
     pdf.setFontSize(12);
     pdf.setTextColor(99);
 
     var header = ["Method", 'Amount','To','From','Status'];
     var rows= [];
 
+    // Append User Transaction Data
     for(var value in this.allTransactions){
       var row = [
         this.allTransactions[value].method,
@@ -162,7 +192,7 @@ export class PaymentsComponent implements OnInit {
       rows.push(row);
     }
     
-
+    // Create Table from data
     (pdf as any).autoTable({
     head: [header],
     body: rows,
@@ -172,18 +202,21 @@ export class PaymentsComponent implements OnInit {
     }
     });
 
+    /**
+     * IF direct method: Direct Downdload of PDF statement
+     */
     if(method == "direct"){
 
       // Open PDF document in browser's new tab
       pdf.output('dataurlnewwindow');
-
-      // Download PDF doc  
-      // pdf.save('table.pdf');
-
+      // Send testing request
       this.testingService.PostAppStatement().subscribe();
 
     }
 
+    /**
+     * IF External method: Request to Email service
+     */
     if(method == "email"){
 
       var blob = pdf.output('blob');

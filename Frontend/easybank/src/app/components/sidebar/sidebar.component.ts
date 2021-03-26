@@ -19,6 +19,9 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit(): void {
 
+    /**
+     * Validate if current user is authenticated
+     */
     this.authenticateService.isAdminLoggedIn().pipe(
       tap(()=> {
         this.auth = this.authenticateService.adminLog.value;
@@ -28,6 +31,9 @@ export class SidebarComponent implements OnInit {
 
   }
 
+  /**
+   * Send sign out requst to Authenticate Service
+   */
   SignOut(){
 
     this.authenticateService.logout();

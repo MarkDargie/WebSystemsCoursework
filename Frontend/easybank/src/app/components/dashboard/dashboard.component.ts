@@ -27,30 +27,49 @@ export class DashboardComponent implements OnInit {
     private themeService: ThemeService
   ) { }
 
+  // Set Data Storage Object
   user: user;
   transactions: transaction[];
   pending: transaction[];
   sent: transaction[];
   recieved: transaction[];
 
+  /**
+   * Called when Component is Initialised
+   */
   ngOnInit(): void {
 
+    /**
+     * Get Authenticated User: Authenticate Service
+     */
     this.authenticateService.GetUserDetails().subscribe((user: user)=>{
       this.user = user;
     });
 
+    /**
+     *  Get User Payments: Transaction Service
+     */
     this.transactionService.getAllPayments().subscribe((transaction: transaction[])=>{
       this.transactions = transaction.splice(0,10);
     });
 
+    /**
+     *  Get Pending User Payments: Transaction Service
+     */
     this.transactionService.GetPendingPayments().subscribe((transaction: transaction[])=>{
       this.pending = transaction;
     });
 
+    /**
+     *  Get Sent User Payments: Transaction Service
+     */
     this.transactionService.getSentPayments().subscribe((transaction: transaction[])=>{
       this.sent = transaction;
     });
 
+      /**
+     *  Get Received User Payments: Transaction Service
+     */
     this.transactionService.getReceivedPayments().subscribe((transaction: transaction[])=>{
 
       this.recieved = transaction;

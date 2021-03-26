@@ -26,7 +26,7 @@
                         <div class="payment-card">
                             <h3>Sent Payments</h3>
             
-                            <div class="table-container">
+                            <div class="table-container uppercase">
                                 <table border="0">
                                     <thead>
                                         <tr>
@@ -45,7 +45,7 @@
                                             <td>{{sent.date}}</td>
                                             <td>{{sent.to}}</td>
                                             <td>
-                                                <span class="payment success">
+                                                <span class="payment success uppercase">
                                                     {{sent.status}}
                                                 </span>
                                             </td>
@@ -72,7 +72,7 @@
                         <div class="payment-card">
                             <h3>Received Payments</h3>
             
-                            <div class="table-container">
+                            <div class="table-container uppercase">
                                 <table border="0">
                                     <thead>
                                         <tr>
@@ -91,7 +91,7 @@
                                             <td>{{received.date}}</td>
                                             <td>{{received.from}}</td>
                                             <td>
-                                                <span class="payment success">
+                                                <span class="payment success uppercase">
                                                     {{received.status}}
                                                 </span>
                                             </td>
@@ -118,7 +118,7 @@
                         <div class="payment-card">
                             <h3>Pending Payments</h3>
             
-                            <div class="table-container">
+                            <div class="table-container uppercase">
                                 <table border="0" *ngFor="let pending of pendingTransactions">
                                     <thead>
                                         <tr>
@@ -137,7 +137,7 @@
                                             <td>{{pending.date}}</td>
                                             <td>{{pending.from}}</td>
                                             <td>
-                                                <span class="payment success">
+                                                <span class="payment success uppercase">
                                                     Confirmed
                                                 </span>
                                             </td>

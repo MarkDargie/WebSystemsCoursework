@@ -68,11 +68,11 @@
               <div class="cards-section">
       
       
-                  <div class="card">
+                  <div class="card" *ngFor="let card of user.paymentmethods">
                       <div class="card-body">
                           <span class = "ti-credit-card"></span>
                           <div>
-                              <h5>Payment Method</h5>
+                              <h5>{{card.name}}</h5>
                               <h4>***********</h4>
                           </div>
                       </div>

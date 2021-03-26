@@ -184,7 +184,22 @@ export class SettingsComponent implements OnInit {
         cvv: cvv
       }
   
-      this.transactionService.createPaymentMethod(reqObject).subscribe();
+      this.transactionService.createPaymentMethod(reqObject).pipe(
+        tap((res)=>{
+          this.snackbar.open({
+            message:"Card Added Successfully",
+            error:false
+          });
+          // this.securityform.reset();
+        }),
+        catchError((error)=>{
+          this.snackbar.open({
+            message: error.message,
+            error:true
+          });
+          return of(false);
+        })
+      ).subscribe();
 
 
     }

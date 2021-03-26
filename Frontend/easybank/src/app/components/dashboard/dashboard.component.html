@@ -15,7 +15,7 @@
   </header>
 
   <main>
-    <h2 class="title">Hello, {{user.username}} Welcome to Your Dashboard</h2>
+    <h2 class="title uppercase">Hello, {{user.username}} Welcome to Your Dashboard</h2>
     <div class="cards-section">
 
         <div class="card">
@@ -27,7 +27,7 @@
                 </div>
             </div>
             <div class="card-footer">
-                <a href="">View All</a>
+                <a href="" routerLink="/dashboard/payments">View All</a>
             </div>
         </div>
 
@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="card-footer">
-                <a href="">View All</a>
+                <a href="" routerLink="/dashboard/payments">View All</a>
             </div>
         </div>
 
@@ -53,7 +53,7 @@
                 </div>
             </div>
             <div class="card-footer">
-                <a href="">View All</a>
+                <a href="" routerLink="/dashboard/payments">View All</a>
             </div>
         </div>
     </div>
@@ -64,7 +64,7 @@
             <div class="payment-card">
                 <h3>Recent Payments</h3>
 
-                <div class="table-container">
+                <div class="table-container uppercase">
                     <table border="0" id="payments" #paymenttable>
                         <thead>
                             <tr>

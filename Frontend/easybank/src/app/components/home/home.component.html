@@ -1,13 +1,7 @@
 <div class="home-container">
 <header>
-    <!-- <div class="shape shape1"></div>
-    <div class="shape shape2"></div>
-    <div class="shape shape3"></div> -->
-
     <div class="container header">
       <nav>
-        <!-- <img src="../../../assets/img/logo.svg" alt="" class="logo" /> -->
-
         <ul class="nav-ul">
           <li><a href="#">Home</a></li>
           <li><a href="#services">Services</a></li>
@@ -16,17 +10,17 @@
         </ul>
 
         <div class="login">
-          <a href="#" class="btn">Sign In</a>
+          <a href="#" class="btn" routerLink="/login">Sign In</a>
         </div>
       </nav>
     </div>
 
     <div class="container intro" data-aos="fade-up">
-      <h1>Easy Bank Online Banking</h1>
+      <h1>EasyBank Online Banking</h1>
       <p>
           Online Banking Service Dashboard.
       </p>
-      <a href="#" class="btn">Darshboard Sign In</a>
+      <a href="#" routerLink="/register" class="btn">Create Account</a>
       <img src="../../../assets/img/mac.png" alt="" />
     </div>
   </header>
@@ -100,7 +94,6 @@
             <i class="far fa-check-circle"></i>
             <p>One of UK's leading digital banking solutions.</p>
           </div>
-          <!-- <a href="#" class="btn btn-square">Get a Free Consultation</a> -->
         </div>
         <div class="consult-image" data-aos="fade-left">
           <img src="../../../assets/img/cards2.png" alt="" />
@@ -108,7 +101,6 @@
       </div>
     </section>
 
-    <!-- Features -->
     <section id="features">
       <div class="container features" data-aos="fade-up">
         <div class="feature-image">
@@ -124,7 +116,6 @@
             </p>
           </div>
           <div class="feature-items">
-            <!-- Feature Item -->
             <div class="feature-item">
                 <i class="far fa-address-card"></i>
               <h3 class="heading-3 text-white">Secure Payments</h3>
@@ -154,55 +145,15 @@
       </div>
     </section>
 
-    <!-- Call to action -->
     <section id="action">
       <div class="container">
         <div class="heading">
-          <h2 class="heading-2">What are you waiting for?</h2>
+          <h2 class="heading-2">Why Wait ?</h2>
           <p>Get Started with our Digital Banking Dashboard.</p>
-          <a href="#" class="btn btn-square">Sign In</a>
+          <a href="#" class="btn btn-square" routerLink="/register">Create Account</a>
         </div>
       </div>
     </section>
   </main>
-
-  <!-- <footer>
-    <div class="container footer">
-      <div class="footer-logo">
-        <img src="../../../assets/img/logo.svg" alt="" />
-      </div>
-
-      <div class="footer-links">
-        <ul>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#"> Help</a></li>
-          <li><a href="#">Affiliate</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-links">
-        <ul>
-          <li><a href="#">Career</a></li>
-          <li><a href="#">Support</a></li>
-          <li><a href="#">Partners</a></li>
-          <li><a href="#">Terms</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-credit">
-        <p>Sign up fro Newsletter</p>
-        <form action="">
-          <input type="text" placeholder="Enter Email" />
-          <input type="submit" />
-        </form>
-        <p>2021 &copy; ZinoTrust. All rights reserved.</p>
-      </div>
-    </div>
-  </footer> -->
-
-  
 <app-footer></app-footer>
 </div>

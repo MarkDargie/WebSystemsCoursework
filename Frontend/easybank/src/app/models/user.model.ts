@@ -5,7 +5,7 @@ export class user {
     username: string;
     // password: string;
     balance: number;
-    paymentmethods: object[];
+    paymentmethods: string[];
     
 
 }

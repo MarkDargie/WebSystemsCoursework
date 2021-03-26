@@ -20,13 +20,17 @@ main h2{
 
 }
 
-.login-section h2{
+.login-section h2, h5,h4{
     margin-bottom: 1rem;
     font-weight: 500;
 }
 
 .cards-section{
     margin-bottom: 8rem;
+}
+
+.card-body h5,h4{
+    font-weight: 500;
 }
 
 main h3 {

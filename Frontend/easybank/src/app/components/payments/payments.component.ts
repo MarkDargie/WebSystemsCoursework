@@ -230,7 +230,22 @@ export class PaymentsComponent implements OnInit {
 
       console.log("USER ID EMAIL: ", this.user._id);
 
-      this.transactionService.EmailRequest(payload).subscribe();
+      this.transactionService.EmailRequest(payload).pipe(
+        tap((res)=>{
+          this.snackbar.open({
+            message:"Email Request Successfull",
+            error:false
+          });
+          // this.settingsform.reset();
+        }),
+        catchError((error)=>{
+          this.snackbar.open({
+            message: error.message,
+            error:true
+          });
+          return of(false);
+        })
+      ).subscribe();
       this.testingService.PostExternalStatement().subscribe();
 
     }
